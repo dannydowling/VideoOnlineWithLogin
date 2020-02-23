@@ -16,11 +16,10 @@ namespace VideoOnlineWithLogin.Data
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Country> Countries { get; set; }
-
         public DbSet<typedUser> typedUsers { get; set; }
-
         public DbSet<Video> Videos { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -64,6 +63,18 @@ namespace VideoOnlineWithLogin.Data
                 Comment = "Using Fake Address and Phone number here",
                 ExitDate = null,
                 JoinedDate = new DateTime(2019, 3, 1)                
+            });
+
+            modelBuilder.Entity<typedUser>().HasData(new typedUser
+            {
+                userId = 1,
+                Email = "danny.dowling@gmail.com",
+                FirstName = "Danny",
+                LastName = "Dowling",
+                Password = "password",
+                Comment = "Using Fake Address and Phone number here",
+                ExitDate = null,
+                JoinedDate = new DateTime(2019, 3, 1)
             });
         }
     }

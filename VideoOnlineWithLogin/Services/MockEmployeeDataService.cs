@@ -11,6 +11,7 @@ namespace VideoOnlineWithLogin.Server.Services
         private List<Employee> _employees;
         private List<Country> _countries;
         private List<JobCategory> _jobCategories;
+        private List<typedUser> _users;
 
         private IEnumerable<Employee> Employees
         {
@@ -21,6 +22,17 @@ namespace VideoOnlineWithLogin.Server.Services
                 return _employees;
             }
         }
+
+        private IEnumerable<typedUser> typedUsers
+        {
+            get
+            {
+                if (_users == null)
+                    InitializeUsers();
+                return _users;
+            }
+        }
+               
 
         private List<Country> Countries
         {
@@ -46,17 +58,15 @@ namespace VideoOnlineWithLogin.Server.Services
         {
             _jobCategories = new List<JobCategory>()
             {
-                new JobCategory{JobCategoryId = 1, JobCategoryName = "Pie research"},
-                new JobCategory{JobCategoryId = 2, JobCategoryName = "Sales"},
-                new JobCategory{JobCategoryId = 3, JobCategoryName = "Management"},
-                new JobCategory{JobCategoryId = 4, JobCategoryName = "Store staff"},
-                new JobCategory{JobCategoryId = 5, JobCategoryName = "Finance"},
-                new JobCategory{JobCategoryId = 6, JobCategoryName = "QA"},
-                new JobCategory{JobCategoryId = 7, JobCategoryName = "IT"},
-                new JobCategory{JobCategoryId = 8, JobCategoryName = "Cleaning"},
-                new JobCategory{JobCategoryId = 9, JobCategoryName = "Bakery"},
-                new JobCategory{JobCategoryId = 9, JobCategoryName = "Bakery"}
-
+                new JobCategory{JobCategoryId = 1, JobCategoryName = "Guest" },
+                new JobCategory{JobCategoryId = 2, JobCategoryName = "Visitor" },
+                new JobCategory{JobCategoryId = 3, JobCategoryName = "Verified" },
+                new JobCategory{JobCategoryId = 4, JobCategoryName = "Worker" },
+                new JobCategory{JobCategoryId = 5, JobCategoryName = "IT Worker" },
+                new JobCategory{JobCategoryId = 6, JobCategoryName = "IT Lead" },
+                new JobCategory{JobCategoryId = 7, JobCategoryName = "Manager" },
+                new JobCategory{JobCategoryId = 8, JobCategoryName = "Senior Manager" }, 
+                new JobCategory{JobCategoryId = 9, JobCategoryName = "Owner" }
             };
         }
 
@@ -101,6 +111,25 @@ namespace VideoOnlineWithLogin.Server.Services
             }
         }
 
+        private void InitializeUsers()
+        {
+            if (_users == null)
+            {
+                typedUser u1 = new typedUser
+                {
+                    userId = 1,                    
+                    Email = "danny.dowling@gmail.com",
+                    FirstName = "Danny",
+                    LastName = "Dowling",
+                    Comment = "Using Fake Address and Phone number here",
+                    ExitDate = null,
+                    JoinedDate = new DateTime(2019, 3, 1)
+
+                };
+                _users = new List<typedUser>() { u1 };
+            } 
+        }
+
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
             return await Task.Run(() => Employees);
@@ -116,6 +145,15 @@ namespace VideoOnlineWithLogin.Server.Services
             return await Task.Run(() => JobCategories);
         }
 
+        public async Task<IEnumerable<typedUser>> GetAllUsers()
+        {
+            return await Task.Run(() => typedUsers);
+        }
+
+        public async Task<typedUser> GetUserById(int userId)
+        {
+            return await Task.Run(() => { return typedUsers.FirstOrDefault(e => e.userId == userId); });
+        }
         public async Task<Employee> GetEmployeeDetails(int employeeId)
         {
             return await Task.Run(() => { return Employees.FirstOrDefault(e => e.EmployeeId == employeeId); });
