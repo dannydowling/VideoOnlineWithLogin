@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoOnlineWithLogin.Server", "VideoOnlineWithLogin\VideoOnlineWithLogin.Server.csproj", "{E9D9B2BE-FE03-44D4-9F37-227AA47D025E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoOnlineWithLogin.ComponentsLibrary", "VideoOnlineWithLogin.ComponentsLogin\VideoOnlineWithLogin.ComponentsLibrary.csproj", "{F727620B-23C1-4C2D-8BF7-66732A6B316C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoOnlineWithLogin.ComponentsLibrary", "VideoOnlineWithLogin.ComponentsLibrary\VideoOnlineWithLogin.ComponentsLibrary.csproj", "{D9F7C4D0-4A31-4A84-9CBE-C1AF0F179082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E9D9B2BE-FE03-44D4-9F37-227AA47D025E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9D9B2BE-FE03-44D4-9F37-227AA47D025E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9D9B2BE-FE03-44D4-9F37-227AA47D025E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F727620B-23C1-4C2D-8BF7-66732A6B316C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F727620B-23C1-4C2D-8BF7-66732A6B316C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F727620B-23C1-4C2D-8BF7-66732A6B316C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F727620B-23C1-4C2D-8BF7-66732A6B316C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F7C4D0-4A31-4A84-9CBE-C1AF0F179082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F7C4D0-4A31-4A84-9CBE-C1AF0F179082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F7C4D0-4A31-4A84-9CBE-C1AF0F179082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F7C4D0-4A31-4A84-9CBE-C1AF0F179082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
