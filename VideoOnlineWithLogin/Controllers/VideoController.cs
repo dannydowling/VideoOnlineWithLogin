@@ -6,81 +6,81 @@ namespace VideoOnlineWithLogin.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : Controller
+    public class VideoController : Controller
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IVideoRepository _videoRepository;
 
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        public VideoController(IVideoRepository videoRepository)
         {
-            _employeeRepository = employeeRepository;
+            _videoRepository = videoRepository;
         }
 
         [HttpGet]
-        public IActionResult GetAllEmployees()
+        public IActionResult GetAllVideos()
         {
-            return Ok(_employeeRepository.GetAllEmployees());
+            return Ok(_videoRepository.GetAllVideos());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetEmployeeById(int id)
+        public IActionResult GetVideoById(int id)
         {
-            return Ok(_employeeRepository.GetEmployeeById(id));
+            return Ok(_videoRepository.GetVideoById(id));
         }
 
         [HttpPost]
-        public IActionResult CreateEmployee([FromBody] Employee employee)
+        public IActionResult CreateVideo([FromBody] Video video)
         {
-            if (employee == null)
+            if (video == null)
                 return BadRequest();
 
-            if (employee.FirstName == string.Empty || employee.LastName == string.Empty)
+            if (video.videoName == string.Empty)
             {
-                ModelState.AddModelError("Name/FirstName", "The name or first name shouldn't be empty");
+                ModelState.AddModelError("Name missing", "Name shouldn't be empty");
             }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var createdEmployee = _employeeRepository.AddEmployee(employee);
+            var createdVideo = _videoRepository.AddVideo(video);
 
-            return Created("employee", createdEmployee);
+            return Created("video", createdVideo);
         }
 
         [HttpPut]
-        public IActionResult UpdateEmployee([FromBody] Employee employee)
+        public IActionResult UpdateVideo([FromBody] Video video)
         {
-            if (employee == null)
+            if (video == null)
                 return BadRequest();
 
-            if (employee.FirstName == string.Empty || employee.LastName == string.Empty)
+            if (video.videoName == string.Empty)
             {
-                ModelState.AddModelError("Name/FirstName", "The name or first name shouldn't be empty");
+                ModelState.AddModelError("Name missing", "Name shouldn't be empty");
             }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var employeeToUpdate = _employeeRepository.GetEmployeeById(employee.EmployeeId);
+            var videoToUpdate = _videoRepository.GetVideoById(video.videoId);
 
-            if (employeeToUpdate == null)
+            if (videoToUpdate == null)
                 return NotFound();
 
-            _employeeRepository.UpdateEmployee(employee);
+            _videoRepository.UpdateVideo(video);
 
             return NoContent(); //success
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteEmployee(int id)
+        public IActionResult DeleteVideo(int id)
         {
             if (id == 0)
                 return BadRequest();
 
-            var employeeToDelete = _employeeRepository.GetEmployeeById(id);
-            if (employeeToDelete == null)
+            var videoToDelete = _videoRepository.GetVideoById(id);
+            if (videoToDelete == null)
                 return NotFound();
 
-            _employeeRepository.DeleteEmployee(id);
+            _videoRepository.DeleteVideo(id);
 
             return NoContent();//success
         }
