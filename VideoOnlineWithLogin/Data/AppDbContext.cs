@@ -17,6 +17,8 @@ namespace VideoOnlineWithLogin.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Country> Countries { get; set; }
 
+        public DbSet<typedUser> typedUsers { get; set; }
+
         public DbSet<Video> Videos { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
 

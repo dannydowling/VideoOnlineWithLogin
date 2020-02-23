@@ -8,7 +8,7 @@ namespace VideoOnlineWithLogin.Shared
     public class Video
     {
         [Key]
-        public Guid videoId { get; set; } = new Guid();
+        public int videoId { get; set; }
 
         public string videoName { get; set; }
         public Uri videoLink { get; set; }

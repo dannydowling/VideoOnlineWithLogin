@@ -8,7 +8,7 @@ namespace VideoOnlineWithLogin.Shared
     public class typedUser
     {
         [Key]
-        public Guid userId { get; set; } = new Guid();
+        public int userId { get; set; }
         
         [Required]
         [StringLength(50, ErrorMessage = "First name is too long.")]

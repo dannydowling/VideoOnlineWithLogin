@@ -20,4 +20,8 @@
     <ProjectReference Include="..\VideoOnlineWithLogin.ComponentsLogin\VideoOnlineWithLogin.ComponentsLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
