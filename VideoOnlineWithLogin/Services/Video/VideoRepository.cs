@@ -14,7 +14,7 @@ namespace VideoOnlineWithLogin.Api.Models
             _appDbContext = appDbContext;
         }
 
-        public IEnumerable<Video> GetAllVideo()
+        public IEnumerable<Video> GetAllVideos()
         {
             return _appDbContext.Videos;
         }
