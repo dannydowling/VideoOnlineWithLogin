@@ -36,7 +36,7 @@ namespace VideoOnlineWithLogin.Server.Services
 
                 //creating hubconnction   
                 _hubConnection = new HubConnectionBuilder()
-                                        .WithUrl("~/Chat")     
+                                        .WithUrl((_navigationManager.ToAbsoluteUri("~/Chat")))     
                                         .Build();
                 
                 Console.WriteLine("ChatClient: calling Start()");

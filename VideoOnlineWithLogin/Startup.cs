@@ -45,27 +45,21 @@ namespace VideoOnlineWithLogin
             services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IVideoRepository, VideoRepository>();
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
+            {  client.BaseAddress = new Uri("https://localhost:5001/");  });
             services.AddHttpClient<ICountryDataService, CountryDataService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
+            { client.BaseAddress = new Uri("https://localhost:5001/");  });
             services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
+            { client.BaseAddress = new Uri("https://localhost:5001/");  });
             services.AddHttpClient<IVideoDataService, VideoDataService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
+            { client.BaseAddress = new Uri("https://localhost:5001/");  });
             services.AddHttpClient<IUserDataService, UserDataService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
+            { client.BaseAddress = new Uri("https://localhost:5001/");  });
+            services.AddHttpClient<MessageModel>(client =>
+            { client.BaseAddress = new Uri("https://localhost:5001/");  });
 
         }
 
@@ -80,6 +74,7 @@ namespace VideoOnlineWithLogin
             else
             {
                 app.UseExceptionHandler("/Error");
+                
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -96,7 +91,7 @@ namespace VideoOnlineWithLogin
             {
                 endpoints.MapControllers();
                 endpoints.MapBlazorHub();
-                endpoints.MapHub<ChatHub>("/Chat");
+                endpoints.MapHub<ChatHub>("~/Chat");
                 endpoints.MapFallbackToPage("/_Host");
                
             });
