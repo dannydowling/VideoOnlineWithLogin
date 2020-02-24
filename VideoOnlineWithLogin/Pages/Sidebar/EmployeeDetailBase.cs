@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using VideoOnlineWithLogin.Server.Services;
-using VideoOnlineWithLogin.Shared;
 
 namespace VideoOnlineWithLogin.Server.Pages
 {
