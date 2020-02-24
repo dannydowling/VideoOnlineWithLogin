@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using VideoOnlineWithLogin.Areas.Identity;
 using VideoOnlineWithLogin.Data;
 using VideoOnlineWithLogin.Api.Models;
+using VideoOnlineWithLogin.Server.Services;
 
 namespace VideoOnlineWithLogin
 {
@@ -45,10 +46,31 @@ namespace VideoOnlineWithLogin
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
+            services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44340/");
+            });
+            services.AddHttpClient<ICountryDataService, CountryDataService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44340/");
+            });
+            services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44340/");
+            });
+            services.AddHttpClient<IVideoDataService, VideoDataService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44340/");
+            });
+            services.AddHttpClient<IUserDataService, UserDataService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44340/");
+            });
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -75,7 +97,9 @@ namespace VideoOnlineWithLogin
                 endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+               
             });
+            
         }
     }
 }
