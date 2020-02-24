@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.SignalR;
+﻿@using VideoOnlineWithLogin.Server.Services
+@inject NavigationManager navigationManager
 
 <div class="bg-light" id="sidebar-wrapper">
     <div class="menu list-group list-group-flush">
@@ -28,31 +29,55 @@
                 </NavLink>
                 <NavLink class="list-group-item list-group-item-action bg-light" href="Logout">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
-                </NavLink>
-                <div>
-                    @context.User.Claims.FirstOrDefault(
-                                   b => b.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value
+                </NavLink>              
 
-                    @context.User.Claims.FirstOrDefault(
-                                    c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value
+                <div class="top-row px-4">
+                    @if (chatting)
+                    {
+                    <p>
+                        You are connected as <b>@username</b> 
+                        @context.User.Claims.FirstOrDefault(c => c.Type == 
+                   "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value
+                    </p>
+                        <button class="btn btn-sm btn-warning ml-md-auto" @onclick="@DisconnectAsync">Disconnect</button>
+                    }
                 </div>
 
-                <hr />
-                <footer>
-                    <div class="container">
-                        <div class="row h4 list-inline">
-                            <div class="col-md-4">
-                                <input type="text" placeholder="Message" data-bind="value:message" />
-                                <button class="btn btn-outline-secondary" data-bind="click:sendMessage">Send</button>
-                                <p>&copy; @DateTime.Now.Year - KaurAI</p>
-                            </div>
+                <div class="content px-4">                    
 
-                            <div align="center" class="col-md-4" data-bind="foreach:messages">
-                                <div data-bind="text: $data"> </div>
-                            </div>
+                    @if (!chatting)
+                    {
+                        <p>
+                            Enter a username to chat:
+                        </p>
+
+                        <input type="text" maxlength="32" @bind="@username" />
+                        <button type="button" @onclick="@Chat"><span class="oi oi-chat" aria-hidden="true"></span> Chat!</button>
+
+                        @if (message != null)
+                        {
+                            <div class="invalid-feedback">@message</div>
+                            <small id="emailHelp" class="form-text text-muted">@message</small>
+                        }
+                    }
+
+                    @if (chatting)
+                    {
+                        <div id="scrollbox">
+
+                            @foreach (var item in messages)
+                            {
+                                <div class="@item.CSS">
+                                    <div class="user">@item.Username</div>
+                                    <div class="msg">@item.Body</div>
+                                </div>
+                            }
+                            <hr />
+                            <textarea class="input-lg" placeholder="enter your comment" @bind="@newMessage"></textarea>
+                            <button class="btn btn-default" @onclick="@SendAsync">Send</button>
                         </div>
-                    </div>
-                </footer>
+                    }
+                </div>
 
             </Authorized>
 
@@ -73,16 +98,101 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+    
+    bool chatting = false;    
+    string username = null;
+    ChatClient client = null;    
+    string message = null;    
+    string newMessage = null;   
+    List<Message> messages = new List<Message>();
 
-    public class ChatHub : DynamicHub
-    {
-        public void Send(string message)
+    
+    async Task Chat()
+    {        
+        if (string.IsNullOrWhiteSpace(username))
         {
+            message = "Please enter a name";
+            return;
+        };
 
-            Clients.All.newMessage
-                (
-                Context.User.Identity.Name + "  : " + message + "                            " + DateTime.Now.ToShortTimeString()
-                );
+        try
+        {
+            
+            messages.Clear();
+           
+            client = new ChatClient(username, navigationManager);            
+            client.MessageReceived += MessageReceived;           
+            Console.WriteLine("Index: chart starting...");
+            await client.StartAsync();
+            Console.WriteLine("Index: chart started?");
+
+            chatting = true;
+        }
+        catch (Exception e)
+        {
+            message = $"ERROR: Failed to start chat client: {e.Message}";
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.StackTrace);
+        }
+    }
+
+    
+    void MessageReceived(object sender, MessageReceivedEventArgs e)
+    {
+        Console.WriteLine($"Blazor: receive {e.Username}: {e.Message}");
+        bool isMine = false;
+        if (!string.IsNullOrWhiteSpace(e.Username))
+        {
+            isMine = string.Equals(e.Username, username, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        var newMsg = new Message(e.Username, e.Message, isMine);
+        messages.Add(newMsg);
+
+        // Inform blazor the UI needs updating
+        StateHasChanged();
+    }
+
+    async Task DisconnectAsync()
+    {
+        if (chatting)
+        {
+            await client.StopAsync();
+            client = null;
+            message = "chat ended";
+            chatting = false;
+        }
+    }
+
+    async Task SendAsync()
+    {
+        if (chatting && !string.IsNullOrWhiteSpace(newMessage))
+        {            
+            await client.SendAsync(newMessage);            
+            newMessage = "";
+        }
+    }
+
+    class Message
+    {
+        public Message(string username, string body, bool mine)
+        {
+            Username = username;
+            Body = body;
+            Mine = mine;
+        }
+
+        public string Username { get; set; }
+        public string Body { get; set; }
+        public bool Mine { get; set; }
+
+        
+        public string CSS
+        {
+            get
+            {
+                return Mine ? "sent" : "received";
+            }
         }
     }
 }

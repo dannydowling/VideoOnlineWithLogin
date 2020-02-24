@@ -48,23 +48,23 @@ namespace VideoOnlineWithLogin
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44340/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
             services.AddHttpClient<ICountryDataService, CountryDataService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44340/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
             services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44340/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
             services.AddHttpClient<IVideoDataService, VideoDataService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44340/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
             services.AddHttpClient<IUserDataService, UserDataService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44340/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
 
         }
@@ -90,12 +90,13 @@ namespace VideoOnlineWithLogin
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseAuthorization();            
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapBlazorHub();
+                endpoints.MapHub<ChatHub>("/Chat");
                 endpoints.MapFallbackToPage("/_Host");
                
             });
