@@ -11,10 +11,9 @@ namespace VideoOnlineWithLogin.Server.Services
 {       
     public class ChatClient : IAsyncDisposable
     {        
-
         private readonly NavigationManager _navigationManager;
 
-        private HubConnection _hubConnection;
+        public HubConnection _hubConnection;
                
         public ChatClient(string username, NavigationManager navigationManager)
         {
@@ -33,9 +32,13 @@ namespace VideoOnlineWithLogin.Server.Services
         public async Task StartAsync()
         {
             if (!_started)
-            {                
+            {
+
+                //creating hubconnction   
                 _hubConnection = new HubConnectionBuilder()
-                      .Build();
+                                        .WithUrl("~/Chat")     
+                                        .Build();
+                
                 Console.WriteLine("ChatClient: calling Start()");
 
                 

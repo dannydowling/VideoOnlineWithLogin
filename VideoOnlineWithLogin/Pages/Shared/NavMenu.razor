@@ -43,7 +43,7 @@
                     }
                 </div>
 
-                <div class="content px-4">                    
+                <div class="content px-4">
 
                     @if (!chatting)
                     {
@@ -52,7 +52,7 @@
                         </p>
 
                         <input type="text" maxlength="32" @bind="@username" />
-                        <button type="button" @onclick="@Chat"><span class="oi oi-chat" aria-hidden="true"></span> Chat!</button>
+                        <button type="button" @onclick="@Chat"><span class="btn btn-outline" aria-hidden="true"></span> Send</button>
 
                         @if (message != null)
                         {
@@ -77,6 +77,7 @@
                             <button class="btn btn-default" @onclick="@SendAsync">Send</button>
                         </div>
                     }
+                    <p>@DateTime.Now.Year - KaurAI</p>
                 </div>
 
             </Authorized>
