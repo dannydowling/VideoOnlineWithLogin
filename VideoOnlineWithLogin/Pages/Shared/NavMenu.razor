@@ -1,4 +1,6 @@
-﻿<div class="bg-light" id="sidebar-wrapper">    
+﻿@using Microsoft.AspNetCore.SignalR;
+
+<div class="bg-light" id="sidebar-wrapper">
     <div class="menu list-group list-group-flush">
 
         <AuthorizeView>
@@ -34,27 +36,54 @@
                     @context.User.Claims.FirstOrDefault(
                                     c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value
                 </div>
+
+                <hr />
+                <footer>
+                    <div class="container">
+                        <div class="row h4 list-inline">
+                            <div class="col-md-4">
+                                <input type="text" placeholder="Message" data-bind="value:message" />
+                                <button class="btn btn-outline-secondary" data-bind="click:sendMessage">Send</button>
+                                <p>&copy; @DateTime.Now.Year - KaurAI</p>
+                            </div>
+
+                            <div align="center" class="col-md-4" data-bind="foreach:messages">
+                                <div data-bind="text: $data"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
             </Authorized>
 
             <NotAuthorized>
                 <a href="Identity/Account/Register">Register</a>
                 <a href="Identity/Account/Login">Log in</a>
             </NotAuthorized>
-           
-        </AuthorizeView>
 
+        </AuthorizeView>
 
     </div>
 </div>
 
 @code {
     bool collapseNavMenu = true;
-
     string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
     void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    public class ChatHub : DynamicHub
+    {
+        public void Send(string message)
+        {
+
+            Clients.All.newMessage
+                (
+                Context.User.Identity.Name + "  : " + message + "                            " + DateTime.Now.ToShortTimeString()
+                );
+        }
     }
 }
 
