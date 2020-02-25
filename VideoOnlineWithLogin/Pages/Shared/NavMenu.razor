@@ -1,6 +1,7 @@
 ﻿@using VideoOnlineWithLogin.Server.Services
 @inject NavigationManager navigationManager
 
+    
 <div class="bg-light" id="sidebar-wrapper">
     <div class="menu list-group list-group-flush">
 
@@ -31,27 +32,26 @@
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
                 </NavLink>
 
-                <div class="top-row px-4">
+                <div align="center">
                     @if (chatting)
                     {
-                        <p>
-                            Connected as <b>@username</b>
-                        </p>
-                        <button class="btn btn-outline-warning" @onclick="@DisconnectAsync">  Disconnect</button>
+                        <div>Hello @context.User.Identity.Name</div>
+                        <span>Connected as <b>@username</b></span>
+                        <button class="btn btn-info" @onclick="@DisconnectAsync">  Disconnect</button>
                     }
                 </div>
 
-                <div class="content px-4">
+                <div class="container">
 
                     @if (!chatting)
                     {
                         <p>
                             Enter a username to chat:
                         </p>
-
-                        <input type="text" maxlength="32" @bind="@username" />
-                        <button type="button" @onclick="@Chat"><span class="btn btn-outline-danger" aria-hidden="true"></span> Login</button>
-
+                        <section>
+                            <input type="text" maxlength="20" @bind="@username" />
+                            <button type="button" @onclick="@Chat" class="btn btn-outline-danger" aria-hidden="true"> Login</button>
+                        </section>
                         @if (message != null)
                         {
                             <div class="invalid-feedback">@message</div>
@@ -60,28 +60,29 @@
 
                     @if (chatting)
                     {
-                <container>
-                    <div id="scrollbox">
+                <div align="center">
 
-                        @foreach (var item in messages)
-                        {
-                            <div class="@item.CSS">
-                                <small class="user">@item.Username</small>
-                                <strong class="msg">@item.Body</strong>
-                            </div>
-                        }
-                        <hr />
-                        <textarea class="input-lg" placeholder="Say anything" @bind="@newMessage"></textarea>
-                        <button class="btn btn-outline-danger" @onclick="@SendAsync">  Send</button>
-                    </div>
-                </container>
-                            }
-                            <p>@DateTime.Now.Year - KaurAI</p>
+                    @foreach (var item in messages)
+                    {
+                    <section>
+                        <text class="user">@item.Username :</text>
+                        <text class="msg">@item.Body</text>
+                    </section>
+                    }
+                </div>
+                        <div>
+                            <hr />
+                            <textarea class="input-lg" placeholder="Say anything" @bind="@newMessage"></textarea>
+                            <button class="btn btn-outline-danger" @onclick="@SendAsync">  Send</button>
+                        </div>
 
-                    </div>
-                    
+                    }
+                    <p>@DateTime.Now.Year - KaurAI</p>
 
-                </Authorized>
+                </div>
+
+
+            </Authorized>
 
             <NotAuthorized>
                 <a href="Identity/Account/Register">Register</a>
@@ -100,17 +101,17 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
-    
-    bool chatting = false;    
+
+    bool chatting = false;
     string username = null;
-    ChatClient client = null;    
-    string message = null;    
-    string newMessage = null;   
+    ChatClient client = null;
+    string message = null;
+    string newMessage = null;
     List<Message> messages = new List<Message>();
 
-    
+
     async Task Chat()
-    {        
+    {
         if (string.IsNullOrWhiteSpace(username))
         {
             message = "Please enter a name";
@@ -119,11 +120,11 @@
 
         try
         {
-            
+
             messages.Clear();
-           
-            client = new ChatClient(username, navigationManager);            
-            client.MessageReceived += MessageReceived;           
+
+            client = new ChatClient(username, navigationManager);
+            client.MessageReceived += MessageReceived;
             Console.WriteLine("Index: chat starting...");
             await client.StartAsync();
             Console.WriteLine("Index: chat started?");
@@ -138,7 +139,7 @@
         }
     }
 
-    
+
     void MessageReceived(object sender, MessageReceivedEventArgs e)
     {
         Console.WriteLine($"Blazor: receive {e.Username}: {e.Message}");
@@ -169,8 +170,8 @@
     async Task SendAsync()
     {
         if (chatting && !string.IsNullOrWhiteSpace(newMessage))
-        {            
-            await client.SendAsync(newMessage);            
+        {
+            await client.SendAsync(newMessage);
             newMessage = "";
         }
     }
@@ -188,7 +189,7 @@
         public string Body { get; set; }
         public bool Mine { get; set; }
 
-        
+
         public string CSS
         {
             get
