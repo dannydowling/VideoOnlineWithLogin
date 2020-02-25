@@ -30,14 +30,14 @@
                 <NavLink class="list-group-item list-group-item-action bg-light" href="Logout">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
                 </NavLink>
-                
+
                 <div class="top-row px-4">
                     @if (chatting)
                     {
                         <p>
-                            You are connected as <b>@username</b>
+                            Connected as <b>@username</b>
                         </p>
-                        <button class="btn btn-sm btn-warning ml-md-auto" @onclick="@DisconnectAsync">Disconnect</button>
+                        <button class="btn btn-outline-warning" @onclick="@DisconnectAsync">  Disconnect</button>
                     }
                 </div>
 
@@ -50,35 +50,38 @@
                         </p>
 
                         <input type="text" maxlength="32" @bind="@username" />
-                        <button type="button" @onclick="@Chat"><span class="btn btn-outline" aria-hidden="true"></span> Send</button>
+                        <button type="button" @onclick="@Chat"><span class="btn btn-outline-danger" aria-hidden="true"></span> Login</button>
 
                         @if (message != null)
                         {
                             <div class="invalid-feedback">@message</div>
-                            <small id="emailHelp" class="form-text text-muted">@message</small>
                         }
                     }
 
                     @if (chatting)
                     {
-                        <div id="scrollbox">
+                <container>
+                    <div id="scrollbox">
 
-                            @foreach (var item in messages)
-                            {
-                                <div class="@item.CSS">
-                                    <div class="user">@item.Username</div>
-                                    <div class="msg">@item.Body</div>
-                                </div>
+                        @foreach (var item in messages)
+                        {
+                            <div class="@item.CSS">
+                                <small class="user">@item.Username</small>
+                                <strong class="msg">@item.Body</strong>
+                            </div>
+                        }
+                        <hr />
+                        <textarea class="input-lg" placeholder="Say anything" @bind="@newMessage"></textarea>
+                        <button class="btn btn-outline-danger" @onclick="@SendAsync">  Send</button>
+                    </div>
+                </container>
                             }
-                            <hr />
-                            <textarea class="input-lg" placeholder="enter your comment" @bind="@newMessage"></textarea>
-                            <button class="btn btn-default" @onclick="@SendAsync">Send</button>
-                        </div>
-                    }
-                    <p>@DateTime.Now.Year - KaurAI</p>
-                </div>
+                            <p>@DateTime.Now.Year - KaurAI</p>
 
-            </Authorized>
+                    </div>
+                    
+
+                </Authorized>
 
             <NotAuthorized>
                 <a href="Identity/Account/Register">Register</a>
