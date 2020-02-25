@@ -47,6 +47,7 @@ namespace VideoOnlineWithLogin
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<MessageModel>();
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             {  client.BaseAddress = new Uri("https://localhost:5001/");  });
@@ -91,7 +92,7 @@ namespace VideoOnlineWithLogin
             {
                 endpoints.MapControllers();
                 endpoints.MapBlazorHub();
-                endpoints.MapHub<ChatHub>("~/Chat");
+                endpoints.MapHub<ChatHub>("/Chat");
                 endpoints.MapFallbackToPage("/_Host");
                
             });

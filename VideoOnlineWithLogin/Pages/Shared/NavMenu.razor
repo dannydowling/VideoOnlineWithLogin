@@ -29,16 +29,14 @@
                 </NavLink>
                 <NavLink class="list-group-item list-group-item-action bg-light" href="Logout">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
-                </NavLink>              
-
+                </NavLink>
+                
                 <div class="top-row px-4">
                     @if (chatting)
                     {
-                    <p>
-                        You are connected as <b>@username</b> 
-                        @context.User.Claims.FirstOrDefault(c => c.Type == 
-                   "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value
-                    </p>
+                        <p>
+                            You are connected as <b>@username</b>
+                        </p>
                         <button class="btn btn-sm btn-warning ml-md-auto" @onclick="@DisconnectAsync">Disconnect</button>
                     }
                 </div>
@@ -123,9 +121,9 @@
            
             client = new ChatClient(username, navigationManager);            
             client.MessageReceived += MessageReceived;           
-            Console.WriteLine("Index: chart starting...");
+            Console.WriteLine("Index: chat starting...");
             await client.StartAsync();
-            Console.WriteLine("Index: chart started?");
+            Console.WriteLine("Index: chat started?");
 
             chatting = true;
         }

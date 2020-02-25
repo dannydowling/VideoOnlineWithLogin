@@ -33,10 +33,9 @@ namespace VideoOnlineWithLogin.Server.Services
         {
             if (!_started)
             {
-
                 //creating hubconnction   
                 _hubConnection = new HubConnectionBuilder()
-                                        .WithUrl((_navigationManager.ToAbsoluteUri("~/Chat")))     
+                                        .WithUrl((_navigationManager.ToAbsoluteUri("/Chat")))     
                                         .Build();
                 
                 Console.WriteLine("ChatClient: calling Start()");
@@ -57,27 +56,22 @@ namespace VideoOnlineWithLogin.Server.Services
         }
                 
         private void HandleReceiveMessage(string username, string message)
-        {           
-            MessageReceived?.Invoke(this, new MessageReceivedEventArgs(username, message));
-        }        
+        { MessageReceived?.Invoke(this, new MessageReceivedEventArgs(username, message));  }        
+        
         public event MessageReceivedEventHandler MessageReceived;
-
        
         public async Task SendAsync(string message)
-        {
-           
+        {           
             if (!_started)
                 throw new InvalidOperationException("Client not started");
             
             await _hubConnection.SendAsync(MessageModel.send, _username, message);
         }
-
         
         public async Task StopAsync()
         {
             if (_started)
-            {
-               
+            {               
                 await _hubConnection.StopAsync();               
                 await _hubConnection.DisposeAsync();
                 _hubConnection = null;
@@ -94,7 +88,6 @@ namespace VideoOnlineWithLogin.Server.Services
 
    
     public delegate void MessageReceivedEventHandler(object sender, MessageReceivedEventArgs e);
-
    
     public class MessageReceivedEventArgs : EventArgs
     {
