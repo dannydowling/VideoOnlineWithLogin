@@ -30,22 +30,26 @@ app {
     flex: 1;
 }
 
-footer {
+chat {
     border: none;
     background-image: none;
     background-color: white;    
-    flex-grow: 0;
-    position: fixed;
-    bottom: 0;
+    flex-grow: 2;
     box-sizing: border-box;
+    max-height: 120px;
     flex-basis: 0rem;
     flex-shrink: 0;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     padding: 0 0.5rem 0 1.5rem;
-    max-height: 200px;
-    overflow-y: auto;
     z-index: auto;
+    overflow-y: hidden;
+}
+
+footer { 
+    position: fixed;
+    bottom: 0;
+    
 }
 
     .main .top-row {
