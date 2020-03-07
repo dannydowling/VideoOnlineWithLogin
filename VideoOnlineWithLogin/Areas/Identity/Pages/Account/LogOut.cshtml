@@ -1,6 +1,6 @@
 ﻿@page
 @using Microsoft.AspNetCore.Identity
-@attribute [IgnoreAntiforgeryToken]
+@attribute [ValidateAntiForgeryToken]
 @inject SignInManager<IdentityUser> SignInManager
 @functions {
     public async Task<IActionResult> OnPost()

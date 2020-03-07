@@ -15,15 +15,12 @@
                         <button class="btn btn-info" @onclick="@DisconnectAsync">  Disconnect</button>
                     }
                 </div>
-
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/" Match="NavLinkMatch.All">
                     <span class="oi oi-home" aria-hidden="true"></span> Home
                 </NavLink>
-
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeoverview">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Employees
                 </NavLink>
-
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeedit">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Add new employee
                 </NavLink>
@@ -44,13 +41,14 @@
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Add new video
                 </NavLink>
 
-                <form method="post" action="identity/account/logout">
-                    <button class="list-group-item list-group-item-action bg-light">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Log Out
-                        (@context.User.Claims.FirstOrDefault(c => 
-                    c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
-                    </button>
-                </form>
+                <NavLink class="list-group-item list-group-item-action bg-light"
+                         href="/Identity/Account/Logout">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log Out
+
+                    (@context.User.Claims.FirstOrDefault(c =>
+         c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
+
+                </NavLink>
 
                 <footer>
                     <div class="container">
@@ -96,7 +94,7 @@
                         <p>@DateTime.Now.Year - KaurAI</p>
 
                     </div>
-            </footer>
+                </footer>
 
             </Authorized>
 
@@ -105,115 +103,115 @@
                 <a href="Identity/Account/Login">Log in</a>
             </NotAuthorized>
 
-            </AuthorizeView>
+        </AuthorizeView>
 
-        </div>
-        </div>
+    </div>
+</div>
 
 
-        @code {
-            bool collapseNavMenu = true;
-            string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-            void ToggleNavMenu()
+@code {
+    bool collapseNavMenu = true;
+    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    bool chatting = false;
+    string username = null;
+    ChatClient client = null;
+    string message = null;
+    string newMessage = null;
+    List<Message> messages = new List<Message>();
+
+
+    async Task Chat()
+    {
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            message = "Please enter a name";
+            return;
+        };
+
+        try
+        {
+
+            messages.Clear();
+
+            client = new ChatClient(username, navigationManager);
+            client.MessageReceived += MessageReceived;
+            Console.WriteLine("Index: chat starting...");
+            await client.StartAsync();
+            Console.WriteLine("Index: chat started?");
+
+            chatting = true;
+        }
+        catch (Exception e)
+        {
+            message = $"ERROR: Failed to start chat client: {e.Message}";
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.StackTrace);
+        }
+    }
+
+
+    void MessageReceived(object sender, MessageReceivedEventArgs e)
+    {
+        Console.WriteLine($"Blazor: receive {e.Username}: {e.Message}");
+        bool isMine = false;
+        if (!string.IsNullOrWhiteSpace(e.Username))
+        {
+            isMine = string.Equals(e.Username, username, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        var newMsg = new Message(e.Username, e.Message, isMine);
+        messages.Add(newMsg);
+
+        // Inform blazor the UI needs updating
+        StateHasChanged();
+    }
+
+    async Task DisconnectAsync()
+    {
+        if (chatting)
+        {
+            await client.StopAsync();
+            client = null;
+            message = "chat ended";
+            chatting = false;
+        }
+    }
+
+    async Task SendAsync()
+    {
+        if (chatting && !string.IsNullOrWhiteSpace(newMessage))
+        {
+            await client.SendAsync(newMessage);
+            newMessage = "";
+        }
+    }
+
+    class Message
+    {
+        public Message(string username, string body, bool mine)
+        {
+            Username = username;
+            Body = body;
+            Mine = mine;
+        }
+
+        public string Username { get; set; }
+        public string Body { get; set; }
+        public bool Mine { get; set; }
+
+
+        public string CSS
+        {
+            get
             {
-                collapseNavMenu = !collapseNavMenu;
-            }
-
-            bool chatting = false;
-            string username = null;
-            ChatClient client = null;
-            string message = null;
-            string newMessage = null;
-            List<Message> messages = new List<Message>();
-
-
-            async Task Chat()
-            {
-                if (string.IsNullOrWhiteSpace(username))
-                {
-                    message = "Please enter a name";
-                    return;
-                };
-
-                try
-                {
-
-                    messages.Clear();
-
-                    client = new ChatClient(username, navigationManager);
-                    client.MessageReceived += MessageReceived;
-                    Console.WriteLine("Index: chat starting...");
-                    await client.StartAsync();
-                    Console.WriteLine("Index: chat started?");
-
-                    chatting = true;
-                }
-                catch (Exception e)
-                {
-                    message = $"ERROR: Failed to start chat client: {e.Message}";
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine(e.StackTrace);
-                }
-            }
-
-
-            void MessageReceived(object sender, MessageReceivedEventArgs e)
-            {
-                Console.WriteLine($"Blazor: receive {e.Username}: {e.Message}");
-                bool isMine = false;
-                if (!string.IsNullOrWhiteSpace(e.Username))
-                {
-                    isMine = string.Equals(e.Username, username, StringComparison.CurrentCultureIgnoreCase);
-                }
-
-                var newMsg = new Message(e.Username, e.Message, isMine);
-                messages.Add(newMsg);
-
-                // Inform blazor the UI needs updating
-                StateHasChanged();
-            }
-
-            async Task DisconnectAsync()
-            {
-                if (chatting)
-                {
-                    await client.StopAsync();
-                    client = null;
-                    message = "chat ended";
-                    chatting = false;
-                }
-            }
-
-            async Task SendAsync()
-            {
-                if (chatting && !string.IsNullOrWhiteSpace(newMessage))
-                {
-                    await client.SendAsync(newMessage);
-                    newMessage = "";
-                }
-            }
-
-            class Message
-            {
-                public Message(string username, string body, bool mine)
-                {
-                    Username = username;
-                    Body = body;
-                    Mine = mine;
-                }
-
-                public string Username { get; set; }
-                public string Body { get; set; }
-                public bool Mine { get; set; }
-
-
-                public string CSS
-                {
-                    get
-                    {
-                        return Mine ? "sent" : "received";
-                    }
-                }
+                return Mine ? "sent" : "received";
             }
         }
+    }
+}
 
