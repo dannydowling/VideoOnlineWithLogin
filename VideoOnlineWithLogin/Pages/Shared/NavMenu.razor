@@ -15,31 +15,43 @@
                         <button class="btn btn-info" @onclick="@DisconnectAsync">  Disconnect</button>
                     }
                 </div>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/" Match="NavLinkMatch.All">
                     <span class="oi oi-home" aria-hidden="true"></span> Home
                 </NavLink>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeoverview">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Employees
                 </NavLink>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/employeeedit">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Add new employee
                 </NavLink>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/usereoverview">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Users
                 </NavLink>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/usereedit">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Add new user
                 </NavLink>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/videoeoverview">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Videos
                 </NavLink>
+
                 <NavLink class="list-group-item list-group-item-action bg-light" href="/videoeedit">
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Add new video
                 </NavLink>
-                <NavLink class="list-group-item list-group-item-action bg-light" href="Logout">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
-                </NavLink>
-                
+
+                <form method="post" action="identity/account/logout">
+                    <button class="list-group-item list-group-item-action bg-light">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Log Out
+                        (@context.User.Claims.FirstOrDefault(c => 
+                    c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
+                    </button>
+                </form>
+
                 <footer>
                     <div class="container">
 
