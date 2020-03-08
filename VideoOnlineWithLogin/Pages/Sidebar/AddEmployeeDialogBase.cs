@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using VideoOnlineWithLogin.Server.Services;
@@ -10,21 +12,31 @@ namespace VideoOnlineWithLogin.Server.Pages
     {
         public bool ShowDialog { get; set; }
 
-        public Employee Employee { get; set; } = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
-
         [Parameter]
         public EventCallback<bool> CloseEventCallback { get; set; }
 
-        [Inject] 
+        [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
+        public Employee Employee { get; set; } = new Employee 
+        { CountryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
 
-      
+        [Inject]
+        public IJobCategoryDataService JobCategoryDataService { get; set; }
+        public List<JobCategory> JobCategories { get; set; } = new List<JobCategory>();
+        protected string JobCategoryId = string.Empty;
 
+        
         public void Show()
         {
+            GetJobCategoriesAsync();
             ResetDialog();
             ShowDialog = true;
             StateHasChanged();
+        }
+
+        public async void GetJobCategoriesAsync()
+        {
+            JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
         }
 
         private void ResetDialog()
