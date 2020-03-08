@@ -26,6 +26,9 @@ namespace VideoOnlineWithLogin.Shared
         public string City { get; set; }
         public int CountryId { get; set; }
         public Country Country { get; set; }
+
+        public int JobCategoryId { get; set; }
+        public JobCategory JobCategory { get; set; }
         public string PhoneNumber { get; set; }
 
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]
@@ -33,8 +36,7 @@ namespace VideoOnlineWithLogin.Shared
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
 
-        public int JobCategoryId { get; set; }
-        public JobCategory JobCategory { get; set; }
+        
                
 
         [DataType(DataType.Password)]

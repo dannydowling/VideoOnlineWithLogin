@@ -51,14 +51,19 @@ namespace VideoOnlineWithLogin
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
             {  client.BaseAddress = new Uri("https://localhost:5001/");  });
+
             services.AddHttpClient<ICountryDataService, CountryDataService>(client =>
             { client.BaseAddress = new Uri("https://localhost:5001/");  });
+
             services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(client =>
             { client.BaseAddress = new Uri("https://localhost:5001/");  });
+
             services.AddHttpClient<IVideoDataService, VideoDataService>(client =>
             { client.BaseAddress = new Uri("https://localhost:5001/");  });
+
             services.AddHttpClient<IUserDataService, UserDataService>(client =>
             { client.BaseAddress = new Uri("https://localhost:5001/");  });
+
             services.AddHttpClient<MessageModel>(client =>
             { client.BaseAddress = new Uri("https://localhost:5001/");  });
 

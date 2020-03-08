@@ -51,8 +51,9 @@ namespace VideoOnlineWithLogin.Api.Models
                 foundEmployee.ExitDate = employee.ExitDate;
                 foundEmployee.JoinedDate = employee.JoinedDate;
                 foundEmployee.Password = employee.Password;
+                
 
-                _appDbContext.SaveChanges();
+        _appDbContext.SaveChanges();
 
                 return foundEmployee;
             }

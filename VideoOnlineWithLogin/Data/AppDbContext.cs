@@ -50,20 +50,21 @@ namespace VideoOnlineWithLogin.Data
             {
                 EmployeeId = 1,
                 CountryId = 4,
-                Password = "password",
                 JobCategoryId = 9,
+                Password = "Funhouse8!",                                
                 BirthDate = new DateTime(1979, 1, 16),
                 City = "Juneau",
                 Email = "danny.dowling@gmail.com",
                 FirstName = "Danny",
-                LastName = "Dowling",                
+                LastName = "Dowling",
                 PhoneNumber = "324777888773",
                 Street = "1 Grimoire Place",
                 Zip = "99801",
                 Comment = "Using Fake Address and Phone number here",
                 ExitDate = null,
-                JoinedDate = new DateTime(2019, 3, 1)                
+                JoinedDate = new DateTime(2019, 3, 1)
             });
+            
 
             modelBuilder.Entity<typedUser>().HasData(new typedUser
             {

@@ -23,12 +23,12 @@ namespace VideoOnlineWithLogin.Server.Pages
         [Inject] 
         public NavigationManager NavigationManager { get; set; }
 
+        public Employee Employee { get; set; } = new Employee();
         [Parameter]
-        public string EmployeeId { get; set; }
+        public string EmployeeId { get; set; }        
 
         public InputText LastNameInputText { get; set; }
-
-        public Employee Employee { get; set; } = new Employee();
+                
 
         //needed to bind to select to value
         protected string CountryId = string.Empty;

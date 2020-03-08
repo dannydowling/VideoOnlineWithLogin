@@ -8,5 +8,6 @@ namespace VideoOnlineWithLogin.Shared
     {
         public int JobCategoryId { get; set; }
         public string JobCategoryName { get; set; }
+
     }
 }
