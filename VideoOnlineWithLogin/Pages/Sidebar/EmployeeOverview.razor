@@ -1,7 +1,7 @@
 ﻿@page "/employeeoverview"
 @inherits EmployeeOverviewBase
 
-<h1 class="page-title">All employees</h1>
+<h1 class="page-title">All Employees</h1>
 
 @if (Employees == null)
 {
@@ -12,36 +12,37 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th></th>
-                <th>Employee ID</th>
-				<th>Position</th>
                 <th>First name</th>
                 <th>Last name</th>
-                <th></th>
+                <th>Employee ID</th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var employee in Employees)
             {
-                <tr>                   
-                    <td>@employee.EmployeeId</td>
-					<td>@employee.JobCategory</td>
-                    <td>@employee.FirstName</td>
-                    <td>@employee.LastName</td>
-                    <td>
-                        <a href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary table-btn">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
-                        <a href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary table-btn">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </td>
-                </tr>
+            <tr>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.EmployeeId</td>
+
+                <td>
+
+                    <a href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-outline-dark table-btn">
+                        <i class="fas fa-info-circle">details</i>
+                    </a>               
+                    <a href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-outline-dark table-btn">
+                        <i class="fas fa-edit">edit</i>
+                    </a>
+
+                </td>
+
+            </tr>
             }
         </tbody>
     </table>
 }
 
-<button @onclick="@QuickAddEmployee" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
+<button @onclick="@QuickAddEmployee" class="btn btn-dark table-btn quick-add-btn">Add Employee</button>
 
 <AddEmployeeDialog @ref="AddEmployeeDialog" CloseEventCallback="@AddEmployeeDialog_OnDialogClose"></AddEmployeeDialog>
