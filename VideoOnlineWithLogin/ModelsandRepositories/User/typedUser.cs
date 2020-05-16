@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using VideoOnlineWithLogin.Server.ModelsandRepositories._2Truths1Lie;
 
 namespace VideoOnlineWithLogin.Shared
 {
@@ -26,6 +27,8 @@ namespace VideoOnlineWithLogin.Shared
         public string Comment { get; set; }
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
+
+        public GameOffering? Game { get; set; } // 2truths1lie game currently set for this user.
 
         [DataType(DataType.Password)]
         public string Password { get; set; }

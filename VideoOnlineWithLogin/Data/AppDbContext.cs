@@ -51,7 +51,7 @@ namespace VideoOnlineWithLogin.Data
                 EmployeeId = 1,
                 CountryId = 4,
                 JobCategoryId = 9,
-                Password = "Funhouse8!",                                
+                Password = "Password",                                
                 BirthDate = new DateTime(1979, 1, 16),
                 City = "Juneau",
                 Email = "danny.dowling@gmail.com",
