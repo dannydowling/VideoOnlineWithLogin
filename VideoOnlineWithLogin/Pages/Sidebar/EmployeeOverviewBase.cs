@@ -3,11 +3,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using VideoOnlineWithLogin.Server.Pages.Sidebar;
-using VideoOnlineWithLogin.Server.Services;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Server.Pages.Sidebar;
+using PreFlightAI.Server.Services;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Server.Pages
+namespace PreFlightAI.Server.Pages
 {
     public class EmployeeOverviewBase: ComponentBase
     {

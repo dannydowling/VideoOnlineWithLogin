@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using VideoOnlineWithLogin.Server.Services;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Server.Services;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Server.Pages
+namespace PreFlightAI.Server.Pages
 {
     public class AddEmployeeDialogBase : ComponentBase
     {

@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Server.Services
+namespace PreFlightAI.Server.Services
 {
     public class CountryDataService : ICountryDataService
     {

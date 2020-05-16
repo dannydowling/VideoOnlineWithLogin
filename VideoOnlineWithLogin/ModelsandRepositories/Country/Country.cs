@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoOnlineWithLogin.Shared
+namespace PreFlightAI.Shared
 {
     public class Country
     {

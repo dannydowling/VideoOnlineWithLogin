@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace PreFlight.Logic.Location
+namespace PreFlightAI.Server.Services
 {
     public class Position
     {

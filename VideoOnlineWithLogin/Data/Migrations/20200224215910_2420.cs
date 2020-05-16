@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace VideoOnlineWithLogin.Data.Migrations
+namespace PreFlightAI.Data.Migrations
 {
     public partial class _2420 : Migration
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VideoOnlineWithLogin.Server.Services
+namespace PreFlightAI.Server.Services
 {
     public class MessageModel
     {

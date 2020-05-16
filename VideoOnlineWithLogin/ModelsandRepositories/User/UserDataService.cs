@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Http;
 
-namespace VideoOnlineWithLogin.Server.Services
+namespace PreFlightAI.Server.Services
 {
     public class UserDataService : IUserDataService
     {

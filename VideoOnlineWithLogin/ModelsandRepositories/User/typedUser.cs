@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using VideoOnlineWithLogin.Server.ModelsandRepositories._2Truths1Lie;
+using PreFlightAI.Server.ModelsandRepositories._2Truths1Lie;
 
-namespace VideoOnlineWithLogin.Shared
+namespace PreFlightAI.Shared
 {
     public class typedUser
     {
@@ -28,7 +28,7 @@ namespace VideoOnlineWithLogin.Shared
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
 
-        public GameOffering? Game { get; set; } // 2truths1lie game currently set for this user.
+        public GameOffering Game { get; set; } // 2truths1lie game currently set for this user.
 
         [DataType(DataType.Password)]
         public string Password { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using PreFlight.DataContexts;
+using PreFlightAI.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +7,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace PreFlight.Logic.Location
+namespace PreFlightAI.Server.Services
 {
-    public class Weather
+    public class FetchFuelDensity
     {  
         private double WebreturnedTemperature;
         private double WebreturnedAirpressure;
-        public Weather(string icao, HttpClient client)
+        public double CurrentFuelDensity(string icao, HttpClient client)
         {           
       
             var url = string.Format("https://api.weather.gov/stations/{0}/observations/current", icao);
@@ -41,8 +41,9 @@ namespace PreFlight.Logic.Location
             var offset = 254;
 
             calculation = (((1.55 * calculation) + offset) / 38.5);
-            DensityContext.Density = Math.Round(calculation, 2);
-                       
+
+            Weather currentWeather = new Weather();
+            return Math.Round(calculation, 2);                       
         }
     }
 }

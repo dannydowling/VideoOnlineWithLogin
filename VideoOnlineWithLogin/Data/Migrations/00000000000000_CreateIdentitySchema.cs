@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace VideoOnlineWithLogin.Data.Migrations
+namespace PreFlightAI.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

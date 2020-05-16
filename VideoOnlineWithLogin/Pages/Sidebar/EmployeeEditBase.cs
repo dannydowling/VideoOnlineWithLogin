@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using VideoOnlineWithLogin.Server.Services;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Server.Services;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Server.Pages
+namespace PreFlightAI.Server.Pages
 {
     public class EmployeeEditBase : ComponentBase
     {

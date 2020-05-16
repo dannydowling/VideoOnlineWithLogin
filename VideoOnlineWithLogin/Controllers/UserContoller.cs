@@ -1,8 +1,8 @@
-﻿using VideoOnlineWithLogin.Api.Models;
-using VideoOnlineWithLogin.Shared;
+﻿using PreFlightAI.Api.Models;
+using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace VideoOnlineWithLogin.Api.Controllers
+namespace PreFlightAI.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

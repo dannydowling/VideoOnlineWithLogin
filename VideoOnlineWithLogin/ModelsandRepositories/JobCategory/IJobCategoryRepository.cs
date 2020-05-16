@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Api.Models
+namespace PreFlightAI.Api.Models
 {
     public interface IJobCategoryRepository
     {

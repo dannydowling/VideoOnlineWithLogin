@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Api.Models
+namespace PreFlightAI.Api.Models
 {
     public interface IUserRepository
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VideoOnlineWithLogin.Shared;
-using VideoOnlineWithLogin.Data;
+using PreFlightAI.Shared;
+using PreFlightAI.Data;
 
-namespace VideoOnlineWithLogin.Api.Models
+namespace PreFlightAI.Api.Models
 {
     public class EmployeeRepository : IEmployeeRepository
     {

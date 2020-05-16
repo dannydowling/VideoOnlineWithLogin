@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VideoOnlineWithLogin.ComponentsLibrary\VideoOnlineWithLogin.ComponentsLibrary.csproj" />
+    <ProjectReference Include="..\VideoOnlineWithLogin.ComponentsLibrary\PreFlight.AI.ComponentsLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

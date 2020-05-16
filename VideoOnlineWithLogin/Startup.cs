@@ -13,12 +13,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using VideoOnlineWithLogin.Areas.Identity;
-using VideoOnlineWithLogin.Data;
-using VideoOnlineWithLogin.Api.Models;
-using VideoOnlineWithLogin.Server.Services;
+using PreFlightAI.Areas.Identity;
+using PreFlightAI.Data;
+using PreFlightAI.Api.Models;
+using PreFlightAI.Server.Services;
 
-namespace VideoOnlineWithLogin
+namespace PreFlightAI
 {
     public class Startup
     {

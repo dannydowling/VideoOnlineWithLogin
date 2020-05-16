@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Data
+namespace PreFlightAI.Data
 {
     public class AppDbContext : IdentityDbContext
     {
@@ -17,7 +17,7 @@ namespace VideoOnlineWithLogin.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<typedUser> typedUsers { get; set; }
-        public DbSet<Video> Videos { get; set; }
+        public DbSet<Weather> Weathers { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
 
 
@@ -76,6 +76,15 @@ namespace VideoOnlineWithLogin.Data
                 Comment = "Using Fake Address and Phone number here",
                 ExitDate = null,
                 JoinedDate = new DateTime(2019, 3, 1)
+            });
+
+            modelBuilder.Entity<Weather>().HasData(new Weather
+            {
+                weatherID = 1,
+                WeightValue = 6.70,
+                AirPressure = 1,
+                Temperature = 60
+            
             });
         }
     }

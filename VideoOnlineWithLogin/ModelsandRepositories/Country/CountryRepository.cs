@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VideoOnlineWithLogin.Data;
-using VideoOnlineWithLogin.Shared;
+using PreFlightAI.Data;
+using PreFlightAI.Shared;
 
-namespace VideoOnlineWithLogin.Api.Models
+namespace PreFlightAI.Api.Models
 {
     public class CountryRepository : ICountryRepository
     {

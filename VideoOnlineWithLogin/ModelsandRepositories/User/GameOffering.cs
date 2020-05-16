@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using VideoOnlineWithLogin.Api.Models;
+using PreFlightAI.Api.Models;
 
-namespace VideoOnlineWithLogin.Server.ModelsandRepositories._2Truths1Lie
+namespace PreFlightAI.Server.ModelsandRepositories._2Truths1Lie
 {
     public class GameOffering
     {

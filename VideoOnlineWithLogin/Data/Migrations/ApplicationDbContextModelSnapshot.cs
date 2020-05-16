@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VideoOnlineWithLogin.Data;
+using PreFlightAI.Data;
 
-namespace VideoOnlineWithLogin.Data.Migrations
+namespace PreFlightAI.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot

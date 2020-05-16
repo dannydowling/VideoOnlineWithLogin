@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace VideoOnlineWithLogin.Server.Services
+namespace PreFlightAI.Server.Services
 {       
     public class ChatClient : IAsyncDisposable
     {        
