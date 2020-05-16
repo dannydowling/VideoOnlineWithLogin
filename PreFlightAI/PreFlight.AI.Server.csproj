@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-VideoOnlineWithLogin-B3E7E1F8-648D-4202-AF1B-8B1F3A39D58A</UserSecretsId>
+    <UserSecretsId>PreFlightAI</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="ModelsandRepositories\" />
   </ItemGroup>
 
 </Project>

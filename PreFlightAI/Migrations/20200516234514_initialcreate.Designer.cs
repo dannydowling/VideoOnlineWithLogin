@@ -10,8 +10,8 @@ using PreFlightAI.Data;
 namespace PreFlight.AI.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200516232447_WeatherUpdate")]
-    partial class WeatherUpdate
+    [Migration("20200516234514_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
