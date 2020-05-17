@@ -1,42 +1,68 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace PreFlightAI.Server.Services
 {
     public class Position
     {
-        public string GetIP(WebClient webClient) { return IPLookup(webClient); }
-        private string IPLookup(WebClient client)
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+
+        private string IP;
+        private string locationurl;
+
+        public Position() { }
+
+        public Position(HttpClient httpClient, HttpContextAccessor httpContextAccessor)
         {
-
-            client.Headers.Add("Accept", "application / geo + json; version = 1");
-            client.Headers.Add("User-Agent", "Density App");
-
-            string IPwebsite = String.Format("https://icanhazip.com");
-            string IP = client.DownloadString(IPwebsite);
-            return IP.Replace("/n", "");
+            _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
+            _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
         }
 
-        public string LookupLocation(WebClient webClient)
+        public async Task IPLookup(CancellationToken cancellationToken)
         {
-            webClient.Headers.Add("Accept", "application / geo + json; version = 1");
-            webClient.Headers.Add("User-Agent", "Density App");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://icanhazip.com");
 
-            string IP = GetIP(webClient);
-            var url = String.Format("http://ip-api.com/json/{0}", IP);
-            var locationurl = webClient.DownloadString(url);
+            using (var response = await _httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead,
+                cancellationToken))
+            {
+                response.EnsureSuccessStatusCode();
+                IP = await response.Content.ReadAsStringAsync();
+            }            
+        }
+
+        public async Task<string> LookupLocation(CancellationToken cancellationToken)
+        {  
+            await IPLookup(_cancellationTokenSource.Token);
+
+            var request = new HttpRequestMessage(HttpMethod.Get, ( $"http://ip-api.com/json/" + IP));
+
+            using (var response = await _httpClient.SendAsync(
+                request, 
+                HttpCompletionOption.ResponseHeadersRead,
+                cancellationToken))
+            {
+                response.EnsureSuccessStatusCode();
+                locationurl = await response.Content.ReadAsStringAsync();
+            }
 
             JObject reader = JObject.Parse(locationurl);
             JToken CityAssert = reader.SelectToken("city");
             return CityAssert.ToString().Trim();
         }
 
-        public string translateCity(string city)
+        public string translateCity(string city, CancellationToken cancellationToken)
         {
             using (StreamReader sr = new StreamReader("Positions.json"))
             {
