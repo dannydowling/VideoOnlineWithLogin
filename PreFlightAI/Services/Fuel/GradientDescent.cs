@@ -14,27 +14,29 @@ namespace PreFlight.AI.Server.Services
     {
 
         private readonly WeatherDataService weatherDataService;
+        private readonly FuelDensity fuelDensity;
+        private readonly IEnumerable<Weather> forecast;
+
+        public GradientDescent()
+        {
+            forecast = weatherDataService.GetForecast().Result;
+        }
         public async Task fetchWeather(int userId)
         {
             await weatherDataService.GetWeatherDetails(userId);
         }
 
-        public async Task predictDensity(Weather weather, int userId)
+        public double predictDensity(Weather weather)
         {
-            if (weather == null)
-            {
-                await fetchWeather(userId);
-            }
 
-            List<double> list = new List<double> { fetchWeather };
-            int number = 9;
+            forecast.ToList();            
 
-            double closest = list.Aggregate((x, y) => Math.Abs(x - number) < Math.Abs(y - number) ? x : y);
+            Weather closest = forecast.Aggregate((x, y) => 
+            Math.Abs(x.Temperature - weather.Temperature) < Math.Abs(y.AirPressure - weather.AirPressure) ? x : y);
 
-
-            
+            return fuelDensity.CurrentFuelDensity(closest);            
           
             }
         }
     }
-}
+

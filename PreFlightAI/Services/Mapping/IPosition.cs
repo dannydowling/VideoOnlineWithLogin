@@ -40,9 +40,6 @@ namespace PreFlight.AI.Server.Services
                 response.EnsureSuccessStatusCode();
                 IP = await response.Content.ReadAsStringAsync();
             }            
-        }
-
-
-    
+        }    
     }
 }
