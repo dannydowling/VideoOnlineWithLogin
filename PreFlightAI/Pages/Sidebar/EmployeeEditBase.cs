@@ -15,7 +15,7 @@ namespace PreFlightAI.Server.Pages
         public IEmployeeDataService EmployeeDataService { get; set; }
 
         [Inject]
-        public ICountryDataService CountryDataService { get; set; }
+        public ILocationDataService LocationDataService { get; set; }
 
         [Inject]
         public IJobCategoryDataService JobCategoryDataService { get; set; }
@@ -31,7 +31,7 @@ namespace PreFlightAI.Server.Pages
                 
 
         //needed to bind to select to value
-        protected string CountryId = string.Empty;
+        protected string LocationId = string.Empty;
         protected string JobCategoryId = string.Empty;
 
         //used to store state of screen
@@ -39,13 +39,13 @@ namespace PreFlightAI.Server.Pages
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-        public List<Country> Countries { get; set; } = new List<Country>();
+        public List<Location> Locations { get; set; } = new List<Location>();
         public List<JobCategory> JobCategories { get; set; } = new List<JobCategory>();
 
         protected override async Task OnInitializedAsync()
         {
             Saved = false;
-            Countries = (await CountryDataService.GetAllCountries()).ToList();
+            Locations = (await LocationDataService.GetAllLocations()).ToList();
             JobCategories = (await JobCategoryDataService.GetAllJobCategories()).ToList();
 
             int.TryParse(EmployeeId, out var employeeId);
@@ -53,20 +53,20 @@ namespace PreFlightAI.Server.Pages
             if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
-                Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+                Employee = new Employee { LocationId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
             }
             else
             {
                 Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             }
 
-            CountryId = Employee.CountryId.ToString();
+            LocationId = Employee.LocationId.ToString();
             JobCategoryId = Employee.JobCategoryId.ToString();
         }
 
         protected async Task HandleValidSubmit()
         {
-            Employee.CountryId = int.Parse(CountryId);
+            Employee.LocationId = int.Parse(LocationId);
             Employee.JobCategoryId = int.Parse(JobCategoryId);
 
             if (Employee.EmployeeId == 0) //new

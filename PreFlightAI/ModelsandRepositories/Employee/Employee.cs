@@ -24,8 +24,8 @@ namespace PreFlightAI.Shared
         public string Street { get; set; }
         public string Zip { get; set; }
         public string City { get; set; }
-        public int CountryId { get; set; }
-        public Country Country { get; set; }
+        public int LocationId { get; set; }
+        public Location Country { get; set; }
 
         public int JobCategoryId { get; set; }
         public JobCategory JobCategory { get; set; }

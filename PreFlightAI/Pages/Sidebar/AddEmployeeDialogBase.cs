@@ -18,7 +18,7 @@ namespace PreFlightAI.Server.Pages
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
         public Employee Employee { get; set; } = new Employee 
-        { CountryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+        { LocationId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
 
         [Inject]
         public IJobCategoryDataService JobCategoryDataService { get; set; }
@@ -41,7 +41,7 @@ namespace PreFlightAI.Server.Pages
 
         private void ResetDialog()
         {
-            Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+            Employee = new Employee { LocationId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
         }
 
         public void Close()

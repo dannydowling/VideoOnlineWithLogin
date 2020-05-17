@@ -4,9 +4,9 @@ using System.Text;
 
 namespace PreFlightAI.Shared
 {
-    public class Country
+    public class Location
     {
-        public int CountryId { get; set; }
+        public int LocationId { get; set; }
         public string Name { get; set; }
 
     }

@@ -56,11 +56,11 @@
             </div>
 
             <div class="form-group row">
-                <label for="country" class="col-sm-3">Country: </label>
-                <InputSelect id="country" class="form-control col-sm-8" @bind-Value="@CountryId">
-                    @foreach (var country in Countries)
+                <label for="location" class="col-sm-3">Location: </label>
+                <InputSelect id="location" class="form-control col-sm-8" @bind-Value="@LocationId">
+                    @foreach (var location in Locations)
                         {
-                        <option value="@country.CountryId">@country.Name</option>
+                        <option value="@location.LocationId">@location.Name</option>
                         }
                 </InputSelect>
                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Country)" />

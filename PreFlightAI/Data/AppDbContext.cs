@@ -15,7 +15,7 @@ namespace PreFlightAI.Data
            
         }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Country> Countries { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<typedUser> typedUsers { get; set; }
         public DbSet<Weather> Weathers { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
@@ -26,15 +26,15 @@ namespace PreFlightAI.Data
             base.OnModelCreating(modelBuilder);
 
             //seed categories
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 1, Name = "Belgium" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 2, Name = "Germany" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 3, Name = "Netherlands" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 4, Name = "USA" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 5, Name = "Japan" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 6, Name = "China" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 7, Name = "UK" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 8, Name = "France" });
-            modelBuilder.Entity<Country>().HasData(new Country { CountryId = 9, Name = "Brazil" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 1, Name = "Belgium" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 2, Name = "Germany" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 3, Name = "Netherlands" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 4, Name = "USA" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 5, Name = "Japan" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 6, Name = "China" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 7, Name = "UK" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 8, Name = "France" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 9, Name = "Brazil" });
 
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 1, JobCategoryName = "Guest" });
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 2, JobCategoryName = "Visitor" });
@@ -49,7 +49,7 @@ namespace PreFlightAI.Data
             modelBuilder.Entity<Employee>().HasData(new Employee
             {
                 EmployeeId = 1,
-                CountryId = 4,
+                LocationId = 4,
                 JobCategoryId = 9,
                 Password = "Password",                                
                 BirthDate = new DateTime(1979, 1, 16),

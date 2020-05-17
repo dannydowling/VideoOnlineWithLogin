@@ -7,27 +7,27 @@ namespace PreFlightAI.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountryController : Controller
+    public class LocationController : Controller
     {
-        private readonly ICountryRepository _countryRepository;
+        private readonly ILocationRepository _locationRepository;
 
-        public CountryController(ICountryRepository countryRepository)
+        public LocationController(ILocationRepository locationRepository)
         {
-            _countryRepository = countryRepository;
+            _locationRepository = locationRepository;
         }
 
         // GET: api/<controller>
         [HttpGet]
         public IActionResult GetCountries()
         {
-            return Ok(_countryRepository.GetAllCountries());
+            return Ok(_locationRepository.GetAllLocations());
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public IActionResult GetCountryById(int id)
+        public IActionResult GetLocationById(int id)
         {
-            return Ok(_countryRepository.GetCountryById(id));
+            return Ok(_locationRepository.GetLocationById(id));
         }
     }
 }

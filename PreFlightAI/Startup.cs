@@ -57,7 +57,7 @@ namespace PreFlightAI
                 services.AddServerSideBlazor();
                 services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 
-                services.AddScoped<ICountryRepository, CountryRepository>();
+                services.AddScoped<ILocationRepository, LocationRepository>();
                 services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
                 services.AddScoped<IEmployeeRepository, EmployeeRepository>();
                 services.AddScoped<IUserRepository, UserRepository>();
@@ -79,7 +79,7 @@ namespace PreFlightAI
                                     { //can add compression here later....
                                     });
 
-                services.AddHttpClient<ICountryDataService, CountryDataService>
+                services.AddHttpClient<ILocationDataService, LocationDataService>
                     (client =>
                     {
                         client.BaseAddress = new Uri("http://localhost:57863");

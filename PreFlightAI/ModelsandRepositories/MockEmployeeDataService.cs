@@ -9,7 +9,7 @@ namespace PreFlightAI.Server.Services
     public class MockEmployeeDataService : IEmployeeDataService
     {
         private List<Employee> _employees;
-        private List<Country> _countries;
+        private List<Location> _countries;
         private List<JobCategory> _jobCategories;
         private List<typedUser> _users;
 
@@ -34,7 +34,7 @@ namespace PreFlightAI.Server.Services
         }
                
 
-        private List<Country> Countries
+        private List<Location> Countries
         {
             get
             {
@@ -72,16 +72,16 @@ namespace PreFlightAI.Server.Services
 
         private void InitializeCountries()
         {
-            _countries = new List<Country>
+            _countries = new List<Location>
             {
-                new Country {CountryId = 1, Name = "Belgium"},
-                new Country {CountryId = 2, Name = "Netherlands"},
-                new Country {CountryId = 3, Name = "USA"},
-                new Country {CountryId = 4, Name = "Japan"},
-                new Country {CountryId = 5, Name = "China"},
-                new Country {CountryId = 6, Name = "UK"},
-                new Country {CountryId = 7, Name = "France"},
-                new Country {CountryId = 8, Name = "Brazil"}
+                new Location {LocationId = 1, Name = "Belgium"},
+                new Location {LocationId = 2, Name = "Netherlands"},
+                new Location {LocationId = 3, Name = "USA"},
+                new Location {LocationId = 4, Name = "Japan"},
+                new Location {LocationId = 5, Name = "China"},
+                new Location {LocationId = 6, Name = "UK"},
+                new Location {LocationId = 7, Name = "France"},
+                new Location {LocationId = 8, Name = "Brazil"}
             };
         }
 
@@ -92,7 +92,7 @@ namespace PreFlightAI.Server.Services
                 Employee e1 = new Employee
                 {
                     EmployeeId = 1,
-                    CountryId = 4,
+                    LocationId = 4,
                     Password = "password",
                     JobCategoryId = 9,
                     BirthDate = new DateTime(1979, 1, 16),
@@ -135,7 +135,7 @@ namespace PreFlightAI.Server.Services
             return await Task.Run(() => Employees);
         }
 
-        public async Task<List<Country>> GetAllCountries()
+        public async Task<List<Location>> GetAllCountries()
         {
             return await Task.Run(() => Countries);
         }

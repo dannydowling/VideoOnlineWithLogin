@@ -37,7 +37,7 @@ namespace PreFlightAI.Api.Models
 
             if (foundEmployee != null)
             {
-                foundEmployee.CountryId = employee.CountryId;
+                foundEmployee.LocationId = employee.LocationId;
                 foundEmployee.BirthDate = employee.BirthDate;
                 foundEmployee.City = employee.City;
                 foundEmployee.Email = employee.Email;

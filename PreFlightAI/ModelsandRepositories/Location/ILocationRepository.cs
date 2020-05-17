@@ -6,9 +6,9 @@ using PreFlightAI.Shared;
 
 namespace PreFlightAI.Api.Models
 {
-    public interface ICountryRepository
+    public interface ILocationRepository
     {
-        IEnumerable<Country> GetAllCountries();
-        Country GetCountryById(int countryId);
+        IEnumerable<Location> GetAllLocations();
+        Location GetLocationById(int locationId);
     }
 }

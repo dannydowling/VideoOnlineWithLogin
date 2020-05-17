@@ -63,7 +63,8 @@ namespace PreFlightAI.Server.Services
         }
 
         public string translateCity(string city, CancellationToken cancellationToken)
-        {
+        {           
+
             using (StreamReader sr = new StreamReader("Positions.json"))
             {
                 JArray a = JArray.Parse(sr.ReadToEnd());
