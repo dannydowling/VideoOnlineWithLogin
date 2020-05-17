@@ -50,22 +50,22 @@ namespace PreFlightAI
             services.AddScoped<MessageModel>();
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(client =>
-            {  client.BaseAddress = new Uri("https://localhost:5001/");  });
+            {  client.BaseAddress = new Uri("https://localhost:44336/");  });
 
             services.AddHttpClient<ICountryDataService, CountryDataService>(client =>
-            { client.BaseAddress = new Uri("https://localhost:5001/");  });
+            { client.BaseAddress = new Uri("https://localhost:44336/");  });
 
             services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(client =>
-            { client.BaseAddress = new Uri("https://localhost:5001/");  });
+            { client.BaseAddress = new Uri("https://localhost:44336/");  });
 
             services.AddHttpClient<IWeatherDataService, WeatherDataService>(client =>
-            { client.BaseAddress = new Uri("https://localhost:5001/");  });
+            { client.BaseAddress = new Uri("https://localhost:44336/");  });
 
             services.AddHttpClient<IUserDataService, UserDataService>(client =>
-            { client.BaseAddress = new Uri("https://localhost:5001/");  });
+            { client.BaseAddress = new Uri("https://localhost:44336/");  });
 
             services.AddHttpClient<MessageModel>(client =>
-            { client.BaseAddress = new Uri("https://localhost:5001/");  });
+            { client.BaseAddress = new Uri("https://localhost:44336/");  });
 
         }
 
