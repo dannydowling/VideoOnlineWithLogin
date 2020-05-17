@@ -26,15 +26,14 @@ namespace PreFlightAI.Data
             base.OnModelCreating(modelBuilder);
 
             //seed categories
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 1, Name = "Belgium" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 2, Name = "Germany" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 3, Name = "Netherlands" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 4, Name = "USA" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 5, Name = "Japan" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 6, Name = "China" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 7, Name = "UK" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 8, Name = "France" });
-            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 9, Name = "Brazil" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 1, Name = "Juneau" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 2, Name = "Seattle" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 3, Name = "Fairbanks" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 4, Name = "Anchorage" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 5, Name = "Ketchikan" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 6, Name = "Sitka" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 7, Name = "Wrangell" });
+            modelBuilder.Entity<Location>().HasData(new Location { LocationId = 8, Name = "Petersburg" });            
 
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 1, JobCategoryName = "Guest" });
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 2, JobCategoryName = "Visitor" });
