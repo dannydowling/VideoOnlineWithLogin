@@ -10,34 +10,54 @@ namespace PreFlight.AI.Server.Http.Services
         public class RetryPolicy : DelegatingHandler
         {
             private readonly int _maximumAmountOfRetries = 3;
+            private readonly TimeSpan _timeOut = TimeSpan.FromSeconds(100);
 
-            public RetryPolicy(int maximumAmountOfRetries)
+        public RetryPolicy(int maximumAmountOfRetries, TimeSpan timeOut)
                 : base()
             {
                 _maximumAmountOfRetries = maximumAmountOfRetries;
-            }
+                 _timeOut = timeOut;
+        }
 
             public RetryPolicy(HttpMessageHandler innerHandler,
-              int maximumAmountOfRetries)
+              int maximumAmountOfRetries, TimeSpan timeOut)
           : base(innerHandler)
             {
                 _maximumAmountOfRetries = maximumAmountOfRetries;
-            }
+            _timeOut = timeOut;
+        }
 
-            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
+            using (var linkedCancellationTokenSource =
+             CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
+            {
+                linkedCancellationTokenSource.CancelAfter(_timeOut);
                 HttpResponseMessage response = null;
-                for (int i = 0; i < _maximumAmountOfRetries; i++)
+                try
                 {
-                    response = await base.SendAsync(request, cancellationToken);
-
-                    if (response.IsSuccessStatusCode)
+                    for (int i = 0; i < _maximumAmountOfRetries; i++)
                     {
-                        return response;
+                        response = await base.SendAsync(request, cancellationToken);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return response;
+                        }
                     }
                 }
+
+                catch (OperationCanceledException ex)
+                {
+                    if (!cancellationToken.IsCancellationRequested)
+                    {
+                        throw new TimeoutException("The request timed out.", ex);
+                    }
+                    
+                }
                 return response;
-            }
+            }        
         }
+    }
 }

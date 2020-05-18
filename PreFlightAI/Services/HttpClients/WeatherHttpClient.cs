@@ -16,7 +16,8 @@ namespace PreFlight.AI.Server.Services.HttpClients
 
             clientWeather = httpClient;
 
-            clientWeather.BaseAddress = new Uri("http://localhost:44336");
+            clientWeather.BaseAddress = new Uri("http://localhost:46633/");
+
             clientWeather.Timeout = new TimeSpan(0, 0, 30);
 
             clientWeather.DefaultRequestHeaders.Clear();

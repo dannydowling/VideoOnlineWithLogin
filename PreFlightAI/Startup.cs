@@ -66,42 +66,32 @@ namespace PreFlightAI
                 services.AddScoped<IWeatherRepository, WeatherRepository>();
                 services.AddScoped<MessageModel>();
 
-                services.AddHttpClient<employeeHttpClient>()
-                .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                        .AddHttpMessageHandler(handler => new RetryPolicy(2));
+                services.AddScoped<IEmployeeDataService, EmployeeDataService>();
+                services.AddScoped<IJobCategoryDataService, JobCategoryDataService>();
+                services.AddScoped<ILocationDataService, LocationDataService>();
+                services.AddScoped<IUserDataService, UserDataService>();
+                services.AddScoped<IWeatherDataService, WeatherDataService>();
 
+                services.AddHttpClient<employeeHttpClient>()
+                        .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
                 services.AddHttpClient<messagingHttpClient>()
-               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                       .AddHttpMessageHandler(handler => new RetryPolicy(2));
-                         
+                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
                 services.AddHttpClient<positioningHttpClient>()
-               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                       .AddHttpMessageHandler(handler => new RetryPolicy(2))
+                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
                            .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                           {
-                               AutomaticDecompression = System.Net.DecompressionMethods.GZip
-                           });
+                           { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
 
                 services.AddHttpClient<userHttpClient>()
-               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                       .AddHttpMessageHandler(handler => new RetryPolicy(2))
+                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
                            .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                           {
-                               AutomaticDecompression = System.Net.DecompressionMethods.GZip
-                           });
+                           { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
 
                 services.AddHttpClient<weatherHttpClient>()
-               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                       .AddHttpMessageHandler(handler => new RetryPolicy(2))
+                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
                         .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                        {
-                            AutomaticDecompression = System.Net.DecompressionMethods.GZip
-                        });
-
-
-
+                        { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
             });
         }
 

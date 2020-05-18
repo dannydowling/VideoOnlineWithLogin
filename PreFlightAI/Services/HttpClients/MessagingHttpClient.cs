@@ -16,7 +16,8 @@ namespace PreFlight.AI.Server.Services.HttpClients
 
             clientMessaging = httpClient;
 
-            clientMessaging.BaseAddress = new Uri("http://localhost:44336");
+            clientMessaging.BaseAddress = new Uri("http://localhost:46633/");
+
             clientMessaging.Timeout = new TimeSpan(0, 0, 30);
 
             clientMessaging.DefaultRequestHeaders.Clear();

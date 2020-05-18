@@ -16,7 +16,8 @@ namespace PreFlight.AI.Server.Services.HttpClients
 
             clientUser = httpClient;
 
-            clientUser.BaseAddress = new Uri("http://localhost:44336");
+            clientUser.BaseAddress = new Uri("http://localhost:46633/");
+
             clientUser.Timeout = new TimeSpan(0, 0, 30);
 
             clientUser.DefaultRequestHeaders.Clear();

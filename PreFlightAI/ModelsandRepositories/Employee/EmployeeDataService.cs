@@ -13,32 +13,26 @@ namespace PreFlightAI.Server.Services
 {
     public class EmployeeDataService : IEmployeeDataService
     {
-        private readonly employeeHttpClient httpClientEmployee;
+        private readonly employeeHttpClient clientEmployee;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
-        public EmployeeDataService(employeeHttpClient client)
-        {
-           
-        }
-
-        // The httpContextAccessor is registered in configure services, then accessible in any class.
-        // gives information on the context the user is running in. Such as authenticated...
+        
         public EmployeeDataService(employeeHttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
-            httpClientEmployee = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
-            _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));            
+            clientEmployee = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
+            _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
+            clientEmployee.BaseAddress = new Uri("http://localhost:46633/");
         }
         
         public async Task<IEnumerable<Employee>> GetAllEmployees()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Employee>>
-                (await httpClientEmployee.GetStreamAsync($"api/employee"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await clientEmployee.GetStreamAsync($"api/employee"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<Employee> GetEmployeeDetails(int employeeId)
         {
             return await JsonSerializer.DeserializeAsync<Employee>
-                (await httpClientEmployee.GetStreamAsync($"api/employee/{employeeId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await clientEmployee.GetStreamAsync($"api/employee/{employeeId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<Employee> AddEmployee(Employee employee)
@@ -46,7 +40,7 @@ namespace PreFlightAI.Server.Services
             var employeeJson =
                 new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
 
-            var response = await httpClientEmployee.PostAsync("api/employee", employeeJson);
+            var response = await clientEmployee.PostAsync("api/employee", employeeJson);
 
             if (response.IsSuccessStatusCode)
             {
@@ -61,12 +55,12 @@ namespace PreFlightAI.Server.Services
             var employeeJson =
                 new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
 
-            await httpClientEmployee.PutAsync("api/employee", employeeJson);
+            await clientEmployee.PutAsync("api/employee", employeeJson);
         }
 
         public async Task DeleteEmployee(int employeeId)
         {
-            await httpClientEmployee.DeleteAsync($"api/employee/{employeeId}");
+            await clientEmployee.DeleteAsync($"api/employee/{employeeId}");
         }
     }
 }

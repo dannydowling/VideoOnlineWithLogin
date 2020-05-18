@@ -13,7 +13,7 @@ namespace PreFlightAI.Server.Services
 {
     public class WeatherDataService : IWeatherDataService
     {
-        private readonly weatherHttpClient _httpClient;
+        private readonly weatherHttpClient clientWeather;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
        
@@ -21,20 +21,21 @@ namespace PreFlightAI.Server.Services
         // gives information on the context the user is running in. Such as authenticated...
         public WeatherDataService(weatherHttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
-            _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
+            clientWeather = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
             _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
+            clientWeather.BaseAddress = new Uri("http://localhost:46633/");
         }
 
         public async Task<IEnumerable<Weather>> GetForecast()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Weather>>
-                (await _httpClient.GetStreamAsync($"api/user/forecast"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await clientWeather.GetStreamAsync($"api/user/forecast"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<Weather> GetWeatherDetails(int userId)
         {
             return await JsonSerializer.DeserializeAsync<Weather>
-                (await _httpClient.GetStreamAsync($"api/user/{userId}/weather"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await clientWeather.GetStreamAsync($"api/user/{userId}/weather"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<Weather> AddWeather(Weather weather)
@@ -42,7 +43,7 @@ namespace PreFlightAI.Server.Services
             var weatherJson =
                 new StringContent(JsonSerializer.Serialize(weather), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/user/weather", weatherJson);
+            var response = await clientWeather.PostAsync("api/user/weather", weatherJson);
 
             if (response.IsSuccessStatusCode)
             {
@@ -57,12 +58,12 @@ namespace PreFlightAI.Server.Services
             var weatherJson =
                 new StringContent(JsonSerializer.Serialize(weather), Encoding.UTF8, "application/json");
 
-            await _httpClient.PutAsync("api/user/weather", weatherJson);
+            await clientWeather.PutAsync("api/user/weather", weatherJson);
         }
 
         public async Task DeleteWeather(int weatherId)
         {
-            await _httpClient.DeleteAsync($"api/user/{weatherId}");
+            await clientWeather.DeleteAsync($"api/user/{weatherId}");
         }
     }
 }

@@ -17,12 +17,11 @@ namespace PreFlight.AI.Server.Services.HttpClients
 
             clientEmployee = httpClient;
 
-            clientEmployee.BaseAddress = new Uri("http://localhost:44336");
-            clientEmployee.Timeout = new TimeSpan(0, 0, 30);
+            clientEmployee.BaseAddress = new Uri("http://localhost:46633/");
 
-            clientEmployee.DefaultRequestHeaders.Clear();
-            clientEmployee.DefaultRequestHeaders.Accept.Add
-                
+            clientEmployee.Timeout = new TimeSpan(0, 0, 30);           
+                       
+            clientEmployee.DefaultRequestHeaders.Accept.Add                
                 (new MediaTypeWithQualityHeaderValue("application/json"));
         }
     }

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Http;
 using PreFlight.AI.Server.Services.HttpClients;
+using System;
 
 namespace PreFlightAI.Server.Services
 {
     public class UserDataService : IUserDataService
     {
-        private readonly userHttpClient _httpClient;
+        private readonly userHttpClient clientUser;
         private readonly IHttpContextAccessor _httpContextAccessor;
                 
 
@@ -19,20 +20,21 @@ namespace PreFlightAI.Server.Services
         // gives information on the context the user is running in. Such as authenticated...
         public UserDataService(userHttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
-            _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
+            clientUser = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
             _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
+            clientUser.BaseAddress = new Uri("http://localhost:46633/");
         }
         
         public async Task<IEnumerable<typedUser>> GetAllUsers()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<typedUser>>
-                (await _httpClient.GetStreamAsync($"api/user"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await clientUser.GetStreamAsync($"api/user"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<typedUser> GetUserDetails(int userId)
         {
             return await JsonSerializer.DeserializeAsync<typedUser>
-                (await _httpClient.GetStreamAsync($"api/user/{userId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await clientUser.GetStreamAsync($"api/user/{userId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<typedUser> AddUser(typedUser user)
@@ -40,7 +42,7 @@ namespace PreFlightAI.Server.Services
             var userJson =
                 new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/user", userJson);
+            var response = await clientUser.PostAsync("api/user", userJson);
 
             if (response.IsSuccessStatusCode)
             {
@@ -55,12 +57,12 @@ namespace PreFlightAI.Server.Services
             var userJson =
                 new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
 
-            await _httpClient.PutAsync("api/user", userJson);
+            await clientUser.PutAsync("api/user", userJson);
         }
 
         public async Task DeleteUser(int userId)
         {
-            await _httpClient.DeleteAsync($"api/user/{userId}");
+            await clientUser.DeleteAsync($"api/user/{userId}");
         }
     }
 }
