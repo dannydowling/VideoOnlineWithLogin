@@ -23,10 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Sidebar\FuelPlanning\" />
-    <Folder Include="Pages\Sidebar\NotamMapping\" />
-    <Folder Include="Pages\Sidebar\De-Icing\" />
-    <Folder Include="Pages\Sidebar\Weather\" />
+    <Folder Include="Pages\SideBar\FuelPlanning\" />
+    <Folder Include="Pages\SideBar\NotamMapping\" />
+    <Folder Include="Pages\SideBar\De-Icing\" />
+    <Folder Include="Pages\SideBar\Weather\" />
   </ItemGroup>
 
 </Project>

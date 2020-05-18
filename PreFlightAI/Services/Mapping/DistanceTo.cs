@@ -20,6 +20,11 @@ namespace PreFlight.AI.Server.Services.Mapping
 
         public DistanceTo()
         {
+            // TODO:
+            // The slope of e (exp) -x (exp) 2 ... e^-x^2
+            // e to the negative x squared gives a bell curve
+            // maybe we could use that to estimate fuel use to within a range.
+            // https://www.youtube.com/watch?v=4PDoT7jtxmw&feature=youtu.be&t=1422
 
         }
 

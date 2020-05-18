@@ -22,6 +22,7 @@ using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
 using PreFlight.AI.Server.Http.Services;
 using Microsoft.Extensions.Options;
+using PreFlight.AI.Server.Services;
 
 namespace PreFlightAI
 {
@@ -44,7 +45,7 @@ namespace PreFlightAI
             {
                 builder.AddFilter("Microsoft", LogLevel.Warning)
                        .AddFilter("System", LogLevel.Warning)
-                       .AddFilter("PreFlight.AI", LogLevel.Debug)
+                       .AddFilter("Default", LogLevel.Debug)
                        .AddConsole();
 
 
@@ -65,24 +66,20 @@ namespace PreFlightAI
                 services.AddScoped<MessageModel>();
 
                 services.AddHttpClient<IEmployeeDataService, EmployeeDataService>
-                    (client =>
-                    {
-                        client.BaseAddress = new Uri("http://localhost:57863");
-                        client.Timeout = new TimeSpan(0, 0, 30);
-                        client.DefaultRequestHeaders.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    })
+                     (client =>
+                     {
+                         client.BaseAddress = new Uri("http://localhost:44336");
+                         client.Timeout = new TimeSpan(0, 0, 30);
+                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                     })
                             .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
+                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
+
 
                 services.AddHttpClient<ILocationDataService, LocationDataService>
                     (client =>
                     {
-                        client.BaseAddress = new Uri("http://localhost:57863");
+                        client.BaseAddress = new Uri("http://localhost:44336");
                         client.Timeout = new TimeSpan(0, 0, 30);
                         client.DefaultRequestHeaders.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -95,25 +92,19 @@ namespace PreFlightAI
                                     });
 
                 services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>
-                    (client =>
-                    {
-                        client.BaseAddress = new Uri("http://localhost:57863");
-                        client.Timeout = new TimeSpan(0, 0, 30);
-                        client.DefaultRequestHeaders.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    })
+                     (client =>
+                     {
+                         client.BaseAddress = new Uri("http://localhost:44336");
+                         client.Timeout = new TimeSpan(0, 0, 30);
+                     })
                             .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
+                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
 
 
                 services.AddHttpClient<IWeatherDataService, WeatherDataService>
                     (client =>
                     {
-                        client.BaseAddress = new Uri("http://localhost:57863");
+                        client.BaseAddress = new Uri("http://localhost:44336");
                         client.Timeout = new TimeSpan(0, 0, 30);
                         client.DefaultRequestHeaders.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -129,7 +120,7 @@ namespace PreFlightAI
                 services.AddHttpClient<IUserDataService, UserDataService>
                     (client =>
                     {
-                        client.BaseAddress = new Uri("http://localhost:57863");
+                        client.BaseAddress = new Uri("http://localhost:44336");
                         client.Timeout = new TimeSpan(0, 0, 30);
                         client.DefaultRequestHeaders.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -143,72 +134,61 @@ namespace PreFlightAI
 
 
                 services.AddHttpClient<MessageModel>
+                    (client =>
+                    {
+                        client.BaseAddress = new Uri("http://localhost:5001");
+                        client.Timeout = new TimeSpan(0, 0, 30);
+                    })
+                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
+                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
+
+
+                services.AddHttpClient<IPosition>
                    (client =>
                    {
-                       client.BaseAddress = new Uri("http://localhost:57863");
+                       client.BaseAddress = new Uri("http://localhost:5001");
                        client.Timeout = new TimeSpan(0, 0, 30);
-                       client.DefaultRequestHeaders.Clear();
-                       client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
                    })
                             .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
-
-                services.AddHttpClient<Position>
-                   (client =>
-                   {
-                       client.BaseAddress = new Uri("http://localhost:57863");
-                       client.Timeout = new TimeSpan(0, 0, 30);
-                       client.DefaultRequestHeaders.Clear();
-                       client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                   })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
+                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
 
 
             });
         }
 
-                // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-                public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-                {
-                    if (env.IsDevelopment())
-                    {
-                        app.UseDeveloperExceptionPage();
-                        app.UseDatabaseErrorPage();
-                    }
-                    else
-                    {
-                        app.UseExceptionHandler("/Error");
-
-                        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                        app.UseHsts();
-                    }
-
-                    app.UseHttpsRedirection();
-                    app.UseStaticFiles();
-
-                    app.UseRouting();
-
-                    app.UseAuthentication();
-                    app.UseAuthorization();
-
-                    app.UseEndpoints(endpoints =>
-                    {
-                        endpoints.MapControllers();
-                        endpoints.MapBlazorHub();
-                        endpoints.MapHub<ChatHub>("/Chat");
-                        endpoints.MapFallbackToPage("/_Host");
-
-                    });
-
-                }
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapBlazorHub();
+                endpoints.MapHub<ChatHub>("/Chat");
+                endpoints.MapFallbackToPage("/_Host");
+
+            });
+
+        }
+    }
 }

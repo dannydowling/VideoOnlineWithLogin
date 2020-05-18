@@ -10,14 +10,14 @@ using PreFlightAI.Data;
 namespace PreFlight.AI.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200516234514_initialcreate")]
-    partial class initialcreate
+    [Migration("20200518121919_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -245,68 +245,6 @@ namespace PreFlight.AI.Server.Migrations
                     b.ToTable("GameOffering");
                 });
 
-            modelBuilder.Entity("PreFlightAI.Shared.Country", b =>
-                {
-                    b.Property<int>("CountryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CountryId");
-
-                    b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            CountryId = 1,
-                            Name = "Belgium"
-                        },
-                        new
-                        {
-                            CountryId = 2,
-                            Name = "Germany"
-                        },
-                        new
-                        {
-                            CountryId = 3,
-                            Name = "Netherlands"
-                        },
-                        new
-                        {
-                            CountryId = 4,
-                            Name = "USA"
-                        },
-                        new
-                        {
-                            CountryId = 5,
-                            Name = "Japan"
-                        },
-                        new
-                        {
-                            CountryId = 6,
-                            Name = "China"
-                        },
-                        new
-                        {
-                            CountryId = 7,
-                            Name = "UK"
-                        },
-                        new
-                        {
-                            CountryId = 8,
-                            Name = "France"
-                        },
-                        new
-                        {
-                            CountryId = 9,
-                            Name = "Brazil"
-                        });
-                });
-
             modelBuilder.Entity("PreFlightAI.Shared.Employee", b =>
                 {
                     b.Property<int>("EmployeeId")
@@ -323,9 +261,6 @@ namespace PreFlight.AI.Server.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -350,6 +285,9 @@ namespace PreFlight.AI.Server.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,9 +307,9 @@ namespace PreFlight.AI.Server.Migrations
 
                     b.HasKey("EmployeeId");
 
-                    b.HasIndex("CountryId");
-
                     b.HasIndex("JobCategoryId");
+
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Employees");
 
@@ -382,12 +320,12 @@ namespace PreFlight.AI.Server.Migrations
                             BirthDate = new DateTime(1979, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "Juneau",
                             Comment = "Using Fake Address and Phone number here",
-                            CountryId = 4,
                             Email = "danny.dowling@gmail.com",
                             FirstName = "Danny",
                             JobCategoryId = 9,
                             JoinedDate = new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Dowling",
+                            LocationId = 4,
                             Password = "Password",
                             PhoneNumber = "324777888773",
                             Street = "1 Grimoire Place",
@@ -454,6 +392,63 @@ namespace PreFlight.AI.Server.Migrations
                         {
                             JobCategoryId = 9,
                             JobCategoryName = "Owner"
+                        });
+                });
+
+            modelBuilder.Entity("PreFlightAI.Shared.Location", b =>
+                {
+                    b.Property<int>("LocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LocationId");
+
+                    b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            LocationId = 1,
+                            Name = "Juneau"
+                        },
+                        new
+                        {
+                            LocationId = 2,
+                            Name = "Seattle"
+                        },
+                        new
+                        {
+                            LocationId = 3,
+                            Name = "Fairbanks"
+                        },
+                        new
+                        {
+                            LocationId = 4,
+                            Name = "Anchorage"
+                        },
+                        new
+                        {
+                            LocationId = 5,
+                            Name = "Ketchikan"
+                        },
+                        new
+                        {
+                            LocationId = 6,
+                            Name = "Sitka"
+                        },
+                        new
+                        {
+                            LocationId = 7,
+                            Name = "Wrangell"
+                        },
+                        new
+                        {
+                            LocationId = 8,
+                            Name = "Petersburg"
                         });
                 });
 
@@ -609,15 +604,15 @@ namespace PreFlight.AI.Server.Migrations
 
             modelBuilder.Entity("PreFlightAI.Shared.Employee", b =>
                 {
-                    b.HasOne("PreFlightAI.Shared.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("PreFlightAI.Shared.JobCategory", "JobCategory")
                         .WithMany()
                         .HasForeignKey("JobCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PreFlightAI.Shared.Location", "Country")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

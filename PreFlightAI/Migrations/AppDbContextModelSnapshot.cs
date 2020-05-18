@@ -15,7 +15,7 @@ namespace PreFlight.AI.Server.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -411,47 +411,42 @@ namespace PreFlight.AI.Server.Migrations
                         new
                         {
                             LocationId = 1,
-                            Name = "Belgium"
+                            Name = "Juneau"
                         },
                         new
                         {
                             LocationId = 2,
-                            Name = "Germany"
+                            Name = "Seattle"
                         },
                         new
                         {
                             LocationId = 3,
-                            Name = "Netherlands"
+                            Name = "Fairbanks"
                         },
                         new
                         {
                             LocationId = 4,
-                            Name = "USA"
+                            Name = "Anchorage"
                         },
                         new
                         {
                             LocationId = 5,
-                            Name = "Japan"
+                            Name = "Ketchikan"
                         },
                         new
                         {
                             LocationId = 6,
-                            Name = "China"
+                            Name = "Sitka"
                         },
                         new
                         {
                             LocationId = 7,
-                            Name = "UK"
+                            Name = "Wrangell"
                         },
                         new
                         {
                             LocationId = 8,
-                            Name = "France"
-                        },
-                        new
-                        {
-                            LocationId = 9,
-                            Name = "Brazil"
+                            Name = "Petersburg"
                         });
                 });
 
