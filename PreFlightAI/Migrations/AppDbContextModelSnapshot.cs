@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PreFlightAI.Data;
+using PreFlight.AI.Server.Services.SQL;
 
 namespace PreFlight.AI.Server.Migrations
 {

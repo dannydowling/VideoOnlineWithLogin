@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PreFlightAI.Shared;
 
-namespace PreFlightAI.Data
+namespace PreFlight.AI.Server.Services.SQL
 {
     public class AppDbContext : IdentityDbContext
     {

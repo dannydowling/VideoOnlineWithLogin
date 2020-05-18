@@ -14,7 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PreFlightAI.Areas.Identity;
-using PreFlightAI.Data;
+using PreFlight.AI.Server.Services.SQL;
 using PreFlightAI.Api.Models;
 using PreFlightAI.Server.Services;
 using System.Net.Http;
@@ -136,7 +136,7 @@ namespace PreFlightAI
                 services.AddHttpClient<MessageModel>
                     (client =>
                     {
-                        client.BaseAddress = new Uri("http://localhost:5001");
+                        client.BaseAddress = new Uri("http://localhost:44336");
                         client.Timeout = new TimeSpan(0, 0, 30);
                     })
                             .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
@@ -146,7 +146,7 @@ namespace PreFlightAI
                 services.AddHttpClient<IPosition>
                    (client =>
                    {
-                       client.BaseAddress = new Uri("http://localhost:5001");
+                       client.BaseAddress = new Uri("http://localhost:44336");
                        client.Timeout = new TimeSpan(0, 0, 30);
                    })
                             .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))

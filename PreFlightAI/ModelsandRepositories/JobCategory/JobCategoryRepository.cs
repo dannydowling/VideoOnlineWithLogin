@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PreFlightAI.Data;
+using PreFlight.AI.Server.Services.SQL;
 using PreFlightAI.Shared;
 
 namespace PreFlightAI.Api.Models
