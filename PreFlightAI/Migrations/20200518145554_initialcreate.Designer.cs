@@ -10,8 +10,8 @@ using PreFlight.AI.Server.Services.SQL;
 namespace PreFlight.AI.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200518124140_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200518145554_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -610,7 +610,7 @@ namespace PreFlight.AI.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PreFlightAI.Shared.Location", "Country")
+                    b.HasOne("PreFlightAI.Shared.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)

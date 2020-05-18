@@ -71,7 +71,7 @@ namespace PreFlightAI
                 services.AddScoped<ILocationDataService, LocationDataService>();
                 services.AddScoped<IUserDataService, UserDataService>();
                 services.AddScoped<IWeatherDataService, WeatherDataService>();
-
+                                
                 services.AddHttpClient<employeeHttpClient>()
                         .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
