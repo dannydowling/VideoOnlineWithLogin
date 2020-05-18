@@ -46,9 +46,17 @@ namespace PreFlight.AI.Server.Services.Mapping
             var bLON = baseLocation.Longitude * (Math.PI / 180.0);
             var tLAT = targetLocation.Latitude * (Math.PI / 180.0);
             var tLON = targetLocation.Longitude * (Math.PI / 180.0) - bLON;
-            var RadianConvertedValue = Math.Pow(Math.Sin((tLAT - bLAT) / 2.0), 2.0) + Math.Cos(bLAT) * Math.Cos(tLAT) * Math.Pow(Math.Sin(tLON / 2.0), 2.0);
 
-            var dist = 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(RadianConvertedValue), Math.Sqrt(1.0 - RadianConvertedValue)));
+            var RadianConvertedValue
+                                        = Math.Pow(
+                Math.Sin((tLAT - bLAT) / 2.0), 2.0)             //A circle is a double Sine function.
+                + Math.Cos(bLAT) * Math.Cos(tLAT)
+                * Math.Pow(Math.Sin(tLON / 2.0), 2.0);
+
+            var dist
+                = 6376500.0 * (2.0 * Math.Atan2(
+                Math.Sqrt(RadianConvertedValue), 
+                Math.Sqrt(1.0 - RadianConvertedValue)));
 
             dist = convertDistance.ConvertFromMiles(dist, unitOfLength);
             var speed = speedConversion.ConvertFromMPH(dist, speedUnit);
@@ -58,7 +66,7 @@ namespace PreFlight.AI.Server.Services.Mapping
             velocity.Add(dist, speed);
             return velocity;
 
-        }        
+        }
     }
 }
 
