@@ -26,5 +26,11 @@ namespace PreFlightAI.Server.Services
             return await JsonSerializer.DeserializeAsync<Location>
                 (await _httpClient.GetStreamAsync($"api/location{locationId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
+
+        public async Task<Location> GetLocationByCoordinates(Coordinates coordinates)
+        {
+            return await JsonSerializer.DeserializeAsync<Location>
+                (await _httpClient.GetStreamAsync($"api/location{coordinates}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
     }
 }

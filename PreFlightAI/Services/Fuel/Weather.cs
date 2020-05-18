@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using PreFlight.AI.Server.Services.Fuel;
 using PreFlightAI.Shared;
 using System;
 using System.Collections.Generic;
