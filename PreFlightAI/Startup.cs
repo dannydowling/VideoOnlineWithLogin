@@ -23,6 +23,7 @@ using System.Net.Http.Headers;
 using PreFlight.AI.Server.Http.Services;
 using Microsoft.Extensions.Options;
 using PreFlight.AI.Server.Services;
+using PreFlight.AI.Server.Services.HttpClients;
 
 namespace PreFlightAI
 {
@@ -65,92 +66,40 @@ namespace PreFlightAI
                 services.AddScoped<IWeatherRepository, WeatherRepository>();
                 services.AddScoped<MessageModel>();
 
-                services.AddHttpClient<IEmployeeDataService, EmployeeDataService>
-                     (client =>
-                     {
-                         client.BaseAddress = new Uri("http://localhost:44336");
-                         client.Timeout = new TimeSpan(0, 0, 30);
-                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                     })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
+                services.AddHttpClient<employeeHttpClient>()
+                .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
+                        .AddHttpMessageHandler(handler => new RetryPolicy(2));
 
 
-                services.AddHttpClient<ILocationDataService, LocationDataService>
-                    (client =>
-                    {
-                        client.BaseAddress = new Uri("http://localhost:44336");
-                        client.Timeout = new TimeSpan(0, 0, 30);
-                        client.DefaultRequestHeaders.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                services.AddHttpClient<messagingHttpClient>()
+               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
+                       .AddHttpMessageHandler(handler => new RetryPolicy(2));
+                         
 
-                    })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
+                services.AddHttpClient<positioningHttpClient>()
+               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
+                       .AddHttpMessageHandler(handler => new RetryPolicy(2))
+                           .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
+                           {
+                               AutomaticDecompression = System.Net.DecompressionMethods.GZip
+                           });
 
-                services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>
-                     (client =>
-                     {
-                         client.BaseAddress = new Uri("http://localhost:44336");
-                         client.Timeout = new TimeSpan(0, 0, 30);
-                     })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
+                services.AddHttpClient<userHttpClient>()
+               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
+                       .AddHttpMessageHandler(handler => new RetryPolicy(2))
+                           .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
+                           {
+                               AutomaticDecompression = System.Net.DecompressionMethods.GZip
+                           });
 
+                services.AddHttpClient<weatherHttpClient>()
+               .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
+                       .AddHttpMessageHandler(handler => new RetryPolicy(2))
+                        .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
+                        {
+                            AutomaticDecompression = System.Net.DecompressionMethods.GZip
+                        });
 
-                services.AddHttpClient<IWeatherDataService, WeatherDataService>
-                    (client =>
-                    {
-                        client.BaseAddress = new Uri("http://localhost:44336");
-                        client.Timeout = new TimeSpan(0, 0, 30);
-                        client.DefaultRequestHeaders.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
-
-
-                services.AddHttpClient<IUserDataService, UserDataService>
-                    (client =>
-                    {
-                        client.BaseAddress = new Uri("http://localhost:44336");
-                        client.Timeout = new TimeSpan(0, 0, 30);
-                        client.DefaultRequestHeaders.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2))
-                                    .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                                    { //can add compression here later....
-                                    });
-
-
-                services.AddHttpClient<MessageModel>
-                    (client =>
-                    {
-                        client.BaseAddress = new Uri("http://localhost:44336");
-                        client.Timeout = new TimeSpan(0, 0, 30);
-                    })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
-
-
-                services.AddHttpClient<IPosition>
-                   (client =>
-                   {
-                       client.BaseAddress = new Uri("http://localhost:44336");
-                       client.Timeout = new TimeSpan(0, 0, 30);
-                   })
-                            .AddHttpMessageHandler(handler => new TimeOut(TimeSpan.FromSeconds(20)))
-                            .AddHttpMessageHandler(handler => new RetryPolicy(2));
 
 
             });

@@ -608,7 +608,7 @@ namespace PreFlight.AI.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PreFlightAI.Shared.Location", "Country")
+                    b.HasOne("PreFlightAI.Shared.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)

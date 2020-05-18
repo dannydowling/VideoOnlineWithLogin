@@ -25,6 +25,7 @@ namespace PreFlightAI.Shared
 
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]
         public string Comment { get; set; }
+
         [Timestamp]
         public byte[] RowVersion { get; set; }
         public DateTime? JoinedDate { get; set; }

@@ -2,15 +2,16 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using PreFlight.AI.Server.Services.HttpClients;
 using PreFlightAI.Shared;
 
 namespace PreFlightAI.Server.Services
 {
     public class LocationDataService : ILocationDataService
     {
-        private readonly HttpClient _httpClient;
+        private readonly positioningHttpClient _httpClient;
 
-        public LocationDataService(HttpClient httpClient)
+        public LocationDataService(positioningHttpClient httpClient)
         {
             _httpClient = httpClient;
         }

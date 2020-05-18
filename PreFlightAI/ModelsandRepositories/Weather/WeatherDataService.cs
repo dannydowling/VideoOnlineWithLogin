@@ -7,21 +7,19 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using PreFlightAI.Shared;
+using PreFlight.AI.Server.Services.HttpClients;
 
 namespace PreFlightAI.Server.Services
 {
     public class WeatherDataService : IWeatherDataService
     {
-        private readonly HttpClient _httpClient;
+        private readonly weatherHttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public WeatherDataService()
-        {
-        }
-
+       
         // The httpContextAccessor is registered in configure services, then accessible in any class.
         // gives information on the context the user is running in. Such as authenticated...
-        public WeatherDataService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        public WeatherDataService(weatherHttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
             _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));

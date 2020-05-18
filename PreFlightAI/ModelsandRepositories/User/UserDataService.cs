@@ -5,21 +5,19 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Http;
+using PreFlight.AI.Server.Services.HttpClients;
 
 namespace PreFlightAI.Server.Services
 {
     public class UserDataService : IUserDataService
     {
-        private readonly HttpClient _httpClient;
+        private readonly userHttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
-        public UserDataService()
-        {
-        }
+                
 
         // The httpContextAccessor is registered in configure services, then accessible in any class.
         // gives information on the context the user is running in. Such as authenticated...
-        public UserDataService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        public UserDataService(userHttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
             _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
