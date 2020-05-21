@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Text;
 
 namespace PreFlightAI.Shared
@@ -36,8 +37,13 @@ namespace PreFlightAI.Shared
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        [Range(0, 99999)]
+        private int _rowVersion;
+        public int RowVersion
+        {
+            get { return _rowVersion; }
+            set { _rowVersion = value++; }
+        }
 
 
         [DataType(DataType.Password)]

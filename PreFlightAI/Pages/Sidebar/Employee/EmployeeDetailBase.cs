@@ -17,7 +17,7 @@ namespace PreFlightAI.Server.Pages
         [Parameter]
         public string EmployeeId { get; set; }
 
-        protected string JobCategory = string.Empty;
+        protected string jobCategoryName = string.Empty;
        
         public Employee Employee { get; set; } = new Employee();
 
@@ -25,7 +25,7 @@ namespace PreFlightAI.Server.Pages
         {
             Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             
-            JobCategory = (await JobCategoryDataService.GetJobCategoryById(Employee.JobCategoryId)).JobCategoryName;
+            jobCategoryName = (await JobCategoryDataService.GetJobCategoryById(Employee.JobCategoryId)).JobCategoryName;
         }
     }
 }

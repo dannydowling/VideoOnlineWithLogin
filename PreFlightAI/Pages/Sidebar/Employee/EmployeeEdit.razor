@@ -12,13 +12,24 @@
 
             <DataAnnotationsValidator />
             <ValidationSummary />
+
+            <div>
+                <hidden for="Rowversion"> </hidden>
+                <ValidationMessage For="@(() => Employee.RowVersion)" />
+            </div>
+
             <div class="form-group row">
                 <label for="lastName" class="col-sm-3">Last name: </label>
-                @*<input id="lastName" class="form-control col-sm-8" @bind-value="Employee.LastName" placeholder="Enter last name" />*@
-
-                <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Employee.LastName"  placeholder="Enter last name" @ref="LastNameInputText"></InputText>
+                <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Employee.LastName" placeholder="Enter last name" @ref="LastNameInputText"></InputText>
                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.LastName)" />
             </div>
+
+            <div class="form-group row">
+                <label for="lastName" class="col-sm-3">Last name: </label>
+                <InputText id="password" class="form-control col-sm-8" @bind-Value="@Employee.Password" placeholder="Enter password" @ref="PasswordInputText"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Password)" />
+            </div>
+
             <div class="form-group row">
                 <label for="firstName" class="col-sm-3">First name: </label>
                 <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Employee.FirstName" placeholder="Enter first name"></InputText>
@@ -70,9 +81,9 @@
                 <label for="phonenumber" class="col-sm-3">Phone number: </label>
                 <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Employee.PhoneNumber" placeholder="Enter phone number"></InputText>
                 <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.PhoneNumber)" />
-            </div>   
+            </div>
 
-         
+
 
             <div class="form-group row">
                 <label for="jobcategory" class="col-sm-3">Job category: </label>
@@ -83,9 +94,9 @@
                         }
                     /**/
                 </InputSelect>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.JobCategory)" />
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.JobCategory.JobCategoryName)" />
             </div>
-          
+
 
             <div class="form-group row">
                 <label for="joineddate" class="col-sm-3">Joined on: </label>

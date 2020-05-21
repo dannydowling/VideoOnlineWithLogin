@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PreFlight.AI.Server.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -256,7 +256,7 @@ namespace PreFlight.AI.Server.Migrations
                     Comment = table.Column<string>(maxLength: 1000, nullable: true),
                     JoinedDate = table.Column<DateTime>(nullable: true),
                     ExitDate = table.Column<DateTime>(nullable: true),
-                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
+                    RowVersion = table.Column<int>(nullable: false),
                     Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -319,8 +319,8 @@ namespace PreFlight.AI.Server.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "EmployeeId", "BirthDate", "City", "Comment", "Email", "ExitDate", "FirstName", "JobCategoryId", "JoinedDate", "LastName", "LocationId", "Password", "PhoneNumber", "Street", "Zip" },
-                values: new object[] { 1, new DateTime(1979, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "Juneau", "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", 9, new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", 4, "Password", "324777888773", "1 Grimoire Place", "99801" });
+                columns: new[] { "EmployeeId", "BirthDate", "City", "Comment", "Email", "ExitDate", "FirstName", "JobCategoryId", "JoinedDate", "LastName", "LocationId", "Password", "PhoneNumber", "RowVersion", "Street", "Zip" },
+                values: new object[] { 1, new DateTime(1979, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), "Juneau", "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", 9, new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", 4, "Password", "324777888773", 0, "1 Grimoire Place", "99801" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

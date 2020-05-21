@@ -10,8 +10,8 @@ using PreFlight.AI.Server.Services.SQL;
 namespace PreFlight.AI.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200518145554_initialcreate")]
-    partial class initialcreate
+    [Migration("20200520234017_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -294,10 +294,8 @@ namespace PreFlight.AI.Server.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                    b.Property<int>("RowVersion")
+                        .HasColumnType("int");
 
                     b.Property<string>("Street")
                         .HasColumnType("nvarchar(max)");
@@ -328,6 +326,7 @@ namespace PreFlight.AI.Server.Migrations
                             LocationId = 4,
                             Password = "Password",
                             PhoneNumber = "324777888773",
+                            RowVersion = 0,
                             Street = "1 Grimoire Place",
                             Zip = "99801"
                         });

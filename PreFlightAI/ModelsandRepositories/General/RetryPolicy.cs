@@ -5,33 +5,28 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PreFlight.AI.Server.Http.Services
-{    
-        public class RetryPolicy : DelegatingHandler
-        {
-            private readonly int _maximumAmountOfRetries = 3;
-            private readonly TimeSpan _timeOut = TimeSpan.FromSeconds(100);
-
+namespace PreFlight.AI.Server.Services.HttpClients
+{
+    public class RetryPolicy : DelegatingHandler
+    {
+        private readonly int _maximumAmountOfRetries = 3;
+        private readonly TimeSpan _timeOut = TimeSpan.FromSeconds(100);
         public RetryPolicy(int maximumAmountOfRetries, TimeSpan timeOut)
                 : base()
-            {
-                _maximumAmountOfRetries = maximumAmountOfRetries;
-                 _timeOut = timeOut;
-        }
-
-            public RetryPolicy(HttpMessageHandler innerHandler,
-              int maximumAmountOfRetries, TimeSpan timeOut)
-          : base(innerHandler)
-            {
-                _maximumAmountOfRetries = maximumAmountOfRetries;
+        {
+            _maximumAmountOfRetries = maximumAmountOfRetries;
             _timeOut = timeOut;
         }
-
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-                CancellationToken cancellationToken)
-            {
-            using (var linkedCancellationTokenSource =
-             CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
+        public RetryPolicy(HttpMessageHandler innerHandler,
+          int maximumAmountOfRetries, TimeSpan timeOut)
+      : base(innerHandler)
+        {
+            _maximumAmountOfRetries = maximumAmountOfRetries;
+            _timeOut = timeOut;
+        }
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            using (var linkedCancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
             {
                 linkedCancellationTokenSource.CancelAfter(_timeOut);
                 HttpResponseMessage response = null;
@@ -54,10 +49,9 @@ namespace PreFlight.AI.Server.Http.Services
                     {
                         throw new TimeoutException("The request timed out.", ex);
                     }
-                    
                 }
                 return response;
-            }        
+            }
         }
     }
 }

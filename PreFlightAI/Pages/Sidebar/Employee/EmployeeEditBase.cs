@@ -23,12 +23,14 @@ namespace PreFlightAI.Server.Pages
         [Inject] 
         public NavigationManager NavigationManager { get; set; }
 
-        public Employee Employee { get; set; } = new Employee();
+        public Employee Employee { get; set; }
         [Parameter]
         public string EmployeeId { get; set; }        
 
         public InputText LastNameInputText { get; set; }
-                
+
+        public InputText PasswordInputText { get; set; }
+
 
         //needed to bind to select to value
         protected string LocationId = string.Empty;
@@ -53,7 +55,7 @@ namespace PreFlightAI.Server.Pages
             if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
-                Employee = new Employee { LocationId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+                Employee = new Employee { LocationId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, RowVersion = 1 };
             }
             else
             {

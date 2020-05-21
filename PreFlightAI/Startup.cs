@@ -20,10 +20,10 @@ using PreFlightAI.Server.Services;
 using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
-using PreFlight.AI.Server.Http.Services;
 using Microsoft.Extensions.Options;
 using PreFlight.AI.Server.Services;
 using PreFlight.AI.Server.Services.HttpClients;
+using System.Threading;
 
 namespace PreFlightAI
 {
@@ -40,59 +40,78 @@ namespace PreFlightAI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(
+                Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<AppDbContext>();
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 
-            // add loggers           
-            var loggerFactory = LoggerFactory.Create(builder =>
+
+
+            services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IWeatherRepository, WeatherRepository>();
+            services.AddScoped<MessageModel>();
+
+
+            services.AddHttpClient<MessageModel>(clientMessaging =>
             {
-                builder.AddFilter("Microsoft", LogLevel.Warning)
-                       .AddFilter("System", LogLevel.Warning)
-                       .AddFilter("Default", LogLevel.Debug)
-                       .AddConsole();
+                clientMessaging.BaseAddress = new Uri("https://localhost:46633");
+                clientMessaging.DefaultRequestHeaders.Clear();
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
 
-                services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<AppDbContext>();
-                services.AddRazorPages();
-                services.AddServerSideBlazor();
-                services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(clientEmployee =>
+            {
+                clientEmployee.BaseAddress = new Uri("https://localhost:46633");
+                clientEmployee.DefaultRequestHeaders.Clear();
+                clientEmployee.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
-                services.AddScoped<ILocationRepository, LocationRepository>();
-                services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
-                services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-                services.AddScoped<IUserRepository, UserRepository>();
-                services.AddScoped<IWeatherRepository, WeatherRepository>();
-                services.AddScoped<MessageModel>();
 
-                services.AddScoped<IEmployeeDataService, EmployeeDataService>();
-                services.AddScoped<IJobCategoryDataService, JobCategoryDataService>();
-                services.AddScoped<ILocationDataService, LocationDataService>();
-                services.AddScoped<IUserDataService, UserDataService>();
-                services.AddScoped<IWeatherDataService, WeatherDataService>();
-                                
-                services.AddHttpClient<employeeHttpClient>()
-                        .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
+            services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(clientJobcategory =>
+            {
+                clientJobcategory.BaseAddress = new Uri("https://localhost:46633");
+                clientJobcategory.DefaultRequestHeaders.Clear();
+                clientJobcategory.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
-                services.AddHttpClient<messagingHttpClient>()
-                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
-                services.AddHttpClient<positioningHttpClient>()
-                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
-                           .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                           { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
-
-                services.AddHttpClient<userHttpClient>()
-                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
-                           .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                           { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
-
-                services.AddHttpClient<weatherHttpClient>()
-                .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
+            services.AddHttpClient<ILocationDataService, LocationDataService>(clientLocation =>
+            {
+                clientLocation.BaseAddress = new Uri("https://localhost:46633");
+                clientLocation.DefaultRequestHeaders.Clear();
+                clientLocation.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            })
+            .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
                         .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
                         { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
-            });
+
+
+            services.AddHttpClient<IUserDataService, UserDataService>(clientUser =>
+            {
+                clientUser.BaseAddress = new Uri("https://localhost:46633");
+                clientUser.DefaultRequestHeaders.Clear();
+                clientUser.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
+                        .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
+                        { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
+
+
+            services.AddHttpClient<IWeatherDataService, WeatherDataService>(clientWeather =>
+            {
+                clientWeather.BaseAddress = new Uri("https://localhost:46633");
+                clientWeather.DefaultRequestHeaders.Clear();
+                clientWeather.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
+                        .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
+                        { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,8 +125,6 @@ namespace PreFlightAI
             else
             {
                 app.UseExceptionHandler("/Error");
-
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
