@@ -1,0 +1,85 @@
+2020-05-24 06:30:49.838 -08:00 [INF] web api service is started.
+2020-05-24 06:32:34.218 -08:00 [INF] web api service is started.
+2020-05-24 06:32:34.608 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-24 06:32:34.964 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-05-24 06:32:34.964 -08:00 [INF] Hosting environment: Development
+2020-05-24 06:32:34.964 -08:00 [INF] Content root path: C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI
+2020-05-24 06:32:34.978 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/  
+2020-05-24 06:32:35.119 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-24 06:32:35.151 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-05-24 06:32:35.161 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-24 06:32:35.163 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-24 06:32:35.248 -08:00 [INF] Authorization was successful.
+2020-05-24 06:32:35.284 -08:00 [INF] Executed page /_Host in 130.0758ms
+2020-05-24 06:32:35.285 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-24 06:32:35.289 -08:00 [INF] Request finished in 313.7106ms 200 text/html; charset=utf-8
+2020-05-24 06:32:35.300 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-24 06:32:35.300 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-24 06:32:35.300 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-24 06:32:35.316 -08:00 [INF] The file /css/site.css was not modified
+2020-05-24 06:32:35.316 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-24 06:32:35.316 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-24 06:32:35.318 -08:00 [INF] Request finished in 17.8811ms 304 text/css
+2020-05-24 06:32:35.318 -08:00 [INF] Request finished in 17.8816ms 304 text/css
+2020-05-24 06:32:35.318 -08:00 [INF] Request finished in 17.8821ms 304 application/javascript
+2020-05-24 06:32:35.364 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-24 06:32:35.364 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-24 06:32:35.365 -08:00 [INF] Request finished in 0.5121ms 304 text/css
+2020-05-24 06:32:35.385 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-24 06:32:35.389 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-24 06:32:35.394 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-24 06:32:35.395 -08:00 [INF] Request finished in 10.2043ms 200 application/json
+2020-05-24 06:32:35.426 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/fonts/open-iconic.woff  
+2020-05-24 06:32:35.426 -08:00 [INF] The file /css/open-iconic/font/fonts/open-iconic.woff was not modified
+2020-05-24 06:32:35.426 -08:00 [INF] Request finished in 0.3837ms 304 application/font-woff
+2020-05-24 06:32:35.428 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=PMNAuipmDBqvjMmNTBWNig  
+2020-05-24 06:32:35.439 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-24 06:32:35.524 -08:00 [INF] Authorization was successful.
+2020-05-24 06:32:36.811 -08:00 [INF] Start processing HTTP request GET "https://localhost:46633/api/employee"
+2020-05-24 06:32:36.813 -08:00 [INF] Sending HTTP request GET "https://localhost:46633/api/employee"
+2020-05-24 06:32:37.866 -08:00 [INF] Start processing HTTP request GET "https://localhost:46633/api/jobcategory"
+2020-05-24 06:32:37.867 -08:00 [INF] Sending HTTP request GET "https://localhost:46633/api/jobcategory"
+2020-05-24 06:32:40.947 -08:00 [WRN] Unhandled exception rendering component: No connection could be made because the target machine actively refused it.
+System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it.
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at PreFlight.AI.Server.Services.HttpClients.RetryPolicy.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Services\RetryPolicy.cs:line 37
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at System.Net.Http.HttpClient.FinishGetStreamAsync(Task`1 getTask)
+   at PreFlightAI.Server.Services.EmployeeDataService.GetAllEmployees() in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Data\DataServices\EmployeeDataService.cs:line 26
+   at PreFlightAI.Server.Pages.EmployeeOverviewBase.OnInitializedAsync() in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Pages\SideBar\Employee\EmployeeOverviewBase.cs:line 23
+   at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+2020-05-24 06:32:40.992 -08:00 [ERR] Unhandled exception in circuit 'JINb5SW96n4aq0zzfBphdtXBcOgTo32umai1AmZ28HU'.
+System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it.
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at PreFlight.AI.Server.Services.HttpClients.RetryPolicy.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Services\RetryPolicy.cs:line 37
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)
+   at System.Net.Http.HttpClient.FinishGetStreamAsync(Task`1 getTask)
+   at PreFlightAI.Server.Services.EmployeeDataService.GetAllEmployees() in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Data\DataServices\EmployeeDataService.cs:line 26
+   at PreFlightAI.Server.Pages.EmployeeOverviewBase.OnInitializedAsync() in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Pages\SideBar\Employee\EmployeeOverviewBase.cs:line 23
+   at Microsoft.AspNetCore.Components.ComponentBase.RunInitAndSetParametersAsync()
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.GetErrorHandledTask(Task taskToHandle)
+2020-05-24 06:32:41.011 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-24 06:32:41.012 -08:00 [INF] Request finished in 5584.1953ms 101 

@@ -21,9 +21,10 @@ using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
 using Microsoft.Extensions.Options;
-using PreFlight.AI.Server.Services;
 using PreFlight.AI.Server.Services.HttpClients;
 using System.Threading;
+using Serilog;
+using Serilog.Events;
 
 namespace PreFlightAI
 {
@@ -40,9 +41,18 @@ namespace PreFlightAI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var logger = new LoggerConfiguration()
+                          .MinimumLevel.Debug()
+                          .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                          .Enrich.FromLogContext()
+                          .WriteTo.File("Log.txt");
+            Log.Logger = logger.CreateLogger();
+            Log.Information("web api service is started.");
+
+
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(
-                Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AppDbContext>();
             services.AddRazorPages();

@@ -19,7 +19,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +30,10 @@
     <Folder Include="Pages\SideBar\NotamMapping\" />
     <Folder Include="Pages\SideBar\De-Icing\" />
     <Folder Include="Pages\SideBar\Weather\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PreFlight.Shared\PreFlight.AI.Shared.csproj" />
   </ItemGroup>
 
 </Project>
