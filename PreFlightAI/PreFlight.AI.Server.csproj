@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PreFlight.AI.IDP\PreFlight.AI.IDP.csproj" />
     <ProjectReference Include="..\PreFlight.Shared\PreFlight.AI.Shared.csproj" />
   </ItemGroup>
 

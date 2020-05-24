@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight.AI.Server", "PreF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight.AI.Shared", "PreFlight.Shared\PreFlight.AI.Shared.csproj", "{8F27DCF1-20F0-49BB-8204-482E1F968E64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight.AI.IDP", "PreFlight.AI.IDP\PreFlight.AI.IDP.csproj", "{A999151F-E9A2-4F04-8FC6-CC0C0306C440}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8F27DCF1-20F0-49BB-8204-482E1F968E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F27DCF1-20F0-49BB-8204-482E1F968E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F27DCF1-20F0-49BB-8204-482E1F968E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A999151F-E9A2-4F04-8FC6-CC0C0306C440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A999151F-E9A2-4F04-8FC6-CC0C0306C440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A999151F-E9A2-4F04-8FC6-CC0C0306C440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A999151F-E9A2-4F04-8FC6-CC0C0306C440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

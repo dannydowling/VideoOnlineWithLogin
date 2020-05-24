@@ -1,28 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PreFlightAI.Areas.Identity;
-using PreFlight.AI.Server.Services.SQL;
 using PreFlightAI.Api.Models;
 using PreFlightAI.Server.Services;
 using System.Net.Http;
-using Microsoft.Extensions.Logging;
 using System.Net.Http.Headers;
-using Microsoft.Extensions.Options;
 using PreFlight.AI.Server.Services.HttpClients;
-using System.Threading;
 using Serilog;
 using Serilog.Events;
 
@@ -45,21 +31,9 @@ namespace PreFlightAI
                           .MinimumLevel.Debug()
                           .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                           .Enrich.FromLogContext()
-                          .WriteTo.File("Log.txt");
+                          .WriteTo.File(Configuration.GetValue<string>("Server"));
             Log.Logger = logger.CreateLogger();
-            Log.Information("web api service is started.");
-
-
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<AppDbContext>();
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
-            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-
-
+            Log.Information("server service is started.");
 
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
