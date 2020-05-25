@@ -57,6 +57,7 @@ namespace PreFlightAI
                    options.Scope.Add("openid");
                    options.Scope.Add("profile");
                    options.Scope.Add("email");
+                   options.Scope.Add("jobCategory");
                    options.Scope.Add("PreFlight.AI.API");
                    options.SaveTokens = true;
                    options.GetClaimsFromUserInfoEndpoint = true;
@@ -145,6 +146,7 @@ namespace PreFlightAI
             app.UseRouting();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
