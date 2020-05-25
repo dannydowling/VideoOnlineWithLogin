@@ -7,7 +7,7 @@ using PreFlightAI.Shared;
 
 namespace PreFlight.AI.Server.Services.SQL
 {
-    public class ServerDbContext : IdentityDbContext
+    public class ServerDbContext : DbContext
     {
         public ServerDbContext(DbContextOptions<ServerDbContext> options)
             : base(options)

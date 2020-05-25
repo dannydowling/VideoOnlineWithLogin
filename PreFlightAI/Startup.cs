@@ -12,7 +12,8 @@ using PreFlight.AI.Server.Services.HttpClients;
 using Serilog;
 using Serilog.Events;
 using PreFlight.AI.Server.Services.SQL;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace PreFlightAI
 {
@@ -39,6 +40,28 @@ namespace PreFlightAI
 
             services.AddDbContext<ServerDbContext>();
             services.AddDbContext<IDPContext>();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+               .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
+               options =>
+               {
+                   options.Authority = "https://localhost:43366";
+                   options.ClientId = "Internal Server Communication";
+                   options.ClientSecret = "Key Goes Here";
+                   options.ResponseType = "code id_token";
+                   options.Scope.Add("openid");
+                   options.Scope.Add("profile");
+                   options.Scope.Add("email");
+                   options.Scope.Add("PreFlight.AI.API");
+                   options.SaveTokens = true;
+                   options.GetClaimsFromUserInfoEndpoint = true;
+
+               });
 
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
@@ -122,7 +145,6 @@ namespace PreFlightAI
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
