@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PreFlight.AI.IDP.Models;
 using System.Threading.Tasks;
 
 namespace IdentityServer4.Quickstart.UI
@@ -50,7 +51,7 @@ namespace IdentityServer4.Quickstart.UI
             var message = await _interaction.GetErrorContextAsync(errorId);
             if (message != null)
             {
-                vm.Error = message;
+                //vm.Error = message;
 
                 if (!_environment.IsDevelopment())
                 {

@@ -7,19 +7,16 @@ using PreFlightAI.Shared;
 
 namespace PreFlight.AI.Server.Services.SQL
 {
-    public class AppDbContext : IdentityDbContext
+    public class ServerDbContext : IdentityDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
+        public ServerDbContext(DbContextOptions<ServerDbContext> options)
             : base(options)
-        {
-           
-        }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Location> Locations { get; set; }
-        public DbSet<typedUser> typedUsers { get; set; }
+        {            
+        }        
+
+        public DbSet<Location> Locations { get; set; }       
         public DbSet<Weather> Weathers { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,39 +41,7 @@ namespace PreFlight.AI.Server.Services.SQL
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 7, JobCategoryName = "Manager" });
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 8, JobCategoryName = "Senior Manager" });
             modelBuilder.Entity<JobCategory>().HasData(new JobCategory() { JobCategoryId = 9, JobCategoryName = "Owner" });
-
-            modelBuilder.Entity<Employee>().HasData(new Employee
-            {
-                EmployeeId = 1,
-                LocationId = 4,
-                JobCategoryId = 9,
-                Password = "Password",                                
-                BirthDate = new DateTime(1979, 1, 16),
-                City = "Juneau",
-                Email = "danny.dowling@gmail.com",
-                FirstName = "Danny",
-                LastName = "Dowling",
-                PhoneNumber = "324777888773",
-                Street = "1 Grimoire Place",
-                Zip = "99801",
-                Comment = "Using Fake Address and Phone number here",
-                ExitDate = null,
-                JoinedDate = new DateTime(2019, 3, 1)
-            });
             
-
-            modelBuilder.Entity<typedUser>().HasData(new typedUser
-            {
-                userId = 1,
-                Email = "danny.dowling@gmail.com",
-                FirstName = "Danny",
-                LastName = "Dowling",
-                Password = "password",
-                Comment = "Using Fake Address and Phone number here",
-                ExitDate = null,
-                JoinedDate = new DateTime(2019, 3, 1)
-            });
-
             modelBuilder.Entity<Weather>().HasData(new Weather
             {
                 weatherID = 1,

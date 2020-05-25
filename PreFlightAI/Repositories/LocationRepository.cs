@@ -7,9 +7,9 @@ namespace PreFlightAI.Api.Models
 {
     public class LocationRepository : ILocationRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly ServerDbContext _appDbContext;
 
-        public LocationRepository(AppDbContext appDbContext)
+        public LocationRepository(ServerDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

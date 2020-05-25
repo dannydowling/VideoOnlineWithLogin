@@ -11,6 +11,8 @@ using System.Net.Http.Headers;
 using PreFlight.AI.Server.Services.HttpClients;
 using Serilog;
 using Serilog.Events;
+using PreFlight.AI.Server.Services.SQL;
+using PreFlight.AI.IDP.Data;
 
 namespace PreFlightAI
 {
@@ -35,13 +37,15 @@ namespace PreFlightAI
             Log.Logger = logger.CreateLogger();
             Log.Information("server service is started.");
 
+            services.AddDbContext<ServerDbContext>();
+            services.AddDbContext<IDPContext>();
+
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IWeatherRepository, WeatherRepository>();
-            services.AddScoped<MessageModel>();
-
+            services.AddScoped<MessageModel>();            
 
             services.AddHttpClient<MessageModel>(clientMessaging =>
             {

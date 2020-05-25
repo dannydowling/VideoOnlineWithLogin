@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PreFlightAI.Shared;
-using PreFlight.AI.Server.Services.SQL;
+using PreFlight.AI.IDP.Data;
 
 namespace PreFlightAI.Api.Models
 {
     public class UserRepository : IUserRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly IDPContext _appDbContext;
 
-        public UserRepository(AppDbContext appDbContext)
+        public UserRepository(IDPContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

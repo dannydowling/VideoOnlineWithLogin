@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
-using PreFlightAI.Server.Services;
 using PreFlightAI.Shared;
+using PreFlightAI.Server.Services;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace PreFlightAI.Server.Pages
 {
@@ -55,7 +54,7 @@ namespace PreFlightAI.Server.Pages
             if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
-                Employee = new Employee { LocationId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, RowVersion = 1 };
+                Employee = new Employee { LocationId = 1, JobCategoryId = 1, RowVersion = 1 };
             }
             else
             {

@@ -7,9 +7,9 @@ namespace PreFlightAI.Api.Models
 {
     public class WeatherRepository : IWeatherRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly ServerDbContext _appDbContext;
 
-        public WeatherRepository(AppDbContext appDbContext)
+        public WeatherRepository(ServerDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
