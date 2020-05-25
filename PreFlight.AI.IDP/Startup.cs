@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PreFlight.AI.IDP;
-using PreFlight.AI.IDP.Data;
+using PreFlight.AI.Server.Services.SQL;
 using Serilog;
 using Serilog.Events;
 
@@ -36,7 +36,7 @@ namespace PreFlightAI.IDP
                          .MinimumLevel.Debug()
                          .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                          .Enrich.FromLogContext()
-                         .WriteTo.File(Configuration.GetValue<string>("IDP"));
+                         .WriteTo.File("IdentityLog.txt");
             Log.Logger = logger.CreateLogger();
             Log.Information("server service is started.");
 

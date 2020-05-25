@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PreFlightAI.Shared;
-using PreFlight.AI.IDP.Data;
+using PreFlight.AI.Server.Services.SQL;
 
 namespace PreFlightAI.Api.Models
 {

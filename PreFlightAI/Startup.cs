@@ -12,7 +12,7 @@ using PreFlight.AI.Server.Services.HttpClients;
 using Serilog;
 using Serilog.Events;
 using PreFlight.AI.Server.Services.SQL;
-using PreFlight.AI.IDP.Data;
+
 
 namespace PreFlightAI
 {
@@ -33,7 +33,7 @@ namespace PreFlightAI
                           .MinimumLevel.Debug()
                           .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                           .Enrich.FromLogContext()
-                          .WriteTo.File(Configuration.GetValue<string>("Server"));
+                          .WriteTo.File("ServerLog.Txt");
             Log.Logger = logger.CreateLogger();
             Log.Information("server service is started.");
 
