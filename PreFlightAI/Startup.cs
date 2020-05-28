@@ -14,6 +14,9 @@ using Serilog.Events;
 using PreFlight.AI.Server.Services.SQL;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using PreFlightAI.Api.Controllers;
 
 namespace PreFlightAI
 {
@@ -38,8 +41,13 @@ namespace PreFlightAI
             Log.Logger = logger.CreateLogger();
             Log.Information("server service is started.");
 
-            services.AddDbContext<ServerDbContext>();
-            services.AddDbContext<IDPContext>();
+            var serverConnectionString = Configuration["ConnectionStrings:ServerDBConnectionString"];
+            services.AddDbContext<ServerDbContext>(o => o.UseSqlServer(serverConnectionString));
+            var iDPConnectionString = Configuration["ConnectionStrings:IDPConnectionString"];
+            services.AddDbContext<IDPContext>(o => o.UseSqlServer(iDPConnectionString));
+
+            services.AddControllers();
+            services.AddSignalR();
 
             services.AddAuthentication(options =>
             {
@@ -50,7 +58,7 @@ namespace PreFlightAI
                .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
                options =>
                {
-                   options.Authority = "https://localhost:43366";
+                   options.Authority = "https://localhost:44301";
                    options.ClientId = "Internal Server Communication";
                    options.ClientSecret = "Key Goes Here";
                    options.ResponseType = "code id_token";
@@ -69,7 +77,9 @@ namespace PreFlightAI
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IWeatherRepository, WeatherRepository>();
-            services.AddScoped<MessageModel>();            
+            services.AddScoped<MessageModel>();
+
+            
 
             services.AddHttpClient<MessageModel>(clientMessaging =>
             {
@@ -80,7 +90,7 @@ namespace PreFlightAI
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(clientEmployee =>
             {
-                clientEmployee.BaseAddress = new Uri("https://localhost:46633");
+                clientEmployee.BaseAddress = new Uri("https://localhost:44301");
                 clientEmployee.DefaultRequestHeaders.Clear();
                 clientEmployee.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
@@ -107,7 +117,7 @@ namespace PreFlightAI
 
             services.AddHttpClient<IUserDataService, UserDataService>(clientUser =>
             {
-                clientUser.BaseAddress = new Uri("https://localhost:46633");
+                clientUser.BaseAddress = new Uri("https://localhost:44301");
                 clientUser.DefaultRequestHeaders.Clear();
                 clientUser.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
@@ -136,6 +146,7 @@ namespace PreFlightAI
             }
             else
             {
+                app.UseResponseCompression();
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
@@ -146,8 +157,7 @@ namespace PreFlightAI
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
-
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

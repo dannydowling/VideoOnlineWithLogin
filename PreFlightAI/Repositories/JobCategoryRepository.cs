@@ -7,9 +7,9 @@ namespace PreFlightAI.Api.Models
 {
     public class JobCategoryRepository: IJobCategoryRepository
     {
-        private readonly ServerDbContext _appDbContext;
+        private readonly IDPContext _appDbContext;
 
-        public JobCategoryRepository(ServerDbContext appDbContext)
+        public JobCategoryRepository(IDPContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

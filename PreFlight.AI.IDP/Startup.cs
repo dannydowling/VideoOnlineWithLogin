@@ -21,7 +21,7 @@ namespace PreFlightAI.IDP
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public IWebHostEnvironment Environment { get; }
+        public IWebHostEnvironment env { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -42,7 +42,7 @@ namespace PreFlightAI.IDP
 
             services.AddDbContext<IDPContext>(options =>
               options.UseSqlServer(
-                  Configuration.GetConnectionString("DefaultConnection")));
+                  Configuration.GetConnectionString("IDPConnectionString")));
 
             services.AddDefaultIdentity<IdentityUser>(options => 
                         options.SignIn.RequireConfirmedAccount = true)
@@ -85,20 +85,24 @@ namespace PreFlightAI.IDP
             builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication();
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (Environment.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-
-            app.UseRouting();
             app.UseIdentityServer();
+            app.UseRouting();
+
             app.UseAuthorization();
+
+            
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

@@ -7,3 +7,555 @@
 2020-05-24 23:50:42.239 -08:00 [INF] server service is started.
 2020-05-24 23:57:31.921 -08:00 [INF] server service is started.
 2020-05-24 23:59:19.753 -08:00 [INF] server service is started.
+2020-05-27 16:47:38.065 -08:00 [INF] server service is started.
+2020-05-27 16:47:38.262 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:01:27.955 -08:00 [INF] server service is started.
+2020-05-27 17:01:28.072 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:03:52.243 -08:00 [INF] server service is started.
+2020-05-27 17:03:52.369 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:07:22.237 -08:00 [INF] server service is started.
+2020-05-27 17:07:22.329 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:08:17.577 -08:00 [INF] server service is started.
+2020-05-27 17:08:17.688 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:10:42.234 -08:00 [INF] server service is started.
+2020-05-27 17:10:42.543 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:12:11.049 -08:00 [INF] server service is started.
+2020-05-27 17:12:11.365 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:12:46.520 -08:00 [INF] server service is started.
+2020-05-27 17:12:46.762 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:17:07.505 -08:00 [INF] server service is started.
+2020-05-27 17:17:07.826 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:19:46.838 -08:00 [INF] server service is started.
+2020-05-27 17:19:47.100 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-27 17:27:59.269 -08:00 [INF] server service is started.
+2020-05-27 17:29:26.393 -08:00 [INF] server service is started.
+2020-05-27 17:31:30.003 -08:00 [INF] server service is started.
+2020-05-27 17:35:34.466 -08:00 [INF] server service is started.
+2020-05-27 17:41:32.661 -08:00 [INF] server service is started.
+2020-05-27 17:41:54.199 -08:00 [INF] server service is started.
+2020-05-27 17:41:54.585 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:42:38.164 -08:00 [INF] server service is started.
+2020-05-27 17:42:38.545 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:42:53.945 -08:00 [INF] server service is started.
+2020-05-27 17:43:09.982 -08:00 [INF] server service is started.
+2020-05-27 17:43:10.369 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:43:21.229 -08:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [PreFlightAI.Server];
+2020-05-27 17:43:21.266 -08:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [PreFlightAI.Server] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-05-27 17:43:21.280 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:43:21.360 -08:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-05-27 17:43:21.361 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:43:21.374 -08:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-27 17:43:21.378 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-27 17:43:21.389 -08:00 [INF] Applying migration '20200528014238_InitialCreate'.
+2020-05-27 17:43:21.416 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategories] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategories] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-27 17:43:21.417 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Locations] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Locations] PRIMARY KEY ([LocationId])
+);
+2020-05-27 17:43:21.418 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Weathers] (
+    [weatherID] int NOT NULL IDENTITY,
+    [AirPressure] float NOT NULL,
+    [Temperature] float NOT NULL,
+    [WeightValue] float NOT NULL,
+    [weatherLink] nvarchar(max) NULL,
+    [RowVersion] rowversion NULL,
+    CONSTRAINT [PK_Weathers] PRIMARY KEY ([weatherID])
+);
+2020-05-27 17:43:21.438 -08:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] ON;
+INSERT INTO [JobCategories] ([JobCategoryId], [JobCategoryName])
+VALUES (1, N'Guest'),
+(8, N'Senior Manager'),
+(7, N'Manager'),
+(6, N'IT Lead'),
+(9, N'Owner'),
+(4, N'Worker'),
+(3, N'Verified'),
+(2, N'Visitor'),
+(5, N'IT Worker');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] OFF;
+2020-05-27 17:43:21.443 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'LocationId', N'Name') AND [object_id] = OBJECT_ID(N'[Locations]'))
+    SET IDENTITY_INSERT [Locations] ON;
+INSERT INTO [Locations] ([LocationId], [Name])
+VALUES (8, N'Petersburg'),
+(1, N'Juneau'),
+(2, N'Seattle'),
+(3, N'Fairbanks'),
+(4, N'Anchorage'),
+(5, N'Ketchikan'),
+(6, N'Sitka'),
+(7, N'Wrangell');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'LocationId', N'Name') AND [object_id] = OBJECT_ID(N'[Locations]'))
+    SET IDENTITY_INSERT [Locations] OFF;
+2020-05-27 17:43:21.448 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'weatherID', N'AirPressure', N'Temperature', N'WeightValue', N'weatherLink') AND [object_id] = OBJECT_ID(N'[Weathers]'))
+    SET IDENTITY_INSERT [Weathers] ON;
+INSERT INTO [Weathers] ([weatherID], [AirPressure], [Temperature], [WeightValue], [weatherLink])
+VALUES (1, 1.0E0, 60.0E0, 6.7000000000000002E0, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'weatherID', N'AirPressure', N'Temperature', N'WeightValue', N'weatherLink') AND [object_id] = OBJECT_ID(N'[Weathers]'))
+    SET IDENTITY_INSERT [Weathers] OFF;
+2020-05-27 17:43:21.448 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200528014238_InitialCreate', N'3.1.4');
+2020-05-27 17:43:34.552 -08:00 [INF] server service is started.
+2020-05-27 17:43:35.067 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:43:45.428 -08:00 [INF] Executed DbCommand (154ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [PreFlightAI.IDP];
+2020-05-27 17:43:45.465 -08:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [PreFlightAI.IDP] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-05-27 17:43:45.479 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:43:45.545 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-05-27 17:43:45.546 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:43:45.559 -08:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-27 17:43:45.562 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-27 17:43:45.574 -08:00 [INF] Applying migration '20200528014102_InitialCreate'.
+2020-05-27 17:43:45.626 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2020-05-27 17:43:45.627 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2020-05-27 17:43:45.628 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [GameOffering] (
+    [gameId] int NOT NULL IDENTITY,
+    [FirstTruth] nvarchar(150) NULL,
+    [SecondTruth] nvarchar(150) NULL,
+    [Lie] nvarchar(150) NULL,
+    CONSTRAINT [PK_GameOffering] PRIMARY KEY ([gameId])
+);
+2020-05-27 17:43:45.629 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategory] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategory] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-27 17:43:45.629 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Location] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY ([LocationId])
+);
+2020-05-27 17:43:45.630 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:43:45.631 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:43:45.633 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(128) NOT NULL,
+    [ProviderKey] nvarchar(128) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:43:45.634 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:43:45.635 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(128) NOT NULL,
+    [Name] nvarchar(128) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:43:45.636 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [typedUsers] (
+    [userId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Comment] nvarchar(1000) NULL,
+    [RowVersion] rowversion NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [gameId] int NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_typedUsers] PRIMARY KEY ([userId]),
+    CONSTRAINT [FK_typedUsers_GameOffering_gameId] FOREIGN KEY ([gameId]) REFERENCES [GameOffering] ([gameId]) ON DELETE NO ACTION
+);
+2020-05-27 17:43:45.638 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [EmployeeId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [BirthDate] datetime2 NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Street] nvarchar(max) NULL,
+    [Zip] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [LocationId] int NOT NULL,
+    [JobCategoryId] int NOT NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Comment] nvarchar(1000) NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [RowVersion] int NOT NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId]),
+    CONSTRAINT [FK_Employees_JobCategory_JobCategoryId] FOREIGN KEY ([JobCategoryId]) REFERENCES [JobCategory] ([JobCategoryId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Employees_Location_LocationId] FOREIGN KEY ([LocationId]) REFERENCES [Location] ([LocationId]) ON DELETE CASCADE
+);
+2020-05-27 17:43:45.655 -08:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] ON;
+INSERT INTO [Employees] ([EmployeeId], [BirthDate], [City], [Comment], [Email], [ExitDate], [FirstName], [JobCategoryId], [JoinedDate], [LastName], [LocationId], [Password], [PhoneNumber], [RowVersion], [Street], [Zip])
+VALUES (1, '1988-01-01T00:00:00.0000000', N'Juneau', N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', 9, '2020-05-01T00:00:00.0000000', N'Dowling', 4, N'Password', N'324777888773', 0, N'1 Grimoire Place', N'99801');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] OFF;
+2020-05-27 17:46:50.656 -08:00 [INF] server service is started.
+2020-05-27 17:46:51.036 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:47:07.259 -08:00 [INF] server service is started.
+2020-05-27 17:47:07.634 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:47:07.844 -08:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:47:07.866 -08:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-27 17:47:07.868 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:47:07.868 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-27 17:47:07.881 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-27 17:47:07.893 -08:00 [INF] Applying migration '20200528014651_InitialCreate'.
+2020-05-27 17:47:07.931 -08:00 [ERR] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Locations] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Locations] PRIMARY KEY ([LocationId])
+);
+2020-05-27 17:47:30.889 -08:00 [INF] server service is started.
+2020-05-27 17:47:31.266 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:47:41.651 -08:00 [INF] Executed DbCommand (173ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [PreFlightAI.Server];
+2020-05-27 17:47:41.689 -08:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [PreFlightAI.Server] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-05-27 17:47:41.704 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:47:41.781 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-05-27 17:47:41.783 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:47:41.796 -08:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-27 17:47:41.799 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-27 17:47:41.811 -08:00 [INF] Applying migration '20200528014651_InitialCreate'.
+2020-05-27 17:47:41.836 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Locations] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Locations] PRIMARY KEY ([LocationId])
+);
+2020-05-27 17:47:41.838 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Weathers] (
+    [weatherID] int NOT NULL IDENTITY,
+    [AirPressure] float NOT NULL,
+    [Temperature] float NOT NULL,
+    [WeightValue] float NOT NULL,
+    [weatherLink] nvarchar(max) NULL,
+    [RowVersion] rowversion NULL,
+    CONSTRAINT [PK_Weathers] PRIMARY KEY ([weatherID])
+);
+2020-05-27 17:47:41.852 -08:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'LocationId', N'Name') AND [object_id] = OBJECT_ID(N'[Locations]'))
+    SET IDENTITY_INSERT [Locations] ON;
+INSERT INTO [Locations] ([LocationId], [Name])
+VALUES (1, N'Juneau'),
+(2, N'Seattle'),
+(3, N'Fairbanks'),
+(4, N'Anchorage'),
+(5, N'Ketchikan'),
+(6, N'Sitka'),
+(7, N'Wrangell'),
+(8, N'Petersburg');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'LocationId', N'Name') AND [object_id] = OBJECT_ID(N'[Locations]'))
+    SET IDENTITY_INSERT [Locations] OFF;
+2020-05-27 17:47:41.857 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'weatherID', N'AirPressure', N'Temperature', N'WeightValue', N'weatherLink') AND [object_id] = OBJECT_ID(N'[Weathers]'))
+    SET IDENTITY_INSERT [Weathers] ON;
+INSERT INTO [Weathers] ([weatherID], [AirPressure], [Temperature], [WeightValue], [weatherLink])
+VALUES (1, 1.0E0, 60.0E0, 6.7000000000000002E0, NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'weatherID', N'AirPressure', N'Temperature', N'WeightValue', N'weatherLink') AND [object_id] = OBJECT_ID(N'[Weathers]'))
+    SET IDENTITY_INSERT [Weathers] OFF;
+2020-05-27 17:47:41.858 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200528014651_InitialCreate', N'3.1.4');
+2020-05-27 17:48:05.260 -08:00 [INF] server service is started.
+2020-05-27 17:48:05.772 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:48:23.008 -08:00 [INF] server service is started.
+2020-05-27 17:48:23.523 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-27 17:48:33.901 -08:00 [INF] Executed DbCommand (166ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [PreFlightAI.IDP];
+2020-05-27 17:48:33.937 -08:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [PreFlightAI.IDP] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2020-05-27 17:48:33.951 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:48:34.018 -08:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2020-05-27 17:48:34.019 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-27 17:48:34.032 -08:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-27 17:48:34.036 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-27 17:48:34.047 -08:00 [INF] Applying migration '20200528014805_InitialCreate'.
+2020-05-27 17:48:34.102 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2020-05-27 17:48:34.103 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2020-05-27 17:48:34.104 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [GameOffering] (
+    [gameId] int NOT NULL IDENTITY,
+    [FirstTruth] nvarchar(150) NULL,
+    [SecondTruth] nvarchar(150) NULL,
+    [Lie] nvarchar(150) NULL,
+    CONSTRAINT [PK_GameOffering] PRIMARY KEY ([gameId])
+);
+2020-05-27 17:48:34.105 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategories] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategories] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-27 17:48:34.105 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Location] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY ([LocationId])
+);
+2020-05-27 17:48:34.106 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:48:34.107 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:48:34.109 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:48:34.111 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:48:34.112 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-27 17:48:34.113 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [typedUsers] (
+    [userId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Comment] nvarchar(1000) NULL,
+    [RowVersion] rowversion NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [gameId] int NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_typedUsers] PRIMARY KEY ([userId]),
+    CONSTRAINT [FK_typedUsers_GameOffering_gameId] FOREIGN KEY ([gameId]) REFERENCES [GameOffering] ([gameId]) ON DELETE NO ACTION
+);
+2020-05-27 17:48:34.114 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [EmployeeId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [BirthDate] datetime2 NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Street] nvarchar(max) NULL,
+    [Zip] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [LocationId] int NOT NULL,
+    [JobCategoryId] int NOT NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Comment] nvarchar(1000) NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [RowVersion] int NOT NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId]),
+    CONSTRAINT [FK_Employees_JobCategories_JobCategoryId] FOREIGN KEY ([JobCategoryId]) REFERENCES [JobCategories] ([JobCategoryId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Employees_Location_LocationId] FOREIGN KEY ([LocationId]) REFERENCES [Location] ([LocationId]) ON DELETE CASCADE
+);
+2020-05-27 17:48:34.129 -08:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] ON;
+INSERT INTO [JobCategories] ([JobCategoryId], [JobCategoryName])
+VALUES (1, N'Guest'),
+(2, N'Visitor'),
+(3, N'Verified'),
+(4, N'Worker'),
+(5, N'IT Worker'),
+(6, N'IT Lead'),
+(7, N'Manager'),
+(8, N'Senior Manager'),
+(9, N'Owner');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] OFF;
+2020-05-27 17:48:34.134 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] ON;
+INSERT INTO [typedUsers] ([userId], [Comment], [Email], [ExitDate], [FirstName], [JoinedDate], [LastName], [Password], [gameId])
+VALUES (1, N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', '2019-03-01T00:00:00.0000000', N'Dowling', N'password', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] OFF;
+2020-05-27 17:48:34.141 -08:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] ON;
+INSERT INTO [Employees] ([EmployeeId], [BirthDate], [City], [Comment], [Email], [ExitDate], [FirstName], [JobCategoryId], [JoinedDate], [LastName], [LocationId], [Password], [PhoneNumber], [RowVersion], [Street], [Zip])
+VALUES (1, '1988-01-01T00:00:00.0000000', N'Juneau', N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', 9, '2020-05-01T00:00:00.0000000', N'Dowling', 4, N'Password', N'324777888773', 0, N'1 Grimoire Place', N'99801');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] OFF;
