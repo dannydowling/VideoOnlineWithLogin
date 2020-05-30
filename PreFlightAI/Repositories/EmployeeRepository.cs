@@ -2,6 +2,7 @@
 using System.Linq;
 using PreFlightAI.Shared;
 using PreFlight.AI.Server.Services.SQL;
+using PreFlightAI.Shared.Employee;
 
 namespace PreFlightAI.Api.Models
 {
@@ -24,6 +25,11 @@ namespace PreFlightAI.Api.Models
             return _appDbContext.Employees.FirstOrDefault(c => c.EmployeeId == employeeId);
         }
 
+        public List<Employee> GetEmployeesByLocation(int locationId)
+        {
+            return _appDbContext.Employees.Where(c => c.employeeLocationId == locationId).ToList();
+        }
+
         public Employee AddEmployee(Employee employee)
         {
             var addedEntity = _appDbContext.Employees.Add(employee);
@@ -37,7 +43,7 @@ namespace PreFlightAI.Api.Models
 
             if (foundEmployee != null)
             {
-                foundEmployee.LocationId = employee.LocationId;
+                foundEmployee.employeeLocationId = employee.employeeLocationId;
                 foundEmployee.BirthDate = employee.BirthDate;
                 foundEmployee.City = employee.City;
                 foundEmployee.Email = employee.Email;
@@ -46,7 +52,7 @@ namespace PreFlightAI.Api.Models
                 foundEmployee.PhoneNumber = employee.PhoneNumber;
                 foundEmployee.Street = employee.Street;
                 foundEmployee.Zip = employee.Zip;
-                foundEmployee.JobCategoryId = employee.JobCategoryId;
+                foundEmployee.employeeJobCategoryId = employee.employeeJobCategoryId;
                 foundEmployee.Comment = employee.Comment;
                 foundEmployee.ExitDate = employee.ExitDate;
                 foundEmployee.JoinedDate = employee.JoinedDate;

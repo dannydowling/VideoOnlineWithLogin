@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PreFlightAI.Shared
+namespace PreFlightAI.Shared.Employee
 {
     public class JobCategory
     {

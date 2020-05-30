@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PreFlightAI.Shared;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlight.AI.Server.Services.SQL
 {

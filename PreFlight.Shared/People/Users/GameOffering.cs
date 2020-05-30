@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace PreFlightAI.Shared
+namespace PreFlightAI.Shared.People.Users
 {
     public class GameOffering
     {

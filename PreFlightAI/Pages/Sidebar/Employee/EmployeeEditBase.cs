@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Components;
 using PreFlightAI.Shared;
 using PreFlightAI.Server.Services;
 using Microsoft.AspNetCore.Components.Forms;
+using PreFlightAI.Shared.Employee;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlightAI.Server.Pages
 {
@@ -40,7 +42,7 @@ namespace PreFlightAI.Server.Pages
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-        public List<Location> Locations { get; set; } = new List<Location>();
+        public List<Shared.Places.Location> Locations { get; set; } = new List<Shared.Places.Location>();
         public List<JobCategory> JobCategories { get; set; } = new List<JobCategory>();
 
         protected override async Task OnInitializedAsync()
@@ -54,21 +56,21 @@ namespace PreFlightAI.Server.Pages
             if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
-                Employee = new Employee { LocationId = 1, JobCategoryId = 1, RowVersion = 1 };
+                Employee = new Employee { employeeLocationId = 1, employeeJobCategoryId = 1, RowVersion = 1 };
             }
             else
             {
                 Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             }
 
-            LocationId = Employee.LocationId.ToString();
-            JobCategoryId = Employee.JobCategoryId.ToString();
+            LocationId = Employee.employeeLocationId.ToString();
+            JobCategoryId = Employee.employeeJobCategoryId.ToString();
         }
 
         protected async Task HandleValidSubmit()
         {
-            Employee.LocationId = int.Parse(LocationId);
-            Employee.JobCategoryId = int.Parse(JobCategoryId);
+            Employee.employeeLocationId = int.Parse(LocationId);
+            Employee.employeeJobCategoryId = int.Parse(JobCategoryId);
 
             if (Employee.EmployeeId == 0) //new
             {

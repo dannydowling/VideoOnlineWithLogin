@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace PreFlightAI.Shared
+namespace PreFlightAI.Shared.Places
 {
     public class Location
     {

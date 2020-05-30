@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using PreFlightAI.Shared;
 using PreFlightAI.Server.Services;
+using PreFlightAI.Shared.Employee;
+using PreFlightAI.Shared.Places;
+
 
 namespace PreFlightAI.Server.Pages
 {
@@ -17,7 +20,7 @@ namespace PreFlightAI.Server.Pages
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
         public Employee Employee { get; set; } = new Employee 
-        { EmployeeId = 0, LocationId = 1, JobCategoryId = 1};
+        { EmployeeId = 0, employeeLocationId = 1, employeeJobCategoryId = 1};
 
         [Inject]
         public IJobCategoryDataService JobCategoryDataService { get; set; }
@@ -40,7 +43,7 @@ namespace PreFlightAI.Server.Pages
 
         private void ResetDialog()
         {
-            Employee = new Employee { EmployeeId = 0, LocationId = 1, JobCategoryId = 1};
+            Employee = new Employee { EmployeeId = 0, employeeLocationId = 1, employeeJobCategoryId = 1};
         }
 
         public void Close()

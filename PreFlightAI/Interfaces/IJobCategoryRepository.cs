@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PreFlightAI.Shared;
+using PreFlightAI.Shared.Employee;
 
 namespace PreFlightAI.Api.Models
 {

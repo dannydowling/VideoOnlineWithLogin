@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Text;
 
-namespace PreFlightAI.Shared
+namespace PreFlightAI.Shared.Employee
 {
     public class Employee
     {
@@ -25,11 +25,11 @@ namespace PreFlightAI.Shared
         public string Street { get; set; }
         public string Zip { get; set; }
         public string City { get; set; }
-        public int LocationId { get; set; }
-        public Location Location { get; set; }
+        public int employeeLocationId { get; set; }
+        public Location employeeLocation { get; set; }
 
-        public int JobCategoryId { get; set; }
-        public JobCategory JobCategory { get; set; }
+        public int employeeJobCategoryId { get; set; }
+        public JobCategory employeeJobCategory { get; set; }
         public string PhoneNumber { get; set; }
 
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]

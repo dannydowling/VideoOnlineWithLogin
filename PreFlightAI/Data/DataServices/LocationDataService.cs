@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using PreFlightAI.Shared;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlightAI.Server.Services
 {

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 
-namespace PreFlightAI.Shared
+namespace PreFlightAI.Shared.People.Users
 {
-    public class typedUser
+    public class User
     {
         [Key]
         public int userId { get; set; }
@@ -31,6 +31,7 @@ namespace PreFlightAI.Shared
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
 
+        public int gameId { get; set; }
         public GameOffering Game { get; set; } // 2truths1lie game currently set for this user.
 
         [DataType(DataType.Password)]

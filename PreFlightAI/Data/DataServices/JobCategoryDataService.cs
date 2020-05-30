@@ -19,16 +19,16 @@ namespace PreFlightAI.Server.Services
             _clientJobcategory = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
             _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
         }
-        public async Task<IEnumerable<JobCategory>> GetAllJobCategories()
+        public async Task<IEnumerable<employeeJobCategory>> GetAllJobCategories()
         {
-              return await JsonSerializer.DeserializeAsync<IEnumerable<JobCategory>>
+              return await JsonSerializer.DeserializeAsync<IEnumerable<employeeJobCategory>>
                 (await _clientJobcategory.GetStreamAsync($"api/jobcategory"), 
                 new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<JobCategory> GetJobCategoryById(int jobCategoryId)
+        public async Task<employeeJobCategory> GetJobCategoryById(int jobCategoryId)
         {
-            return await JsonSerializer.DeserializeAsync<JobCategory>
+            return await JsonSerializer.DeserializeAsync<employeeJobCategory>
                 (await _clientJobcategory.GetStreamAsync($"api/jobcategory/{jobCategoryId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }
