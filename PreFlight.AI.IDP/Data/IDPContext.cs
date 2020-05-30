@@ -6,7 +6,7 @@ using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PreFlightAI.Shared.Employee;
-using PreFlightAI.Shared.People.Users;
+using PreFlightAI.Shared.Users;
 
 namespace PreFlight.AI.Server.Services.SQL
 {
@@ -17,7 +17,7 @@ namespace PreFlight.AI.Server.Services.SQL
         {
         }
 
-        public DbSet<User> typedUsers { get; set; }
+        public DbSet<typedUser> typedUsers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
 
@@ -44,7 +44,7 @@ namespace PreFlight.AI.Server.Services.SQL
             });
 
 
-            modelBuilder.Entity<User>().HasData(new User
+            modelBuilder.Entity<typedUser>().HasData(new typedUser
             {
                 userId = 1,
                 Email = "danny.dowling@gmail.com",

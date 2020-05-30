@@ -1,6 +1,7 @@
 ﻿using PreFlightAI.Api.Models;
 using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Mvc;
+using PreFlightAI.Shared.Employee;
 
 namespace PreFlightAI.Api.Controllers
 {

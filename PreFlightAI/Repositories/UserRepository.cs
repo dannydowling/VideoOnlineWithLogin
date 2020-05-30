@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using PreFlightAI.Shared;
+using PreFlightAI.Shared.Users;
 using PreFlight.AI.Server.Services.SQL;
 
 namespace PreFlightAI.Api.Models

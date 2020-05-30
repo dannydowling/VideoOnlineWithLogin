@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 
-namespace PreFlightAI.Shared.People.Users
+namespace PreFlightAI.Shared.Users
 {
-    public class User
+    public class typedUser
     {
         [Key]
         public int userId { get; set; }

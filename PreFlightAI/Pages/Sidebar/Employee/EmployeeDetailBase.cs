@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using PreFlightAI.Shared;
 using PreFlightAI.Server.Services;
-
+using PreFlightAI.Shared.Employee;
 
 namespace PreFlightAI.Server.Pages
 {
@@ -27,7 +27,7 @@ namespace PreFlightAI.Server.Pages
         {
             Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             
-            jobCategoryName = (await JobCategoryDataService.GetJobCategoryById(Employee.JobCategoryId)).JobCategoryName;
+            jobCategoryName = (await JobCategoryDataService.GetJobCategoryById(Employee.employeeJobCategoryId)).JobCategoryName;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using PreFlightAI.Shared;
+using PreFlightAI.Shared.Places;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace PreFlight.AI.Server.Services
             try
             {
                 weather.WeightValue = fuelDensity.CurrentFuelDensity(weather);
+                
             }
             catch (Exception)
             {

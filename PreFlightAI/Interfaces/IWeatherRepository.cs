@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PreFlightAI.Shared;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlightAI.Api.Models
 {

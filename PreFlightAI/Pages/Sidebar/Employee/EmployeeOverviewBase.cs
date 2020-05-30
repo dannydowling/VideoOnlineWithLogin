@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 using PreFlightAI.Shared;
 using PreFlightAI.Server.Services;
 using PreFlight.AI.Server.Pages.SideBar.Employee;
+using PreFlightAI.Shared.Employee;
 
 namespace PreFlightAI.Server.Pages
 {

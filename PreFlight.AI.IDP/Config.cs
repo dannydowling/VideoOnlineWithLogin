@@ -1,6 +1,8 @@
 ﻿using IdentityModel;
 using IdentityServer4.Models;
 using PreFlightAI.Shared;
+using PreFlightAI.Shared.Employee;
+using PreFlightAI.Shared.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;

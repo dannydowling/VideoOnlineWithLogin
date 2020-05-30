@@ -2,6 +2,7 @@
 using System.Linq;
 using PreFlightAI.Shared;
 using PreFlight.AI.Server.Services.SQL;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlightAI.Api.Models
 {
