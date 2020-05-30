@@ -10,6 +10,8 @@ namespace PreFlightAI.Api.Models
     public interface IEmployeeRepository
     {
         IEnumerable<Employee> GetAllEmployees();
+
+        IEnumerable<Employee> GetAllEmployeesByLocation(int locationID);
         Employee GetEmployeeById(int employeeId);
         Employee AddEmployee(Employee employee);
         Employee UpdateEmployee(Employee employee);

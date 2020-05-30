@@ -8,6 +8,8 @@ namespace PreFlightAI.Server.Services
     public interface ILocationDataService
     {
         Task<IEnumerable<Location>> GetAllLocations();
+
+        Task<IEnumerable<Location>> GetLocationsByEmployeeId(int employeeId);
         Task<Location> GetLocationById(int locationId);
     }
 }

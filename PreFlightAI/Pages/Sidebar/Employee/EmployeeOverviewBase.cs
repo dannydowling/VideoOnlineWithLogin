@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using PreFlightAI.Shared;
 using PreFlightAI.Server.Services;
 using PreFlight.AI.Server.Pages.SideBar.Employee;
 using PreFlightAI.Shared.Employee;
+
 
 namespace PreFlightAI.Server.Pages
 {
@@ -14,12 +14,17 @@ namespace PreFlightAI.Server.Pages
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
+        [Inject]
+        public ILocationDataService LocationDataService { get; set; }
+
         public List<Employee> Employees { get; set; }
+        public List<Shared.Places.Location> employeeLocations { get; set; }
 
         protected AddEmployeeDialog AddEmployeeDialog { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            employeeLocations = (await LocationDataService.GetLocationsByEmployeeId(employeeId)).ToList();
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
 

@@ -20,11 +20,12 @@ namespace PreFlight.AI.Server.Services
 
         public GradientDescent()
         {
-            forecast = weatherDataService.GetForecast().Result;
+            
+            forecast = weatherDataService.GetAllWeatherForDensity().Result;
         }
-        public async Task fetchWeather(int userId)
+        public async Task fetchWeather(int weatherId)
         {
-            await weatherDataService.GetWeatherDetails(userId);
+            await weatherDataService.GetWeatherDetails(weatherId);
         }
 
         public double predictDensity(Weather weather)

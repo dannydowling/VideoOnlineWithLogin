@@ -8,6 +8,7 @@ namespace PreFlightAI.Server.Services
     public interface IEmployeeDataService
     {
         Task<IEnumerable<Employee>> GetAllEmployees();
+        Task<IEnumerable<Employee>> GetAllEmployeesByLocationId(int locationId);
         Task<Employee> GetEmployeeDetails(int employeeId);
         Task<Employee> AddEmployee(Employee employee);
         Task UpdateEmployee(Employee employee);

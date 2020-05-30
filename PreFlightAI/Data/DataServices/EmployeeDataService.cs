@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using PreFlightAI.Shared;
+using PreFlightAI.Shared.Employee;
 using Microsoft.AspNetCore.Http;
 using System.Threading;
 
@@ -25,6 +25,12 @@ namespace PreFlightAI.Server.Services
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Employee>>
                 (await _clientEmployee.GetStreamAsync($"api/employee"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<IEnumerable<Employee>> GetAllEmployeesByLocationId(int locationId)
+        {
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Employee>>
+                (await _clientEmployee.GetStreamAsync($"api/employee/{locationId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<Employee> GetEmployeeDetails(int employeeId)

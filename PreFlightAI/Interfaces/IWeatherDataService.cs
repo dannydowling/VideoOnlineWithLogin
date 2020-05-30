@@ -9,7 +9,10 @@ namespace PreFlightAI.Server.Services
 {
     public interface IWeatherDataService
     {
-        Task<IEnumerable<Weather>> GetForecast();
+        Task<IEnumerable<Weather>> GetAllWeatherForDensity();
+        Task<IEnumerable<Weather>> GetAllWeatherForLocation(int locationId);
+
+        Task<IEnumerable<Weather>> GetAllWeatherForLocationInRange(int locationId, TimeSpan timeSpan);
         Task<Weather> GetWeatherDetails(int weatherId);
         Task<Weather> AddWeather(Weather weather);
         Task UpdateWeather(Weather weather);

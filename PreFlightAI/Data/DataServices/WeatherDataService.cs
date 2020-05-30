@@ -15,6 +15,7 @@ namespace PreFlightAI.Server.Services
     {
         private readonly HttpClient _clientWeather;
         private readonly IHttpContextAccessor _httpContextAccessor;
+      
 
         public WeatherDataService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
@@ -24,16 +25,28 @@ namespace PreFlightAI.Server.Services
             }
         }
 
-        public async Task<IEnumerable<Weather>> GetForecast()
+        public async Task<IEnumerable<Weather>> GetAllWeatherForDensity()
         {
             return await JsonSerializer.DeserializeAsync<IEnumerable<Weather>>
-                (await _clientWeather.GetStreamAsync($"api/user/forecast"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _clientWeather.GetStreamAsync($"api/weather"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<Weather> GetWeatherDetails(int userId)
+        public async Task<IEnumerable<Weather>> GetAllWeatherForLocation(int locationId)
+        {
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Weather>>
+                (await _clientWeather.GetStreamAsync($"api/weather/{locationId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<IEnumerable<Weather>> GetAllWeatherForLocationInRange(int locationId, TimeSpan timeSpan)
+        {
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Weather>>
+                (await _clientWeather.GetStreamAsync($"api/weather/{locationId}/{timeSpan}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<Weather> GetWeatherDetails(int weatherId)
         {
             return await JsonSerializer.DeserializeAsync<Weather>
-                (await _clientWeather.GetStreamAsync($"api/user/{userId}/weather"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _clientWeather.GetStreamAsync($"api/weather/{weatherId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
         public async Task<Weather> AddWeather(Weather weather)
@@ -41,7 +54,7 @@ namespace PreFlightAI.Server.Services
             var weatherJson =
                 new StringContent(JsonSerializer.Serialize(weather), Encoding.UTF8, "application/json");
 
-            var response = await _clientWeather.PostAsync("api/user/weather", weatherJson);
+            var response = await _clientWeather.PostAsync("api/weather", weatherJson);
 
             if (response.IsSuccessStatusCode)
             {
@@ -56,12 +69,12 @@ namespace PreFlightAI.Server.Services
             var weatherJson =
                 new StringContent(JsonSerializer.Serialize(weather), Encoding.UTF8, "application/json");
 
-            await _clientWeather.PutAsync("api/user/weather", weatherJson);
+            await _clientWeather.PutAsync("api/weather", weatherJson);
         }
 
         public async Task DeleteWeather(int weatherId)
         {
-            await _clientWeather.DeleteAsync($"api/user/{weatherId}");
+            await _clientWeather.DeleteAsync($"api/{weatherId}");
         }
     }
 }
