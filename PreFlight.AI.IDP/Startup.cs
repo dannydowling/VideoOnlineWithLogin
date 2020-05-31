@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PreFlight.AI.IDP;
-using PreFlight.AI.Server.Services.SQL;
+using PreFlight.AI.IDP.Contexts;
 using Serilog;
 using Serilog.Events;
 
@@ -20,18 +20,19 @@ namespace PreFlightAI.IDP
 {
     public class Startup
     {
+        public IWebHostEnvironment Environment { get; }
         public IConfiguration Configuration { get; }
-        public IWebHostEnvironment env { get; }
-        public Startup(IConfiguration configuration)
+
+        public Startup(IWebHostEnvironment environment, IConfiguration configuration)
         {
+            Environment = environment;
             Configuration = configuration;
         }
-               
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+       
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Logging
             var logger = new LoggerConfiguration()
                          .MinimumLevel.Debug()
                          .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -40,20 +41,9 @@ namespace PreFlightAI.IDP
             Log.Logger = logger.CreateLogger();
             Log.Information("server service is started.");
 
-            services.AddDbContext<IDPContext>(options =>
-              options.UseSqlServer(
-                  Configuration.GetConnectionString("IDPConnectionString")));
+            services.AddMvc();
 
-            services.AddDefaultIdentity<IdentityUser>(options => 
-                        options.SignIn.RequireConfirmedAccount = true)
-                        .AddEntityFrameworkStores<IDPContext>();
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
-            
-
-            services.AddControllersWithViews();
-
-            // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
+            // configures IIS out-of-proc settings)
             services.Configure<IISOptions>(iis =>
             {
                 iis.AuthenticationDisplayName = "Windows";
@@ -74,7 +64,7 @@ namespace PreFlightAI.IDP
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
             })
-                .AddTestUsers(TestUsers.Users);
+              .AddTestUsers(TestUsers.Users);
 
             // in-memory, code config
             builder.AddInMemoryIdentityResources(Config.Ids);
@@ -85,7 +75,7 @@ namespace PreFlightAI.IDP
             builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication();
-            services.AddAuthorization();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,16 +86,16 @@ namespace PreFlightAI.IDP
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseIdentityServer();
-            app.UseRouting();
-
-            app.UseAuthorization();
-
             
+            app.UseRouting();
+            app.UseIdentityServer();
+            app.UseAuthorization();            
             
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }

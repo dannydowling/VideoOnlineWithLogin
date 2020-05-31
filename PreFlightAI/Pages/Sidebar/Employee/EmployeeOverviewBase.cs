@@ -3,9 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using PreFlightAI.Server.Services;
-using PreFlight.AI.Server.Pages.SideBar.Employee;
 using PreFlightAI.Shared.Employee;
-
+using PreFlight.AI.Server.Pages.Sidebar.Employee;
 
 namespace PreFlightAI.Server.Pages
 {
