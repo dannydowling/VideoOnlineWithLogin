@@ -25,7 +25,7 @@ namespace PreFlightAI.Api.Models
             return _appDbContext.Employees.FirstOrDefault(c => c.EmployeeId == employeeId);
         }
 
-        public List<Employee> GetEmployeesByLocation(int locationId)
+        public IEnumerable<Employee> GetEmployeesByLocation(int locationId)
         {
             return _appDbContext.Employees.Where(c => c.employeeLocationId == locationId).ToList();
         }

@@ -11,7 +11,7 @@ namespace PreFlightAI.Api.Models
     {
         IEnumerable<Employee> GetAllEmployees();
 
-        IEnumerable<Employee> GetAllEmployeesByLocation(int locationID);
+        IEnumerable<Employee> GetEmployeesByLocation(int locationID);
         Employee GetEmployeeById(int employeeId);
         Employee AddEmployee(Employee employee);
         Employee UpdateEmployee(Employee employee);

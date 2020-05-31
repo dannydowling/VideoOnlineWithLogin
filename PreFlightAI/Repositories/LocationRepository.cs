@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PreFlight.AI.Server.Services.SQL;
-using PreFlightAI.Shared;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlightAI.Api.Models
 {

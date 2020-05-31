@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using PreFlightAI.Shared;
+using PreFlightAI.Shared.Employee;
 
 namespace PreFlightAI.Server.Services
 {
@@ -19,16 +19,16 @@ namespace PreFlightAI.Server.Services
             _clientJobcategory = httpClient ?? throw new System.ArgumentNullException(nameof(httpClient));
             _httpContextAccessor = httpContextAccessor ?? throw new System.ArgumentNullException(nameof(httpContextAccessor));
         }
-        public async Task<IEnumerable<employeeJobCategory>> GetAllJobCategories()
+        public async Task<IEnumerable<JobCategory>> GetAllJobCategories()
         {
-              return await JsonSerializer.DeserializeAsync<IEnumerable<employeeJobCategory>>
+              return await JsonSerializer.DeserializeAsync<IEnumerable<JobCategory>>
                 (await _clientJobcategory.GetStreamAsync($"api/jobcategory"), 
                 new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<employeeJobCategory> GetJobCategoryById(int jobCategoryId)
+        public async Task<JobCategory> GetJobCategoryById(int jobCategoryId)
         {
-            return await JsonSerializer.DeserializeAsync<employeeJobCategory>
+            return await JsonSerializer.DeserializeAsync<JobCategory>
                 (await _clientJobcategory.GetStreamAsync($"api/jobcategory/{jobCategoryId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }

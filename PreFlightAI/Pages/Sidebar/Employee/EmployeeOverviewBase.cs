@@ -24,7 +24,7 @@ namespace PreFlightAI.Server.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            employeeLocations = (await LocationDataService.GetLocationsByEmployeeId(employeeId)).ToList();
+            employeeLocations = (await LocationDataService.GetAllLocations()).ToList();
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
 

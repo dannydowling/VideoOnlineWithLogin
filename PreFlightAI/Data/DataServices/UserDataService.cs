@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using PreFlightAI.Shared;
+using PreFlightAI.Shared.Users;
 using Microsoft.AspNetCore.Http;
 
 namespace PreFlightAI.Server.Services
