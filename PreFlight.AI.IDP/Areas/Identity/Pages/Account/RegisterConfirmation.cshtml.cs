@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.AspNetCore.Identity;
 
-namespace Marvin.IDP.Areas.Identity.Pages.Account
+namespace PreFlight.IDP.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterConfirmationModel : PageModel

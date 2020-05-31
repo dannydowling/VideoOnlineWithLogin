@@ -12,28 +12,26 @@ namespace PreFlight.AI.IDP
 {
     public class Config
     {
-        private readonly Employee employee; //the employee for access credential
-        private readonly typedUser user; //the user for access credential
-
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
-                new IdentityResource("jobcategory", new [] {  "jobCategory"}),
-                new IdentityResource("email", new [] {"email"})
-            };
-
-
+                new IdentityResource("AUTH_Employee", new [] {"Owner", "Senior Manager", "Manager", "IT Lead", "IT Worker" }),
+                new IdentityResource("DEAUTH_Employee", new [] {"Worker"}),
+                new IdentityResource("AUTH_User", new [] {"Verified"}),
+                new IdentityResource("DEAUTH_User", new [] {"Guest", "Visitor"})
+            };        
+   
+        
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                new ApiResource("PreFlight.AI.API",
+                new ApiResource("internalServerCommunication",
                     "Internal Server Communication",
-                    new [] {"".Sha512() //The Api secret key to register the API on OpenID Connect
-                    }
-                    )
+                    new [] {"IT_DANNY".Sha512() //The Api secret key to register the API on OpenID Connect
+                    })
             };
 
         public static IEnumerable<Client> Clients =>
@@ -41,14 +39,29 @@ namespace PreFlight.AI.IDP
             {
                 new Client
                 {
-                    ClientId = "IdentityClient",
-                    ClientName = "PreFlight Mangement",
+                    ClientId = "EmployeeClient",
+                    ClientName = "PreFlight Management",
                     AllowedGrantTypes = GrantTypes.Hybrid,
-                    ClientSecrets = {new Secret("".Sha512())}, //put in the client secret key here
-                    RedirectUris = {"https://localhost:43366/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:43366/signout-callback-oidc"},
+                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here
+                    RedirectUris = {"https://localhost:44301/signin-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
                     AllowOfflineAccess = true,
-                    AllowedScopes = {"openid", "email", "PreFlight.AI.API" }
+                    RequireConsent = false,
+                    AllowedScopes = {"openid", "email", "internalServerCommunication", "AUTH_Employee" }
+
+                },
+
+                new Client
+                {
+                    ClientId = "UserClient",
+                    ClientName = "PreFlight Users",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    ClientSecrets = {new Secret("IT_DANNY".Sha256())}, //put in the client secret key here
+                    RedirectUris = {"https://localhost:44301/signin-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
+                    AllowOfflineAccess = true,
+                    RequireConsent = false,
+                    AllowedScopes = {"openid", "email", "DEAUTH_Employee", "AUTH_User" , "DEAUTH_User" }
 
                 }
             };

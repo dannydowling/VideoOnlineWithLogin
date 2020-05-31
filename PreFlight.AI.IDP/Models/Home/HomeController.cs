@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PreFlight.AI.IDP.Models;
 using System.Threading.Tasks;
 
 namespace IdentityServer4.Quickstart.UI

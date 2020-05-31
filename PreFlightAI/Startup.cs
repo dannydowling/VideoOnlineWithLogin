@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using PreFlightAI.Api.Controllers;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using PreFlight.AI.IDP.Contexts;
 
 namespace PreFlightAI
 {
@@ -43,9 +44,7 @@ namespace PreFlightAI
             Log.Information("server service is started.");
 
             var serverConnectionString = Configuration["ConnectionStrings:ServerDBConnectionString"];
-            services.AddDbContext<ServerDbContext>(o => o.UseSqlServer(serverConnectionString));
-            var iDPConnectionString = Configuration["ConnectionStrings:IDPConnectionString"];
-            services.AddDbContext<IDPContext>(o => o.UseSqlServer(iDPConnectionString));
+            services.AddDbContext<ServerDbContext>(o => o.UseSqlServer(serverConnectionString));           
 
             services.AddControllers();
             services.AddSignalR();
@@ -62,13 +61,13 @@ namespace PreFlightAI
                options =>
                {
                    options.Authority = "https://localhost:44301";
-                   options.ClientId = "Internal Server Communication";
-                   options.ClientSecret = "Key Goes Here";
+                   options.ClientId = "internalServerCommunication";
+                   options.ClientSecret = "IT_DANNY";
                    options.ResponseType = "code id_token";
                    options.Scope.Add("openid");
                    options.Scope.Add("profile");
                    options.Scope.Add("email");
-                   options.Scope.Add("jobCategory");
+                   options.Scope.Add("AUTH_Employee"); //not sure about this..
                    options.Scope.Add("PreFlight.AI.API");
                    options.SaveTokens = true;
                    options.GetClaimsFromUserInfoEndpoint = true;

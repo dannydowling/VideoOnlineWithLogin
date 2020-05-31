@@ -14,14 +14,14 @@ namespace PreFlightAI.IDP
         public static List<TestUser> Users = new List<TestUser>
         {
             new TestUser{
-                SubjectId = "key goes here", Username = "Danny", Password = "password",
+                SubjectId = "Danny", Username = "Danny", Password = "IT_DANNY",
                 Claims =
                 {
                     new Claim(JwtClaimTypes.Name, "Danny Dowling"),
                     new Claim(JwtClaimTypes.GivenName, "Danny"),
                     new Claim(JwtClaimTypes.FamilyName, "Dowling"),
                     new Claim(JwtClaimTypes.Email, "Danny.Dowling@gmail.com"),
-                    new Claim("jobcategory", "Owner")
+                    new Claim("AUTH_Employee", "Owner")
                 }
             }
             

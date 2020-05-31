@@ -1,11 +1,22 @@
-using System;
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-namespace PreFlight.AI.IDP.Models
+
+using IdentityServer4.Models;
+
+namespace IdentityServer4.Quickstart.UI
 {
     public class ErrorViewModel
     {
-        public string RequestId { get; set; }
+        public ErrorViewModel()
+        {
+        }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public ErrorViewModel(string error)
+        {
+            Error = new ErrorMessage { Error = error };
+        }
+
+        public ErrorMessage Error { get; set; }
     }
 }

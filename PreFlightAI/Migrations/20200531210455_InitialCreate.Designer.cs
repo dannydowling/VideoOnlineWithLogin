@@ -10,7 +10,7 @@ using PreFlight.AI.Server.Services.SQL;
 namespace PreFlight.AI.Server.Migrations
 {
     [DbContext(typeof(ServerDbContext))]
-    [Migration("20200531081450_Initial-Create")]
+    [Migration("20200531210455_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

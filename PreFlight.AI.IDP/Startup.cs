@@ -4,17 +4,16 @@
 
 using IdentityServer4;
 using IdentityServer4.Quickstart.UI;
+using PreFlight.AI.IDP;
+using PreFlight.IDP.Areas.Identity.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PreFlight.AI.IDP;
-using PreFlight.AI.IDP.Contexts;
 using Serilog;
 using Serilog.Events;
+
 
 namespace PreFlightAI.IDP
 {
@@ -29,7 +28,7 @@ namespace PreFlightAI.IDP
             Configuration = configuration;
         }
 
-       
+
         public void ConfigureServices(IServiceCollection services)
         {
             //Logging
@@ -75,7 +74,7 @@ namespace PreFlightAI.IDP
             builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,16 +85,17 @@ namespace PreFlightAI.IDP
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            
+
             app.UseRouting();
             app.UseIdentityServer();
-            app.UseAuthorization();            
-            
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
+                //endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

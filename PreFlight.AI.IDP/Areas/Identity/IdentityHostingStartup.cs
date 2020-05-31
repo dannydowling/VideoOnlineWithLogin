@@ -19,13 +19,13 @@ namespace PreFlight.AI.IDP.Areas.Identity
                 builder.ConfigureServices((context, services) => {
                     services.AddDbContext<IDPContext>(options =>
                         options.UseSqlServer(
-                            context.Configuration.GetConnectionString("UserDbContextConnection")));
+                            context.Configuration.GetConnectionString("IDPContextConnection")));
 
                     //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     //    .AddEntityFrameworkStores<UserDbContext>();
 
                     services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-                    options.SignIn.RequireConfirmedAccount = true)
+                            options.SignIn.RequireConfirmedAccount = true)
                            .AddEntityFrameworkStores<IDPContext>()
                            .AddDefaultTokenProviders();
 
