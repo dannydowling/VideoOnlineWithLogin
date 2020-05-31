@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PreFlight.AI.Server.Services.SQL;
-using PreFlightAI.Shared;
-using PreFlightAI.Shared.Employee;
+using PreFlightAI.Shared.Things;
 
 namespace PreFlightAI.Api.Models
 {
     public class JobCategoryRepository: IJobCategoryRepository
     {
-        private readonly IDPContext _appDbContext;
+        private readonly ServerDbContext _appDbContext;
 
-        public JobCategoryRepository(IDPContext appDbContext)
+        public JobCategoryRepository(ServerDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

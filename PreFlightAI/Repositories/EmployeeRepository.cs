@@ -8,9 +8,9 @@ namespace PreFlightAI.Api.Models
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly IDPContext _appDbContext;
+        private readonly ServerDbContext _appDbContext;
 
-        public EmployeeRepository(IDPContext appDbContext)
+        public EmployeeRepository(ServerDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
@@ -27,7 +27,7 @@ namespace PreFlightAI.Api.Models
 
         public IEnumerable<Employee> GetEmployeesByLocation(int locationId)
         {
-            return _appDbContext.Employees.Where(c => c.employeeLocationId == locationId).ToList();
+            return _appDbContext.Employees.Where(c => c.LocationId == locationId).ToList();
         }
 
         public Employee AddEmployee(Employee employee)
@@ -43,7 +43,7 @@ namespace PreFlightAI.Api.Models
 
             if (foundEmployee != null)
             {
-                foundEmployee.employeeLocationId = employee.employeeLocationId;
+                foundEmployee.LocationId = employee.LocationId;
                 foundEmployee.BirthDate = employee.BirthDate;
                 foundEmployee.City = employee.City;
                 foundEmployee.Email = employee.Email;
@@ -52,7 +52,7 @@ namespace PreFlightAI.Api.Models
                 foundEmployee.PhoneNumber = employee.PhoneNumber;
                 foundEmployee.Street = employee.Street;
                 foundEmployee.Zip = employee.Zip;
-                foundEmployee.employeeJobCategoryId = employee.employeeJobCategoryId;
+                foundEmployee.JobCategoryId = employee.JobCategoryId;
                 foundEmployee.Comment = employee.Comment;
                 foundEmployee.ExitDate = employee.ExitDate;
                 foundEmployee.JoinedDate = employee.JoinedDate;

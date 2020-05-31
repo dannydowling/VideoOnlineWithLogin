@@ -7,9 +7,9 @@ namespace PreFlightAI.Api.Models
 {
     public class UserRepository : IUserRepository
     {
-        private readonly IDPContext _appDbContext;
+        private readonly ServerDbContext _appDbContext;
 
-        public UserRepository(IDPContext appDbContext)
+        public UserRepository(ServerDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

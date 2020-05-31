@@ -6,7 +6,7 @@ using PreFlightAI.Shared;
 using PreFlightAI.Server.Services;
 using PreFlightAI.Shared.Employee;
 using PreFlightAI.Shared.Places;
-
+using PreFlightAI.Shared.Things;
 
 namespace PreFlightAI.Server.Pages
 {
@@ -20,11 +20,11 @@ namespace PreFlightAI.Server.Pages
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
         public Employee Employee { get; set; } = new Employee 
-        { EmployeeId = 0, employeeLocationId = 1, employeeJobCategoryId = 1};
+        { EmployeeId = 0, LocationId = 1, JobCategoryId = 1};
 
         [Inject]
         public IJobCategoryDataService JobCategoryDataService { get; set; }
-        public List<JobCategory> JobCategories { get; set; } = new List<JobCategory>();
+        public List<Shared.Things.JobCategory> JobCategories { get; set; } = new List<Shared.Things.JobCategory>();
         internal int JobCategoryId = 0;
 
 
@@ -43,7 +43,7 @@ namespace PreFlightAI.Server.Pages
 
         private void ResetDialog()
         {
-            Employee = new Employee { EmployeeId = 0, employeeLocationId = 1, employeeJobCategoryId = 1};
+            Employee = new Employee { EmployeeId = 0, LocationId = 1, JobCategoryId = 1};
         }
 
         public void Close()

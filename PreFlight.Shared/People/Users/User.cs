@@ -25,13 +25,15 @@ namespace PreFlightAI.Shared.Users
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]
         public string Comment { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        [Range(0, 99999)]
+        private int _rowVersion;
+        public int RowVersion
+        {
+            get { return _rowVersion; }
+            set { _rowVersion = value++; }
+        }
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
-
-        public int gameId { get; set; }
-        public GameOffering Game { get; set; } // 2truths1lie game currently set for this user.
 
         [DataType(DataType.Password)]
         public string Password { get; set; }

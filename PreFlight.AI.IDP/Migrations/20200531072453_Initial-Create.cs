@@ -47,47 +47,6 @@ namespace PreFlight.AI.IDP.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GameOffering",
-                columns: table => new
-                {
-                    gameId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstTruth = table.Column<string>(maxLength: 150, nullable: true),
-                    SecondTruth = table.Column<string>(maxLength: 150, nullable: true),
-                    Lie = table.Column<string>(maxLength: 150, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GameOffering", x => x.gameId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JobCategories",
-                columns: table => new
-                {
-                    JobCategoryId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JobCategoryName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JobCategories", x => x.JobCategoryId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Location",
-                columns: table => new
-                {
-                    LocationId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Location", x => x.LocationId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -193,98 +152,6 @@ namespace PreFlight.AI.IDP.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "typedUsers",
-                columns: table => new
-                {
-                    userId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Comment = table.Column<string>(maxLength: 1000, nullable: true),
-                    RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    JoinedDate = table.Column<DateTime>(nullable: true),
-                    ExitDate = table.Column<DateTime>(nullable: true),
-                    gameId = table.Column<int>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_typedUsers", x => x.userId);
-                    table.ForeignKey(
-                        name: "FK_typedUsers_GameOffering_gameId",
-                        column: x => x.gameId,
-                        principalTable: "GameOffering",
-                        principalColumn: "gameId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    EmployeeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(maxLength: 50, nullable: false),
-                    BirthDate = table.Column<DateTime>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Street = table.Column<string>(nullable: true),
-                    Zip = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    LocationId = table.Column<int>(nullable: false),
-                    JobCategoryId = table.Column<int>(nullable: false),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    Comment = table.Column<string>(maxLength: 1000, nullable: true),
-                    JoinedDate = table.Column<DateTime>(nullable: true),
-                    ExitDate = table.Column<DateTime>(nullable: true),
-                    RowVersion = table.Column<int>(nullable: false),
-                    Password = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.EmployeeId);
-                    table.ForeignKey(
-                        name: "FK_Employees_JobCategories_JobCategoryId",
-                        column: x => x.JobCategoryId,
-                        principalTable: "JobCategories",
-                        principalColumn: "JobCategoryId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Employees_Location_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "Location",
-                        principalColumn: "LocationId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "JobCategories",
-                columns: new[] { "JobCategoryId", "JobCategoryName" },
-                values: new object[,]
-                {
-                    { 1, "Guest" },
-                    { 2, "Visitor" },
-                    { 3, "Verified" },
-                    { 4, "Worker" },
-                    { 5, "IT Worker" },
-                    { 6, "IT Lead" },
-                    { 7, "Manager" },
-                    { 8, "Senior Manager" },
-                    { 9, "Owner" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "typedUsers",
-                columns: new[] { "userId", "Comment", "Email", "ExitDate", "FirstName", "JoinedDate", "LastName", "Password", "gameId" },
-                values: new object[] { 1, "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", "password", null });
-
-            migrationBuilder.InsertData(
-                table: "Employees",
-                columns: new[] { "EmployeeId", "BirthDate", "City", "Comment", "Email", "ExitDate", "FirstName", "JobCategoryId", "JoinedDate", "LastName", "LocationId", "Password", "PhoneNumber", "RowVersion", "Street", "Zip" },
-                values: new object[] { 1, new DateTime(1988, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Juneau", "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", 9, new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", 4, "Password", "324777888773", 0, "1 Grimoire Place", "99801" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -323,21 +190,6 @@ namespace PreFlight.AI.IDP.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Employees_JobCategoryId",
-                table: "Employees",
-                column: "JobCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Employees_LocationId",
-                table: "Employees",
-                column: "LocationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_typedUsers_gameId",
-                table: "typedUsers",
-                column: "gameId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -358,25 +210,10 @@ namespace PreFlight.AI.IDP.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Employees");
-
-            migrationBuilder.DropTable(
-                name: "typedUsers");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "JobCategories");
-
-            migrationBuilder.DropTable(
-                name: "Location");
-
-            migrationBuilder.DropTable(
-                name: "GameOffering");
         }
     }
 }

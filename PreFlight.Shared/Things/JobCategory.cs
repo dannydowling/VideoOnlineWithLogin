@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace PreFlightAI.Shared.Employee
+namespace PreFlightAI.Shared.Things
 {
-    public class EmployeeJobCategory
+    public class JobCategory
     {
-        [ForeignKey("JobCategoryId")]
+        [Key]
         public int JobCategoryId { get; set; }
         public string JobCategoryName { get; set; }
 

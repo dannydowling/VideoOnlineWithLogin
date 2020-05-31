@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using PreFlightAI.Shared;
-using PreFlightAI.Shared.Employee;
+using PreFlightAI.Shared.Things;
 
 namespace PreFlightAI.Server.Services
 {
