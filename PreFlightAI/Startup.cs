@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using PreFlightAI.Api.Controllers;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace PreFlightAI
 {
@@ -48,6 +49,8 @@ namespace PreFlightAI
 
             services.AddControllers();
             services.AddSignalR();
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             services.AddAuthentication(options =>
             {

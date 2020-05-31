@@ -750,3 +750,1045 @@ The statement has been terminated.
 ClientConnectionId:bcea4743-517f-46fb-84a8-eba63cff2a16
 Error Number:547,State:0,Class:16
 2020-05-30 23:02:34.023 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-30 23:04:12.890 -08:00 [INF] server service is started.
+2020-05-30 23:04:13.745 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-30 23:04:14.021 -08:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:04:14.046 -08:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:04:14.048 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:04:14.049 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:04:14.054 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-30 23:04:14.085 -08:00 [INF] Applying migration '20200528014805_InitialCreate'.
+2020-05-30 23:04:14.166 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2020-05-30 23:04:14.167 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2020-05-30 23:04:14.167 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [GameOffering] (
+    [gameId] int NOT NULL IDENTITY,
+    [FirstTruth] nvarchar(150) NULL,
+    [SecondTruth] nvarchar(150) NULL,
+    [Lie] nvarchar(150) NULL,
+    CONSTRAINT [PK_GameOffering] PRIMARY KEY ([gameId])
+);
+2020-05-30 23:04:14.168 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategories] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategories] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-30 23:04:14.169 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Location] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY ([LocationId])
+);
+2020-05-30 23:04:14.170 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:04:14.171 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:04:14.174 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:04:14.176 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:04:14.177 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:04:14.178 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [typedUsers] (
+    [userId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Comment] nvarchar(1000) NULL,
+    [RowVersion] rowversion NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [gameId] int NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_typedUsers] PRIMARY KEY ([userId]),
+    CONSTRAINT [FK_typedUsers_GameOffering_gameId] FOREIGN KEY ([gameId]) REFERENCES [GameOffering] ([gameId]) ON DELETE NO ACTION
+);
+2020-05-30 23:04:14.180 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [EmployeeId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [BirthDate] datetime2 NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Street] nvarchar(max) NULL,
+    [Zip] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [LocationId] int NOT NULL,
+    [JobCategoryId] int NOT NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Comment] nvarchar(1000) NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [RowVersion] int NOT NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId]),
+    CONSTRAINT [FK_Employees_JobCategories_JobCategoryId] FOREIGN KEY ([JobCategoryId]) REFERENCES [JobCategories] ([JobCategoryId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Employees_Location_LocationId] FOREIGN KEY ([LocationId]) REFERENCES [Location] ([LocationId]) ON DELETE CASCADE
+);
+2020-05-30 23:04:14.187 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] ON;
+INSERT INTO [JobCategories] ([JobCategoryId], [JobCategoryName])
+VALUES (1, N'Guest'),
+(2, N'Visitor'),
+(3, N'Verified'),
+(4, N'Worker'),
+(5, N'IT Worker'),
+(6, N'IT Lead'),
+(7, N'Manager'),
+(8, N'Senior Manager'),
+(9, N'Owner');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] OFF;
+2020-05-30 23:04:14.196 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] ON;
+INSERT INTO [typedUsers] ([userId], [Comment], [Email], [ExitDate], [FirstName], [JoinedDate], [LastName], [Password], [gameId])
+VALUES (1, N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', '2019-03-01T00:00:00.0000000', N'Dowling', N'password', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] OFF;
+2020-05-30 23:04:14.205 -08:00 [ERR] Failed executing DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] ON;
+INSERT INTO [Employees] ([EmployeeId], [BirthDate], [City], [Comment], [Email], [ExitDate], [FirstName], [JobCategoryId], [JoinedDate], [LastName], [LocationId], [Password], [PhoneNumber], [RowVersion], [Street], [Zip])
+VALUES (1, '1988-01-01T00:00:00.0000000', N'Juneau', N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', 9, '2020-05-01T00:00:00.0000000', N'Dowling', 4, N'Password', N'324777888773', 0, N'1 Grimoire Place', N'99801');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] OFF;
+2020-05-30 23:04:14.233 -08:00 [ERR] An error occurred while migrating the database.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Employees_Location_LocationId". The conflict occurred in database "PreFlightAI.IDP", table "dbo.Location", column 'LocationId'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at PreFlightAI.Program.Main(String[] args) in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Program.cs:line 37
+ClientConnectionId:916725b5-037a-4d11-9304-f567c3764753
+Error Number:547,State:0,Class:16
+2020-05-30 23:04:14.287 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-30 23:08:19.599 -08:00 [INF] server service is started.
+2020-05-30 23:08:20.562 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-30 23:08:20.852 -08:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:08:20.878 -08:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:08:20.880 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:08:20.881 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:08:20.888 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-30 23:08:20.917 -08:00 [INF] Applying migration '20200528014805_InitialCreate'.
+2020-05-30 23:08:20.993 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2020-05-30 23:08:20.994 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2020-05-30 23:08:20.995 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [GameOffering] (
+    [gameId] int NOT NULL IDENTITY,
+    [FirstTruth] nvarchar(150) NULL,
+    [SecondTruth] nvarchar(150) NULL,
+    [Lie] nvarchar(150) NULL,
+    CONSTRAINT [PK_GameOffering] PRIMARY KEY ([gameId])
+);
+2020-05-30 23:08:20.995 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategories] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategories] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-30 23:08:20.996 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Location] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY ([LocationId])
+);
+2020-05-30 23:08:20.997 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:20.999 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:21.001 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:21.003 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:21.005 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:21.006 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [typedUsers] (
+    [userId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Comment] nvarchar(1000) NULL,
+    [RowVersion] rowversion NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [gameId] int NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_typedUsers] PRIMARY KEY ([userId]),
+    CONSTRAINT [FK_typedUsers_GameOffering_gameId] FOREIGN KEY ([gameId]) REFERENCES [GameOffering] ([gameId]) ON DELETE NO ACTION
+);
+2020-05-30 23:08:21.008 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [EmployeeId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [BirthDate] datetime2 NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Street] nvarchar(max) NULL,
+    [Zip] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [LocationId] int NOT NULL,
+    [JobCategoryId] int NOT NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Comment] nvarchar(1000) NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [RowVersion] int NOT NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId]),
+    CONSTRAINT [FK_Employees_JobCategories_JobCategoryId] FOREIGN KEY ([JobCategoryId]) REFERENCES [JobCategories] ([JobCategoryId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Employees_Location_LocationId] FOREIGN KEY ([LocationId]) REFERENCES [Location] ([LocationId]) ON DELETE CASCADE
+);
+2020-05-30 23:08:21.016 -08:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] ON;
+INSERT INTO [JobCategories] ([JobCategoryId], [JobCategoryName])
+VALUES (1, N'Guest'),
+(2, N'Visitor'),
+(3, N'Verified'),
+(4, N'Worker'),
+(5, N'IT Worker'),
+(6, N'IT Lead'),
+(7, N'Manager'),
+(8, N'Senior Manager'),
+(9, N'Owner');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] OFF;
+2020-05-30 23:08:21.022 -08:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] ON;
+INSERT INTO [typedUsers] ([userId], [Comment], [Email], [ExitDate], [FirstName], [JoinedDate], [LastName], [Password], [gameId])
+VALUES (1, N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', '2019-03-01T00:00:00.0000000', N'Dowling', N'password', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] OFF;
+2020-05-30 23:08:21.032 -08:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] ON;
+INSERT INTO [Employees] ([EmployeeId], [BirthDate], [City], [Comment], [Email], [ExitDate], [FirstName], [JobCategoryId], [JoinedDate], [LastName], [LocationId], [Password], [PhoneNumber], [RowVersion], [Street], [Zip])
+VALUES (1, '1988-01-01T00:00:00.0000000', N'Juneau', N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', 9, '2020-05-01T00:00:00.0000000', N'Dowling', 4, N'Password', N'324777888773', 0, N'1 Grimoire Place', N'99801');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] OFF;
+2020-05-30 23:08:21.061 -08:00 [ERR] An error occurred while migrating the database.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Employees_Location_LocationId". The conflict occurred in database "PreFlightAI.IDP", table "dbo.Location", column 'LocationId'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at PreFlightAI.Program.Main(String[] args) in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Program.cs:line 37
+ClientConnectionId:429f86c8-3328-427d-beb8-7852afacc361
+Error Number:547,State:0,Class:16
+2020-05-30 23:08:21.123 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-30 23:08:57.519 -08:00 [INF] server service is started.
+2020-05-30 23:08:58.451 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-30 23:08:58.739 -08:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:08:58.764 -08:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:08:58.766 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:08:58.767 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:08:58.773 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-30 23:08:58.807 -08:00 [INF] Applying migration '20200528014805_InitialCreate'.
+2020-05-30 23:08:58.886 -08:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2020-05-30 23:08:58.887 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2020-05-30 23:08:58.888 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [GameOffering] (
+    [gameId] int NOT NULL IDENTITY,
+    [FirstTruth] nvarchar(150) NULL,
+    [SecondTruth] nvarchar(150) NULL,
+    [Lie] nvarchar(150) NULL,
+    CONSTRAINT [PK_GameOffering] PRIMARY KEY ([gameId])
+);
+2020-05-30 23:08:58.889 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategories] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategories] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-30 23:08:58.890 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Location] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY ([LocationId])
+);
+2020-05-30 23:08:58.891 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:58.892 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:58.895 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:58.896 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:58.897 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:08:58.898 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [typedUsers] (
+    [userId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Comment] nvarchar(1000) NULL,
+    [RowVersion] rowversion NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [gameId] int NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_typedUsers] PRIMARY KEY ([userId]),
+    CONSTRAINT [FK_typedUsers_GameOffering_gameId] FOREIGN KEY ([gameId]) REFERENCES [GameOffering] ([gameId]) ON DELETE NO ACTION
+);
+2020-05-30 23:08:58.899 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [EmployeeId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [BirthDate] datetime2 NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Street] nvarchar(max) NULL,
+    [Zip] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [LocationId] int NOT NULL,
+    [JobCategoryId] int NOT NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Comment] nvarchar(1000) NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [RowVersion] int NOT NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId]),
+    CONSTRAINT [FK_Employees_JobCategories_JobCategoryId] FOREIGN KEY ([JobCategoryId]) REFERENCES [JobCategories] ([JobCategoryId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Employees_Location_LocationId] FOREIGN KEY ([LocationId]) REFERENCES [Location] ([LocationId]) ON DELETE CASCADE
+);
+2020-05-30 23:08:58.907 -08:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] ON;
+INSERT INTO [JobCategories] ([JobCategoryId], [JobCategoryName])
+VALUES (1, N'Guest'),
+(2, N'Visitor'),
+(3, N'Verified'),
+(4, N'Worker'),
+(5, N'IT Worker'),
+(6, N'IT Lead'),
+(7, N'Manager'),
+(8, N'Senior Manager'),
+(9, N'Owner');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] OFF;
+2020-05-30 23:08:58.912 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] ON;
+INSERT INTO [typedUsers] ([userId], [Comment], [Email], [ExitDate], [FirstName], [JoinedDate], [LastName], [Password], [gameId])
+VALUES (1, N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', '2019-03-01T00:00:00.0000000', N'Dowling', N'password', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] OFF;
+2020-05-30 23:08:58.922 -08:00 [ERR] Failed executing DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] ON;
+INSERT INTO [Employees] ([EmployeeId], [BirthDate], [City], [Comment], [Email], [ExitDate], [FirstName], [JobCategoryId], [JoinedDate], [LastName], [LocationId], [Password], [PhoneNumber], [RowVersion], [Street], [Zip])
+VALUES (1, '1988-01-01T00:00:00.0000000', N'Juneau', N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', 9, '2020-05-01T00:00:00.0000000', N'Dowling', 4, N'Password', N'324777888773', 0, N'1 Grimoire Place', N'99801');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] OFF;
+2020-05-30 23:08:58.949 -08:00 [ERR] An error occurred while migrating the database.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Employees_Location_LocationId". The conflict occurred in database "PreFlightAI.IDP", table "dbo.Location", column 'LocationId'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at PreFlightAI.Program.Main(String[] args) in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Program.cs:line 37
+ClientConnectionId:52f0d8f6-872c-46d8-84b8-99978866bd3e
+Error Number:547,State:0,Class:16
+2020-05-30 23:08:59.008 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-30 23:09:29.198 -08:00 [INF] server service is started.
+2020-05-30 23:09:30.119 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'IDPContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-05-30 23:09:30.409 -08:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:09:30.436 -08:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:09:30.438 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-05-30 23:09:30.439 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-05-30 23:09:30.445 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-05-30 23:09:30.477 -08:00 [INF] Applying migration '20200528014805_InitialCreate'.
+2020-05-30 23:09:30.571 -08:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2020-05-30 23:09:30.573 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2020-05-30 23:09:30.574 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [GameOffering] (
+    [gameId] int NOT NULL IDENTITY,
+    [FirstTruth] nvarchar(150) NULL,
+    [SecondTruth] nvarchar(150) NULL,
+    [Lie] nvarchar(150) NULL,
+    CONSTRAINT [PK_GameOffering] PRIMARY KEY ([gameId])
+);
+2020-05-30 23:09:30.575 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [JobCategories] (
+    [JobCategoryId] int NOT NULL IDENTITY,
+    [JobCategoryName] nvarchar(max) NULL,
+    CONSTRAINT [PK_JobCategories] PRIMARY KEY ([JobCategoryId])
+);
+2020-05-30 23:09:30.576 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Location] (
+    [LocationId] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY ([LocationId])
+);
+2020-05-30 23:09:30.577 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:09:30.579 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:09:30.582 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:09:30.583 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:09:30.585 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2020-05-30 23:09:30.587 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [typedUsers] (
+    [userId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Comment] nvarchar(1000) NULL,
+    [RowVersion] rowversion NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [gameId] int NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_typedUsers] PRIMARY KEY ([userId]),
+    CONSTRAINT [FK_typedUsers_GameOffering_gameId] FOREIGN KEY ([gameId]) REFERENCES [GameOffering] ([gameId]) ON DELETE NO ACTION
+);
+2020-05-30 23:09:30.589 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Employees] (
+    [EmployeeId] int NOT NULL IDENTITY,
+    [FirstName] nvarchar(50) NOT NULL,
+    [LastName] nvarchar(50) NOT NULL,
+    [BirthDate] datetime2 NOT NULL,
+    [Email] nvarchar(max) NOT NULL,
+    [Street] nvarchar(max) NULL,
+    [Zip] nvarchar(max) NULL,
+    [City] nvarchar(max) NULL,
+    [LocationId] int NOT NULL,
+    [JobCategoryId] int NOT NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [Comment] nvarchar(1000) NULL,
+    [JoinedDate] datetime2 NULL,
+    [ExitDate] datetime2 NULL,
+    [RowVersion] int NOT NULL,
+    [Password] nvarchar(max) NULL,
+    CONSTRAINT [PK_Employees] PRIMARY KEY ([EmployeeId]),
+    CONSTRAINT [FK_Employees_JobCategories_JobCategoryId] FOREIGN KEY ([JobCategoryId]) REFERENCES [JobCategories] ([JobCategoryId]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Employees_Location_LocationId] FOREIGN KEY ([LocationId]) REFERENCES [Location] ([LocationId]) ON DELETE CASCADE
+);
+2020-05-30 23:09:30.606 -08:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] ON;
+INSERT INTO [JobCategories] ([JobCategoryId], [JobCategoryName])
+VALUES (1, N'Guest'),
+(2, N'Visitor'),
+(3, N'Verified'),
+(4, N'Worker'),
+(5, N'IT Worker'),
+(6, N'IT Lead'),
+(7, N'Manager'),
+(8, N'Senior Manager'),
+(9, N'Owner');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'JobCategoryId', N'JobCategoryName') AND [object_id] = OBJECT_ID(N'[JobCategories]'))
+    SET IDENTITY_INSERT [JobCategories] OFF;
+2020-05-30 23:09:30.612 -08:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] ON;
+INSERT INTO [typedUsers] ([userId], [Comment], [Email], [ExitDate], [FirstName], [JoinedDate], [LastName], [Password], [gameId])
+VALUES (1, N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', '2019-03-01T00:00:00.0000000', N'Dowling', N'password', NULL);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'userId', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JoinedDate', N'LastName', N'Password', N'gameId') AND [object_id] = OBJECT_ID(N'[typedUsers]'))
+    SET IDENTITY_INSERT [typedUsers] OFF;
+2020-05-30 23:09:30.622 -08:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] ON;
+INSERT INTO [Employees] ([EmployeeId], [BirthDate], [City], [Comment], [Email], [ExitDate], [FirstName], [JobCategoryId], [JoinedDate], [LastName], [LocationId], [Password], [PhoneNumber], [RowVersion], [Street], [Zip])
+VALUES (1, '1988-01-01T00:00:00.0000000', N'Juneau', N'Using Fake Address and Phone number here', N'danny.dowling@gmail.com', NULL, N'Danny', 9, '2020-05-01T00:00:00.0000000', N'Dowling', 4, N'Password', N'324777888773', 0, N'1 Grimoire Place', N'99801');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'EmployeeId', N'BirthDate', N'City', N'Comment', N'Email', N'ExitDate', N'FirstName', N'JobCategoryId', N'JoinedDate', N'LastName', N'LocationId', N'Password', N'PhoneNumber', N'RowVersion', N'Street', N'Zip') AND [object_id] = OBJECT_ID(N'[Employees]'))
+    SET IDENTITY_INSERT [Employees] OFF;
+2020-05-30 23:09:30.650 -08:00 [ERR] An error occurred while migrating the database.
+Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Employees_Location_LocationId". The conflict occurred in database "PreFlightAI.IDP", table "dbo.Location", column 'LocationId'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean isAsync, Int32 timeout, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQuery(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at PreFlightAI.Program.Main(String[] args) in C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\Program.cs:line 37
+ClientConnectionId:46e009a2-e51e-4bab-abc2-066b8b8ccc42
+Error Number:547,State:0,Class:16
+2020-05-30 23:09:30.711 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-05-30 23:09:31.003 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-05-30 23:09:31.003 -08:00 [INF] Hosting environment: Development
+2020-05-30 23:09:31.003 -08:00 [INF] Content root path: C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI
+2020-05-30 23:09:31.040 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/  
+2020-05-30 23:09:31.309 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:31.350 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:31.360 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:31.360 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:31.466 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:31.498 -08:00 [INF] Executed page /_Host in 144.6649ms
+2020-05-30 23:09:31.499 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:31.501 -08:00 [INF] Request finished in 463.1001ms 200 text/html; charset=utf-8
+2020-05-30 23:09:31.525 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:31.525 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:31.533 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:31.538 -08:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\site.css'
+2020-05-30 23:09:31.538 -08:00 [INF] Request finished in 13.1825ms 200 text/css
+2020-05-30 23:09:31.551 -08:00 [INF] Sending file. Request path: '/css/bootstrap/bootstrap.min.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\bootstrap\bootstrap.min.css'
+2020-05-30 23:09:31.554 -08:00 [INF] Sending file. Request path: '/_framework/blazor.server.js'. Physical path: 'N/A'
+2020-05-30 23:09:31.557 -08:00 [INF] Request finished in 31.6894ms 200 text/css
+2020-05-30 23:09:31.557 -08:00 [INF] Request finished in 23.5565ms 200 application/javascript
+2020-05-30 23:09:31.593 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:31.593 -08:00 [INF] Sending file. Request path: '/css/open-iconic/font/css/open-iconic-bootstrap.min.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css'
+2020-05-30 23:09:31.593 -08:00 [INF] Request finished in 0.8209ms 200 text/css
+2020-05-30 23:09:31.615 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:31.621 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:31.628 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:31.628 -08:00 [INF] Request finished in 13.0052ms 200 application/json
+2020-05-30 23:09:31.652 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=mtUu-kCv90ELKwaRd8FtIg  
+2020-05-30 23:09:31.654 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/favicon.ico  
+2020-05-30 23:09:31.656 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:31.664 -08:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\favicon.ico'
+2020-05-30 23:09:31.665 -08:00 [INF] Request finished in 11.032ms 200 image/x-icon
+2020-05-30 23:09:31.738 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:33.885 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-05-30 23:09:33.885 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:33.886 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:33.886 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:33.886 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:33.889 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:33.890 -08:00 [INF] Executed page /_Host in 4.4584ms
+2020-05-30 23:09:33.890 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:33.890 -08:00 [INF] Request finished in 5.7228ms 200 text/html; charset=utf-8
+2020-05-30 23:09:33.900 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryNR6Ah982QFcBTWu9 359
+2020-05-30 23:09:33.901 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:33.907 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:33.907 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:33.907 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:33.910 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:33.910 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:33.910 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:33.911 -08:00 [INF] Request finished in 3.5756ms 304 text/css
+2020-05-30 23:09:33.911 -08:00 [INF] Request finished in 3.5756ms 304 text/css
+2020-05-30 23:09:33.911 -08:00 [INF] Request finished in 3.5647ms 304 application/javascript
+2020-05-30 23:09:33.916 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:33.917 -08:00 [INF] Request finished in 2264.7478ms 101 
+2020-05-30 23:09:33.917 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:33.917 -08:00 [INF] Request finished in 17.2564ms 200 
+2020-05-30 23:09:33.932 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:33.932 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:33.933 -08:00 [INF] Request finished in 0.5418ms 304 text/css
+2020-05-30 23:09:33.939 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:33.939 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:33.940 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:33.940 -08:00 [INF] Request finished in 0.6275ms 200 application/json
+2020-05-30 23:09:33.949 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=BWSPFj-qEqeWoHoYndyNDA  
+2020-05-30 23:09:33.950 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:33.960 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:36.149 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-05-30 23:09:36.151 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:36.151 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:36.152 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:36.152 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:36.156 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:36.158 -08:00 [INF] Executed page /_Host in 6.3765ms
+2020-05-30 23:09:36.158 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:36.158 -08:00 [INF] Request finished in 8.9617ms 200 text/html; charset=utf-8
+2020-05-30 23:09:36.166 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryN9Vqu2GlWMmNbwnG 359
+2020-05-30 23:09:36.167 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:36.167 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:36.167 -08:00 [INF] Request finished in 2218.2392ms 101 
+2020-05-30 23:09:36.168 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:36.168 -08:00 [INF] Request finished in 2.0695ms 200 
+2020-05-30 23:09:36.174 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:36.174 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:36.175 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:36.175 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:36.175 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:36.175 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:36.175 -08:00 [INF] Request finished in 0.4809ms 304 application/javascript
+2020-05-30 23:09:36.175 -08:00 [INF] Request finished in 0.4826ms 304 text/css
+2020-05-30 23:09:36.175 -08:00 [INF] Request finished in 0.6256ms 304 text/css
+2020-05-30 23:09:36.198 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:36.198 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:36.198 -08:00 [INF] Request finished in 0.3239ms 304 text/css
+2020-05-30 23:09:36.203 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:36.203 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:36.203 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:36.203 -08:00 [INF] Request finished in 0.6815ms 200 application/json
+2020-05-30 23:09:36.210 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=ig54tc2vHALvGrsZMpz7Ag  
+2020-05-30 23:09:36.210 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:36.219 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:37.445 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Register  
+2020-05-30 23:09:37.446 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:37.447 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:37.447 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:37.447 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:37.449 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:37.450 -08:00 [INF] Executed page /_Host in 3.1123ms
+2020-05-30 23:09:37.450 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:37.450 -08:00 [INF] Request finished in 4.9734ms 200 text/html; charset=utf-8
+2020-05-30 23:09:37.460 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryDF0epRwepF3SGUh3 359
+2020-05-30 23:09:37.463 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:37.464 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:37.464 -08:00 [INF] Request finished in 1254.4959ms 101 
+2020-05-30 23:09:37.464 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:37.465 -08:00 [INF] Request finished in 5.3328ms 200 
+2020-05-30 23:09:37.475 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:37.475 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:37.475 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:37.476 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:37.476 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:37.476 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:37.476 -08:00 [INF] Request finished in 0.6892ms 304 text/css
+2020-05-30 23:09:37.476 -08:00 [INF] Request finished in 0.6538ms 304 application/javascript
+2020-05-30 23:09:37.476 -08:00 [INF] Request finished in 0.7439ms 304 text/css
+2020-05-30 23:09:37.499 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:37.499 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:37.499 -08:00 [INF] Request finished in 0.37ms 304 text/css
+2020-05-30 23:09:37.505 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:37.505 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:37.505 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:37.505 -08:00 [INF] Request finished in 0.6423ms 200 application/json
+2020-05-30 23:09:37.511 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=RJVTLj1nItY1RsnWcCuNmg  
+2020-05-30 23:09:37.511 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:37.522 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:38.902 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-05-30 23:09:38.903 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:38.903 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:38.904 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:38.904 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:38.906 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:38.907 -08:00 [INF] Executed page /_Host in 3.8179ms
+2020-05-30 23:09:38.908 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:38.908 -08:00 [INF] Request finished in 6.2333ms 200 text/html; charset=utf-8
+2020-05-30 23:09:38.914 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:38.914 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundary7duT8TLxKBe8uh6B 359
+2020-05-30 23:09:38.914 -08:00 [INF] Request finished in 1403.0768ms 101 
+2020-05-30 23:09:38.915 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:38.916 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:38.916 -08:00 [INF] Request finished in 2.5216ms 200 
+2020-05-30 23:09:38.927 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:38.927 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:38.927 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:38.928 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:38.928 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:38.928 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:38.928 -08:00 [INF] Request finished in 2.0448ms 304 text/css
+2020-05-30 23:09:38.928 -08:00 [INF] Request finished in 1.7311ms 304 text/css
+2020-05-30 23:09:38.928 -08:00 [INF] Request finished in 1.7931ms 304 application/javascript
+2020-05-30 23:09:38.952 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:38.953 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:38.953 -08:00 [INF] Request finished in 0.8919ms 304 text/css
+2020-05-30 23:09:38.960 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:38.960 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:38.961 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:38.961 -08:00 [INF] Request finished in 1.2846ms 200 application/json
+2020-05-30 23:09:38.968 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=obSgEpYttPWhFN3okl1DbA  
+2020-05-30 23:09:38.969 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:38.982 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:43.001 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Register  
+2020-05-30 23:09:43.001 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:43.001 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:43.002 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:43.002 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:43.003 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:43.004 -08:00 [INF] Executed page /_Host in 2.4131ms
+2020-05-30 23:09:43.004 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:43.004 -08:00 [INF] Request finished in 3.5034ms 200 text/html; charset=utf-8
+2020-05-30 23:09:43.011 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryYYS5SAMo4gUzdIkH 359
+2020-05-30 23:09:43.011 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:43.011 -08:00 [INF] Request finished in 4043.0305ms 101 
+2020-05-30 23:09:43.011 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:43.012 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:43.012 -08:00 [INF] Request finished in 1.0744ms 200 
+2020-05-30 23:09:43.020 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:43.020 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:43.020 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:43.020 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:43.020 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:43.020 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:43.020 -08:00 [INF] Request finished in 0.5578ms 304 text/css
+2020-05-30 23:09:43.020 -08:00 [INF] Request finished in 0.5102ms 304 application/javascript
+2020-05-30 23:09:43.020 -08:00 [INF] Request finished in 0.5578ms 304 text/css
+2020-05-30 23:09:43.048 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:43.048 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:43.048 -08:00 [INF] Request finished in 0.4147ms 304 text/css
+2020-05-30 23:09:43.054 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:43.054 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:43.054 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:43.054 -08:00 [INF] Request finished in 0.7791ms 200 application/json
+2020-05-30 23:09:43.062 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=BWNoqEqjBughz3on6PWbRw  
+2020-05-30 23:09:43.063 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:43.076 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:43.573 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-05-30 23:09:43.574 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:43.574 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:43.575 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:43.575 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:43.576 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:43.577 -08:00 [INF] Executed page /_Host in 2.954ms
+2020-05-30 23:09:43.577 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:43.577 -08:00 [INF] Request finished in 4.6074ms 200 text/html; charset=utf-8
+2020-05-30 23:09:43.584 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:43.584 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundarybjfiqegvlhBP4SB4 359
+2020-05-30 23:09:43.584 -08:00 [INF] Request finished in 521.6854ms 101 
+2020-05-30 23:09:43.584 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:43.585 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:43.585 -08:00 [INF] Request finished in 1.4441ms 200 
+2020-05-30 23:09:43.595 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:43.595 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:43.595 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:43.596 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:43.596 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:43.596 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:43.596 -08:00 [INF] Request finished in 0.7043ms 304 application/javascript
+2020-05-30 23:09:43.596 -08:00 [INF] Request finished in 0.7428ms 304 text/css
+2020-05-30 23:09:43.596 -08:00 [INF] Request finished in 0.7435ms 304 text/css
+2020-05-30 23:09:43.618 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:43.618 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:43.618 -08:00 [INF] Request finished in 0.5068ms 304 text/css
+2020-05-30 23:09:43.623 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:43.624 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:43.624 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:43.624 -08:00 [INF] Request finished in 0.9528ms 200 application/json
+2020-05-30 23:09:43.633 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=k3f5-UKxXNp9qcFkfts16g  
+2020-05-30 23:09:43.633 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:43.641 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:44.058 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Register  
+2020-05-30 23:09:44.058 -08:00 [INF] Executing endpoint '/_Host'
+2020-05-30 23:09:44.059 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = ""}. Executing page /_Host
+2020-05-30 23:09:44.059 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-05-30 23:09:44.059 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-05-30 23:09:44.061 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:44.062 -08:00 [INF] Executed page /_Host in 3.0853ms
+2020-05-30 23:09:44.062 -08:00 [INF] Executed endpoint '/_Host'
+2020-05-30 23:09:44.062 -08:00 [INF] Request finished in 4.2738ms 200 text/html; charset=utf-8
+2020-05-30 23:09:44.069 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryGSH0bym5GTnCjO4Z 359
+2020-05-30 23:09:44.069 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:44.069 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:44.069 -08:00 [INF] Request finished in 436.0635ms 101 
+2020-05-30 23:09:44.069 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:44.070 -08:00 [INF] Request finished in 1.0901ms 200 
+2020-05-30 23:09:44.081 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-05-30 23:09:44.081 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-05-30 23:09:44.081 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-05-30 23:09:44.081 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-05-30 23:09:44.081 -08:00 [INF] The file /css/site.css was not modified
+2020-05-30 23:09:44.081 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-05-30 23:09:44.081 -08:00 [INF] Request finished in 0.6811ms 304 text/css
+2020-05-30 23:09:44.081 -08:00 [INF] Request finished in 0.681ms 304 text/css
+2020-05-30 23:09:44.081 -08:00 [INF] Request finished in 0.6829ms 304 application/javascript
+2020-05-30 23:09:44.104 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-05-30 23:09:44.104 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-05-30 23:09:44.104 -08:00 [INF] Request finished in 0.2811ms 304 text/css
+2020-05-30 23:09:44.109 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-05-30 23:09:44.109 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-05-30 23:09:44.110 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-05-30 23:09:44.110 -08:00 [INF] Request finished in 0.6054ms 200 application/json
+2020-05-30 23:09:44.117 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=E9S9XVjkkNZG03ffzyjDSQ  
+2020-05-30 23:09:44.117 -08:00 [INF] Executing endpoint '/_blazor'
+2020-05-30 23:09:44.125 -08:00 [INF] Authorization failed.
+2020-05-30 23:09:46.963 -08:00 [INF] Executed endpoint '/_blazor'
+2020-05-30 23:09:46.963 -08:00 [INF] Request finished in 2846.135ms 101 
+2020-05-30 23:09:46.964 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryWLMQipvi5nTcQMAr 359
+2020-05-30 23:09:46.964 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-05-30 23:09:46.965 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-05-30 23:09:46.965 -08:00 [INF] Request finished in 1.6112ms 200 
