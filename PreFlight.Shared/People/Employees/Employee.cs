@@ -1,7 +1,9 @@
-﻿using PreFlightAI.Shared.Things;
+﻿using PreFlightAI.Shared.Places;
+using PreFlightAI.Shared.Things;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Text;
 
@@ -26,11 +28,14 @@ namespace PreFlightAI.Shared.Employee
         public string Street { get; set; }
         public string Zip { get; set; }
         public string City { get; set; }
+
+       
         public int LocationId { get; set; }
-        public EmployeeLocation Location { get; set; }
+        public Location DeviceLocation { get; set; }
 
         public int JobCategoryId { get; set; }
-        public EmployeeJobCategory JobCategory { get; set; }
+        public JobCategory EmployeePosition { get; set; }
+
         public string PhoneNumber { get; set; }
 
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]

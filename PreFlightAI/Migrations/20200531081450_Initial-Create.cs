@@ -8,32 +8,6 @@ namespace PreFlight.AI.Server.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "EmployeeJobCategory",
-                columns: table => new
-                {
-                    employeeJobCategoryId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JobCategoryName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeJobCategory", x => x.employeeJobCategoryId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EmployeeLocation",
-                columns: table => new
-                {
-                    employeeLocationId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    employeeLocationName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeLocation", x => x.employeeLocationId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "JobCategories",
                 columns: table => new
                 {
@@ -109,8 +83,8 @@ namespace PreFlight.AI.Server.Migrations
                     Street = table.Column<string>(nullable: true),
                     Zip = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
-                    employeeLocationId = table.Column<int>(nullable: false),
-                    employeeJobCategoryId = table.Column<int>(nullable: false),
+                    LocationId = table.Column<int>(nullable: false),
+                    JobCategoryId = table.Column<int>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: true),
                     Comment = table.Column<string>(maxLength: 1000, nullable: true),
                     JoinedDate = table.Column<DateTime>(nullable: true),
@@ -122,38 +96,33 @@ namespace PreFlight.AI.Server.Migrations
                 {
                     table.PrimaryKey("PK_Employees", x => x.EmployeeId);
                     table.ForeignKey(
-                        name: "FK_Employees_EmployeeJobCategory_employeeJobCategoryId",
-                        column: x => x.employeeJobCategoryId,
-                        principalTable: "EmployeeJobCategory",
-                        principalColumn: "employeeJobCategoryId",
+                        name: "FK_Employees_JobCategories_JobCategoryId",
+                        column: x => x.JobCategoryId,
+                        principalTable: "JobCategories",
+                        principalColumn: "JobCategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Employees_EmployeeLocation_employeeLocationId",
-                        column: x => x.employeeLocationId,
-                        principalTable: "EmployeeLocation",
-                        principalColumn: "employeeLocationId",
+                        name: "FK_Employees_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
+                        principalColumn: "LocationId",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Employees",
-                columns: new[] { "EmployeeId", "BirthDate", "City", "Comment", "Email", "ExitDate", "FirstName", "JoinedDate", "LastName", "Password", "PhoneNumber", "RowVersion", "Street", "Zip", "employeeJobCategoryId", "employeeLocationId" },
-                values: new object[] { 1, new DateTime(1988, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Juneau", "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", "Password", "324777888773", 0, "1 Grimoire Place", "99801", 9, 4 });
 
             migrationBuilder.InsertData(
                 table: "JobCategories",
                 columns: new[] { "JobCategoryId", "JobCategoryName" },
                 values: new object[,]
                 {
+                    { 1, "Guest" },
+                    { 8, "Senior Manager" },
+                    { 7, "Manager" },
                     { 6, "IT Lead" },
                     { 5, "IT Worker" },
                     { 4, "Worker" },
                     { 3, "Verified" },
                     { 2, "Visitor" },
-                    { 1, "Guest" },
-                    { 9, "Owner" },
-                    { 8, "Senior Manager" },
-                    { 7, "Manager" }
+                    { 9, "Owner" }
                 });
 
             migrationBuilder.InsertData(
@@ -161,14 +130,14 @@ namespace PreFlight.AI.Server.Migrations
                 columns: new[] { "LocationId", "Name" },
                 values: new object[,]
                 {
+                    { 1, "Juneau" },
+                    { 8, "Petersburg" },
                     { 7, "Wrangell" },
                     { 6, "Sitka" },
                     { 5, "Ketchikan" },
                     { 4, "Anchorage" },
                     { 3, "Fairbanks" },
-                    { 2, "Seattle" },
-                    { 1, "Juneau" },
-                    { 8, "Petersburg" }
+                    { 2, "Seattle" }
                 });
 
             migrationBuilder.InsertData(
@@ -181,15 +150,20 @@ namespace PreFlight.AI.Server.Migrations
                 columns: new[] { "userId", "Comment", "Email", "ExitDate", "FirstName", "JoinedDate", "LastName", "Password", "RowVersion" },
                 values: new object[] { 1, "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", "password", 0 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Employees_employeeJobCategoryId",
+            migrationBuilder.InsertData(
                 table: "Employees",
-                column: "employeeJobCategoryId");
+                columns: new[] { "EmployeeId", "BirthDate", "City", "Comment", "Email", "ExitDate", "FirstName", "JobCategoryId", "JoinedDate", "LastName", "LocationId", "Password", "PhoneNumber", "RowVersion", "Street", "Zip" },
+                values: new object[] { 1, new DateTime(1988, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Juneau", "Using Fake Address and Phone number here", "danny.dowling@gmail.com", null, "Danny", 9, new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Dowling", 4, "Password", "324777888773", 0, "1 Grimoire Place", "99801" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_employeeLocationId",
+                name: "IX_Employees_JobCategoryId",
                 table: "Employees",
-                column: "employeeLocationId");
+                column: "JobCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employees_LocationId",
+                table: "Employees",
+                column: "LocationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -198,22 +172,16 @@ namespace PreFlight.AI.Server.Migrations
                 name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "JobCategories");
-
-            migrationBuilder.DropTable(
-                name: "Locations");
-
-            migrationBuilder.DropTable(
                 name: "typedUsers");
 
             migrationBuilder.DropTable(
                 name: "Weathers");
 
             migrationBuilder.DropTable(
-                name: "EmployeeJobCategory");
+                name: "JobCategories");
 
             migrationBuilder.DropTable(
-                name: "EmployeeLocation");
+                name: "Locations");
         }
     }
 }

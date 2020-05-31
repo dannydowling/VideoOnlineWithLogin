@@ -48,6 +48,9 @@ namespace PreFlight.AI.Server.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("JobCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("JoinedDate")
                         .HasColumnType("datetime2");
 
@@ -55,6 +58,9 @@ namespace PreFlight.AI.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<int>("LocationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
@@ -71,17 +77,11 @@ namespace PreFlight.AI.Server.Migrations
                     b.Property<string>("Zip")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("employeeJobCategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("employeeLocationId")
-                        .HasColumnType("int");
-
                     b.HasKey("EmployeeId");
 
-                    b.HasIndex("employeeJobCategoryId");
+                    b.HasIndex("JobCategoryId");
 
-                    b.HasIndex("employeeLocationId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Employees");
 
@@ -94,46 +94,16 @@ namespace PreFlight.AI.Server.Migrations
                             Comment = "Using Fake Address and Phone number here",
                             Email = "danny.dowling@gmail.com",
                             FirstName = "Danny",
+                            JobCategoryId = 9,
                             JoinedDate = new DateTime(2020, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Dowling",
+                            LocationId = 4,
                             Password = "Password",
                             PhoneNumber = "324777888773",
                             RowVersion = 0,
                             Street = "1 Grimoire Place",
-                            Zip = "99801",
-                            employeeJobCategoryId = 9,
-                            employeeLocationId = 4
+                            Zip = "99801"
                         });
-                });
-
-            modelBuilder.Entity("PreFlightAI.Shared.Employee.EmployeeJobCategory", b =>
-                {
-                    b.Property<int>("employeeJobCategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("JobCategoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("employeeJobCategoryId");
-
-                    b.ToTable("EmployeeJobCategory");
-                });
-
-            modelBuilder.Entity("PreFlightAI.Shared.Employee.EmployeeLocation", b =>
-                {
-                    b.Property<int>("employeeLocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("employeeLocationName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("employeeLocationId");
-
-                    b.ToTable("EmployeeLocation");
                 });
 
             modelBuilder.Entity("PreFlightAI.Shared.Places.Location", b =>
@@ -350,15 +320,15 @@ namespace PreFlight.AI.Server.Migrations
 
             modelBuilder.Entity("PreFlightAI.Shared.Employee.Employee", b =>
                 {
-                    b.HasOne("PreFlightAI.Shared.Employee.EmployeeJobCategory", "employeeJobCategory")
+                    b.HasOne("PreFlightAI.Shared.Things.JobCategory", "EmployeePosition")
                         .WithMany()
-                        .HasForeignKey("employeeJobCategoryId")
+                        .HasForeignKey("JobCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PreFlightAI.Shared.Employee.EmployeeLocation", "employeeLocation")
+                    b.HasOne("PreFlightAI.Shared.Places.Location", "DeviceLocation")
                         .WithMany()
-                        .HasForeignKey("employeeLocationId")
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

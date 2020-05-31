@@ -18,11 +18,11 @@ namespace PreFlight.AI.Server.Services.SQL
         {            
         }        
 
-        public DbSet<PreFlightAI.Shared.Places.Location> Locations { get; set; }       
+        public DbSet<Location> Locations { get; set; }       
         public DbSet<Weather> Weathers { get; set; }
         public DbSet<typedUser> typedUsers { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<PreFlightAI.Shared.Things.JobCategory> JobCategories { get; set; }
+        public DbSet<JobCategory> JobCategories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

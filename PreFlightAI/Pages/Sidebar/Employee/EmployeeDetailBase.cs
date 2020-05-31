@@ -27,7 +27,7 @@ namespace PreFlightAI.Server.Pages
         {
             Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             
-            jobCategoryName = (await JobCategoryDataService.GetJobCategoryById(Employee.employeeJobCategoryId)).JobCategoryName;
+            jobCategoryName = (await JobCategoryDataService.GetJobCategoryById(Employee.JobCategoryId)).JobCategoryName;
         }
     }
 }
