@@ -37,6 +37,20 @@ namespace PreFlight.AI.IDP
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
+                   new Client
+                {
+                    ClientId = "APIClient",
+                    ClientName = "PreFlight Internal",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here
+                    RedirectUris = {"https://localhost:44301/signin-oidc"},
+                    PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
+                    AllowOfflineAccess = true,
+                    RequireConsent = false,
+                    AllowedScopes = {"internalServerCommunication" }
+
+                },
+
                 new Client
                 {
                     ClientId = "EmployeeClient",
@@ -47,7 +61,7 @@ namespace PreFlight.AI.IDP
                     PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
                     AllowOfflineAccess = true,
                     RequireConsent = false,
-                    AllowedScopes = {"openid", "email", "internalServerCommunication", "AUTH_Employee" }
+                    AllowedScopes = {"openid", "email", "AUTH_Employee" }
 
                 },
 
