@@ -66,7 +66,7 @@ namespace PreFlightAI.IDP
               .AddTestUsers(TestUsers.Users);
 
             // in-memory, code config
-            builder.AddInMemoryIdentityResources(Config.Ids);
+            builder.AddInMemoryIdentityResources(Config.IDP);
             builder.AddInMemoryApiResources(Config.Apis);
             builder.AddInMemoryClients(Config.Clients);
 

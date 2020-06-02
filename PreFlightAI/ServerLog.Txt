@@ -280,3 +280,50 @@ ORDER BY [MigrationId];
 2020-05-31 14:16:44.139 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=wsP1TM9ht5d5dP0K_JiL5g  
 2020-05-31 14:16:44.141 -08:00 [INF] Executing endpoint '/_blazor'
 2020-05-31 14:16:44.230 -08:00 [INF] Authorization failed.
+2020-06-01 17:51:14.059 -08:00 [INF] server service is started.
+2020-06-01 17:51:15.788 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-01 17:51:17.884 -08:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-06-01 17:51:17.917 -08:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-01 17:51:17.921 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-06-01 17:51:17.921 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-01 17:51:17.941 -08:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-06-01 17:51:17.962 -08:00 [INF] No migrations were applied. The database is already up to date.
+2020-06-01 17:51:17.993 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-01 17:51:18.497 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-06-01 17:51:18.498 -08:00 [INF] Hosting environment: Development
+2020-06-01 17:51:18.498 -08:00 [INF] Content root path: C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI
+2020-06-01 17:51:18.516 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/  
+2020-06-01 17:51:18.838 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-01 17:51:18.869 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-01 17:51:18.885 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-01 17:51:18.885 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-01 17:51:18.996 -08:00 [INF] Authorization failed.
+2020-06-01 17:51:19.037 -08:00 [INF] Executed page /_Host in 162.5087ms
+2020-06-01 17:51:19.038 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-01 17:51:19.042 -08:00 [INF] Request finished in 529.7462ms 200 text/html; charset=utf-8
+2020-06-01 17:51:19.061 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-01 17:51:19.061 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-01 17:51:19.061 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-01 17:51:19.082 -08:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\site.css'
+2020-06-01 17:51:19.082 -08:00 [INF] Request finished in 21.1242ms 200 text/css
+2020-06-01 17:51:19.097 -08:00 [INF] Sending file. Request path: '/_framework/blazor.server.js'. Physical path: 'N/A'
+2020-06-01 17:51:19.097 -08:00 [INF] Sending file. Request path: '/css/bootstrap/bootstrap.min.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\bootstrap\bootstrap.min.css'
+2020-06-01 17:51:19.101 -08:00 [INF] Request finished in 39.5881ms 200 text/css
+2020-06-01 17:51:19.101 -08:00 [INF] Request finished in 39.6403ms 200 application/javascript
+2020-06-01 17:51:19.149 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-01 17:51:19.156 -08:00 [INF] Sending file. Request path: '/css/open-iconic/font/css/open-iconic-bootstrap.min.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css'
+2020-06-01 17:51:19.156 -08:00 [INF] Request finished in 6.3914ms 200 text/css
+2020-06-01 17:51:19.177 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-01 17:51:19.180 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-01 17:51:19.189 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-01 17:51:19.190 -08:00 [INF] Request finished in 13.352ms 200 application/json
+2020-06-01 17:51:19.231 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=ZEcZcFSg9rtP9dAh_v8A_Q  
+2020-06-01 17:51:19.235 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-01 17:51:19.336 -08:00 [INF] Authorization failed.

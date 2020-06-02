@@ -64,14 +64,9 @@ namespace PreFlightAI
                    options.ClientId = "internalServerCommunication";
                    options.ClientSecret = "IT_DANNY";
                    options.ResponseType = "code id_token";
-                   options.Scope.Add("openid");
-                   options.Scope.Add("profile");
-                   options.Scope.Add("email");
-                   options.Scope.Add("AUTH_Employee"); //not sure about this..
-                   options.Scope.Add("PreFlight.AI.API");
+                   options.UsePkce = true;
+                   options.Scope.Add("internalServerCommunication");
                    options.SaveTokens = true;
-                   options.GetClaimsFromUserInfoEndpoint = true;
-
                });
 
             services.AddScoped<ILocationRepository, LocationRepository>();

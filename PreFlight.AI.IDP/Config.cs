@@ -7,12 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+
+
 
 namespace PreFlight.AI.IDP
 {
     public class Config
     {
-        public static IEnumerable<IdentityResource> Ids =>
+        
+        public static IEnumerable<IdentityResource> IDP =>
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
@@ -22,9 +26,9 @@ namespace PreFlight.AI.IDP
                 new IdentityResource("DEAUTH_Employee", new [] {"Worker"}),
                 new IdentityResource("AUTH_User", new [] {"Verified"}),
                 new IdentityResource("DEAUTH_User", new [] {"Guest", "Visitor"})
-            };        
-   
-        
+            };
+
+
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
@@ -37,26 +41,41 @@ namespace PreFlight.AI.IDP
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
+               
                    new Client
                 {
                     ClientId = "APIClient",
                     ClientName = "PreFlight Internal",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
+                    RequirePkce = true,
+
+                    RefreshTokenExpiration = TokenExpiration.Sliding,
+                    AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
+
                     ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here
-                    RedirectUris = {"https://localhost:44301/signin-oidc"},
+                    
+                       RedirectUris = {"https://localhost:44301/signin-oidc"},
                     PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
-                    AllowOfflineAccess = true,
-                    RequireConsent = false,
-                    AllowedScopes = {"internalServerCommunication" }
+
+                       AllowOfflineAccess = true,
+                            RequireConsent = false,
+
+                       AllowedScopes = {"internalServerCommunication" }
 
                 },
 
+                
                 new Client
                 {
                     ClientId = "EmployeeClient",
                     ClientName = "PreFlight Management",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.ImplicitAndClientCredentials,
+
+                     RefreshTokenExpiration = TokenExpiration.Sliding,
+                    AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
+
                     ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here
+
                     RedirectUris = {"https://localhost:44301/signin-oidc"},
                     PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
                     AllowOfflineAccess = true,
@@ -69,7 +88,11 @@ namespace PreFlight.AI.IDP
                 {
                     ClientId = "UserClient",
                     ClientName = "PreFlight Users",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.ImplicitAndClientCredentials,
+
+                     RefreshTokenExpiration = TokenExpiration.Sliding,
+                        AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
+
                     ClientSecrets = {new Secret("IT_DANNY".Sha256())}, //put in the client secret key here
                     RedirectUris = {"https://localhost:44301/signin-oidc"},
                     PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
