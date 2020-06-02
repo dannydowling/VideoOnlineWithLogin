@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PreFlight.Client.Android.Handlers
+namespace PreFlight.AI.Shared.Handlers
 {
     public class TokenBearerHandler : DelegatingHandler
     {

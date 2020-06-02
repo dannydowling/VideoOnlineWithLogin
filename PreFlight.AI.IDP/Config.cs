@@ -44,9 +44,10 @@ namespace PreFlight.AI.IDP
                
                    new Client
                 {
-                    ClientId = "APIClient",
+                    ClientId = "IDPClient",
                     ClientName = "PreFlight Internal",
-                    AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
+                    
+                       AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
                     RequirePkce = true,
 
                     RefreshTokenExpiration = TokenExpiration.Sliding,

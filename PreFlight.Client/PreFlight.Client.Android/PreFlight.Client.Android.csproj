@@ -67,7 +67,6 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\TokenBearerHandler.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +96,10 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PreFlight.Shared\PreFlight.AI.Shared.csproj">
+      <Project>{8f27dcf1-20f0-49bb-8204-482e1f968e64}</Project>
+      <Name>PreFlight.AI.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PreFlight.Client\PreFlight.Client.csproj">
       <Project>{56C13F30-B48F-4619-8C43-617F90181D92}</Project>
       <Name>PreFlight.Client</Name>
