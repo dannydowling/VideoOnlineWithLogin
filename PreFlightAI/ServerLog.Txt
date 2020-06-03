@@ -327,3 +327,5 @@ ORDER BY [MigrationId];
 2020-06-01 17:51:19.231 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=ZEcZcFSg9rtP9dAh_v8A_Q  
 2020-06-01 17:51:19.235 -08:00 [INF] Executing endpoint '/_blazor'
 2020-06-01 17:51:19.336 -08:00 [INF] Authorization failed.
+2020-06-03 15:10:22.782 -08:00 [INF] server service is started.
+2020-06-03 15:10:24.358 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
