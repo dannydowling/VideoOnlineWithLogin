@@ -161,4 +161,7 @@
       <Name>PreFlight.Client</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
 </Project>
