@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PreFlight.AI.Shared;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using PreFlightAI.Shared.Places;
 
 namespace PreFlight.Client.Droid
 {
@@ -20,15 +21,15 @@ namespace PreFlight.Client.Droid
 
         public async Task StartFrom(Coordinates coordinates, string LocationName)
         {
-            var location = new Location(coordinates);
-            var options = new MapLaunchOptions { Name = locationName };
+            var location = new Xamarin.Essentials.Location(coordinates.Latitude, coordinates.Longitude);
+            var options = new MapLaunchOptions { Name = LocationName };
 
             await Map.OpenAsync(location, options);
         }
 
         public async Task NavigateTo(Coordinates coordinates, NavigationMode mode)
         {
-            var location = new Location(coordinates);
+            var location = new Xamarin.Essentials.Location(coordinates.Latitude, coordinates.Longitude);
             var options = new MapLaunchOptions { NavigationMode = mode };
 
             await Map.OpenAsync(location, options);

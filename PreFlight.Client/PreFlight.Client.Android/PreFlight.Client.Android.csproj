@@ -97,8 +97,8 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PreFlight.Shared\PreFlight.AI.Shared.csproj">
-      <Project>{8f27dcf1-20f0-49bb-8204-482e1f968e64}</Project>
+    <ProjectReference Include="..\..\PreFlight.AI.Shared\PreFlight.AI.Shared.csproj">
+      <Project>{24e552d0-4270-4771-9b65-e28fec1d770c}</Project>
       <Name>PreFlight.AI.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\PreFlight.Client\PreFlight.Client.csproj">

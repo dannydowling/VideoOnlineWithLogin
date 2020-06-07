@@ -568,3 +568,83 @@ System.InvalidOperationException: The view 'Index' was not found. The following 
 2020-06-07 00:07:52.026 -08:00 [INF] Request finished in 9.8898ms 404 
 2020-06-07 00:07:52.055 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/js/bootstrap.js  
 2020-06-07 00:07:52.056 -08:00 [INF] Request finished in 0.5193ms 404 
+2020-06-07 00:10:51.109 -08:00 [INF] server service is started.
+2020-06-07 00:10:51.785 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-07 00:10:51.853 -08:00 [INF] Starting IdentityServer4 version 3.1.3.0
+2020-06-07 00:10:51.862 -08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-06-07 00:10:51.869 -08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-06-07 00:10:51.869 -08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-06-07 00:10:51.869 -08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-06-07 00:10:51.869 -08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-06-07 00:10:51.869 -08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-06-07 00:10:51.869 -08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-06-07 00:10:52.029 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-06-07 00:10:52.029 -08:00 [INF] Hosting environment: Development
+2020-06-07 00:10:52.029 -08:00 [INF] Content root path: C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight.AI.IDP
+2020-06-07 00:10:52.078 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/  
+2020-06-07 00:10:52.115 -08:00 [DBG] Login Url: /Account/Login
+2020-06-07 00:10:52.115 -08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-06-07 00:10:52.115 -08:00 [DBG] Logout Url: /Account/Logout
+2020-06-07 00:10:52.115 -08:00 [DBG] ConsentUrl Url: /consent
+2020-06-07 00:10:52.115 -08:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-06-07 00:10:52.115 -08:00 [DBG] Error Url: /home/error
+2020-06-07 00:10:52.115 -08:00 [DBG] Error Id Parameter: errorId
+2020-06-07 00:10:52.128 -08:00 [INF] Executing endpoint 'IdentityServer4.Quickstart.UI.HomeController.Index (PreFlight.AI.IDP)'
+2020-06-07 00:10:52.161 -08:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller IdentityServer4.Quickstart.UI.HomeController (PreFlight.AI.IDP).
+2020-06-07 00:10:52.190 -08:00 [INF] Executing ViewResult, running view Index.
+2020-06-07 00:10:52.265 -08:00 [INF] Executed ViewResult - view Index executed in 79.1965ms.
+2020-06-07 00:10:52.267 -08:00 [INF] Executed action IdentityServer4.Quickstart.UI.HomeController.Index (PreFlight.AI.IDP) in 106.0883ms
+2020-06-07 00:10:52.267 -08:00 [INF] Executed endpoint 'IdentityServer4.Quickstart.UI.HomeController.Index (PreFlight.AI.IDP)'
+2020-06-07 00:10:52.270 -08:00 [INF] Request finished in 195.6132ms 200 text/html; charset=utf-8
+2020-06-07 00:10:52.295 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/css/bootstrap.css  
+2020-06-07 00:10:52.308 -08:00 [INF] Request finished in 13.1749ms 404 
+2020-06-07 00:10:52.401 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/jquery/jquery.js  
+2020-06-07 00:10:52.404 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/icon.png  
+2020-06-07 00:10:52.404 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/js/bootstrap.js  
+2020-06-07 00:10:52.404 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/icon.jpg  
+2020-06-07 00:10:52.409 -08:00 [INF] Request finished in 5.3306ms 404 
+2020-06-07 00:10:52.409 -08:00 [INF] Request finished in 4.9691ms 404 
+2020-06-07 00:10:52.409 -08:00 [INF] Request finished in 8.1279ms 404 
+2020-06-07 00:10:52.409 -08:00 [INF] Request finished in 5.3993ms 404 
+2020-06-07 00:10:52.449 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/js/bootstrap.js  
+2020-06-07 00:10:52.450 -08:00 [INF] Request finished in 0.5818ms 404 
+2020-06-07 00:11:31.548 -08:00 [INF] server service is started.
+2020-06-07 00:11:32.251 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-07 00:11:32.338 -08:00 [INF] Starting IdentityServer4 version 3.1.3.0
+2020-06-07 00:11:32.347 -08:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2020-06-07 00:11:32.350 -08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-06-07 00:11:32.350 -08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-06-07 00:11:32.350 -08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-06-07 00:11:32.350 -08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-06-07 00:11:32.350 -08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-06-07 00:11:32.350 -08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-06-07 00:11:32.512 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-06-07 00:11:32.512 -08:00 [INF] Hosting environment: Development
+2020-06-07 00:11:32.512 -08:00 [INF] Content root path: C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlight.AI.IDP
+2020-06-07 00:11:32.556 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/  
+2020-06-07 00:11:32.596 -08:00 [DBG] Login Url: /Account/Login
+2020-06-07 00:11:32.596 -08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-06-07 00:11:32.596 -08:00 [DBG] Logout Url: /Account/Logout
+2020-06-07 00:11:32.596 -08:00 [DBG] ConsentUrl Url: /consent
+2020-06-07 00:11:32.596 -08:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-06-07 00:11:32.596 -08:00 [DBG] Error Url: /home/error
+2020-06-07 00:11:32.596 -08:00 [DBG] Error Id Parameter: errorId
+2020-06-07 00:11:32.610 -08:00 [INF] Executing endpoint 'IdentityServer4.Quickstart.UI.HomeController.Index (PreFlight.AI.IDP)'
+2020-06-07 00:11:32.647 -08:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller IdentityServer4.Quickstart.UI.HomeController (PreFlight.AI.IDP).
+2020-06-07 00:11:32.678 -08:00 [INF] Executing ViewResult, running view Index.
+2020-06-07 00:11:32.754 -08:00 [INF] Executed ViewResult - view Index executed in 81.1273ms.
+2020-06-07 00:11:32.756 -08:00 [INF] Executed action IdentityServer4.Quickstart.UI.HomeController.Index (PreFlight.AI.IDP) in 108.1548ms
+2020-06-07 00:11:32.757 -08:00 [INF] Executed endpoint 'IdentityServer4.Quickstart.UI.HomeController.Index (PreFlight.AI.IDP)'
+2020-06-07 00:11:32.759 -08:00 [INF] Request finished in 205.5089ms 200 text/html; charset=utf-8
+2020-06-07 00:11:32.787 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/css/bootstrap.css  
+2020-06-07 00:11:32.800 -08:00 [INF] Request finished in 12.7987ms 404 
+2020-06-07 00:11:32.885 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/jquery/jquery.js  
+2020-06-07 00:11:32.887 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/js/bootstrap.js  
+2020-06-07 00:11:32.888 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/icon.jpg  
+2020-06-07 00:11:32.888 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/icon.png  
+2020-06-07 00:11:32.894 -08:00 [INF] Request finished in 5.7648ms 404 
+2020-06-07 00:11:32.894 -08:00 [INF] Request finished in 5.7849ms 404 
+2020-06-07 00:11:32.894 -08:00 [INF] Request finished in 6.4315ms 404 
+2020-06-07 00:11:32.895 -08:00 [INF] Request finished in 8.5173ms 404 
+2020-06-07 00:11:32.946 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44301/lib/bootstrap/js/bootstrap.js  
+2020-06-07 00:11:32.947 -08:00 [INF] Request finished in 1.0042ms 404 
