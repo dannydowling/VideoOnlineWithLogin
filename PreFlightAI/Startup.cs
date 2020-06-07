@@ -8,7 +8,6 @@ using PreFlightAI.Api.Models;
 using PreFlightAI.Server.Services;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using PreFlight.AI.Server.Services.HttpClients;
 using Serilog;
 using Serilog.Events;
 using PreFlight.AI.Server.Services.SQL;
@@ -24,6 +23,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using IdentityModel;
+using PreFlight.AI.Shared;
 
 namespace PreFlightAI
 {

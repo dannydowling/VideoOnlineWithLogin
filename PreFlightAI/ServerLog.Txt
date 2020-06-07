@@ -329,3 +329,294 @@ ORDER BY [MigrationId];
 2020-06-01 17:51:19.336 -08:00 [INF] Authorization failed.
 2020-06-03 15:10:22.782 -08:00 [INF] server service is started.
 2020-06-03 15:10:24.358 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-07 00:07:50.079 -08:00 [INF] server service is started.
+2020-06-07 00:07:51.630 -08:00 [INF] Entity Framework Core 3.1.4 initialized 'ServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-06-07 00:07:53.612 -08:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-06-07 00:07:53.645 -08:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-07 00:07:53.649 -08:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2020-06-07 00:07:53.650 -08:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2020-06-07 00:07:53.667 -08:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2020-06-07 00:07:53.685 -08:00 [INF] No migrations were applied. The database is already up to date.
+2020-06-07 00:07:53.711 -08:00 [INF] User profile is available. Using 'C:\Users\danny\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-06-07 00:07:54.171 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-06-07 00:07:54.171 -08:00 [INF] Hosting environment: Development
+2020-06-07 00:07:54.172 -08:00 [INF] Content root path: C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI
+2020-06-07 00:07:54.188 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/  
+2020-06-07 00:07:54.337 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:07:54.371 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:07:54.387 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:07:54.388 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:07:54.489 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:54.525 -08:00 [INF] Executed page /_Host in 149.5066ms
+2020-06-07 00:07:54.526 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:07:54.529 -08:00 [INF] Request finished in 343.73ms 200 text/html; charset=utf-8
+2020-06-07 00:07:54.544 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:07:54.544 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:07:54.544 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:07:54.560 -08:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\site.css'
+2020-06-07 00:07:54.560 -08:00 [INF] Request finished in 16.1189ms 200 text/css
+2020-06-07 00:07:54.566 -08:00 [INF] Sending file. Request path: '/_framework/blazor.server.js'. Physical path: 'N/A'
+2020-06-07 00:07:54.570 -08:00 [INF] Sending file. Request path: '/css/bootstrap/bootstrap.min.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\bootstrap\bootstrap.min.css'
+2020-06-07 00:07:54.570 -08:00 [INF] Request finished in 26.3156ms 200 application/javascript
+2020-06-07 00:07:54.570 -08:00 [INF] Request finished in 26.3466ms 200 text/css
+2020-06-07 00:07:54.622 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:07:54.628 -08:00 [INF] Sending file. Request path: '/css/open-iconic/font/css/open-iconic-bootstrap.min.css'. Physical path: 'C:\Users\danny\Source\Repos\dannydowling\PreFlight\PreFlightAI\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css'
+2020-06-07 00:07:54.628 -08:00 [INF] Request finished in 5.7059ms 200 text/css
+2020-06-07 00:07:54.650 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:07:54.654 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:07:54.662 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:07:54.662 -08:00 [INF] Request finished in 12.3061ms 200 application/json
+2020-06-07 00:07:54.696 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=tRfOHxHf6bVSJnH-XCHGyw  
+2020-06-07 00:07:54.700 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:07:54.785 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:56.710 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:07:56.711 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:07:56.712 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:07:56.712 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:07:56.712 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:07:56.716 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:56.717 -08:00 [INF] Executed page /_Host in 5.5208ms
+2020-06-07 00:07:56.717 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:07:56.717 -08:00 [INF] Request finished in 7.1687ms 200 text/html; charset=utf-8
+2020-06-07 00:07:56.729 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryR1hPEKOzkCznodsT 359
+2020-06-07 00:07:56.730 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:07:56.744 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:07:56.744 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:07:56.744 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:07:56.748 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:07:56.747 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:07:56.748 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:07:56.749 -08:00 [INF] Request finished in 4.3278ms 304 text/css
+2020-06-07 00:07:56.749 -08:00 [INF] Request finished in 4.5533ms 304 application/javascript
+2020-06-07 00:07:56.749 -08:00 [INF] Request finished in 4.3749ms 304 text/css
+2020-06-07 00:07:56.752 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:07:56.753 -08:00 [INF] Request finished in 2056.5517ms 101 
+2020-06-07 00:07:56.757 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:07:56.758 -08:00 [INF] Request finished in 28.7192ms 200 
+2020-06-07 00:07:56.781 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:07:56.781 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:07:56.781 -08:00 [INF] Request finished in 0.3715ms 304 text/css
+2020-06-07 00:07:56.790 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:07:56.790 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:07:56.790 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:07:56.791 -08:00 [INF] Request finished in 0.7758ms 200 application/json
+2020-06-07 00:07:56.803 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=pTl_Dsi11eJNHLvXJW94Ow  
+2020-06-07 00:07:56.803 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:07:56.823 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:58.308 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:07:58.311 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:07:58.311 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:07:58.312 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:07:58.313 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:07:58.316 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:58.318 -08:00 [INF] Executed page /_Host in 6.1259ms
+2020-06-07 00:07:58.318 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:07:58.318 -08:00 [INF] Request finished in 10.2051ms 200 text/html; charset=utf-8
+2020-06-07 00:07:58.326 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:07:58.326 -08:00 [INF] Request finished in 1523.332ms 101 
+2020-06-07 00:07:58.326 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundarypWtKXABbOTyyJhQK 359
+2020-06-07 00:07:58.326 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:07:58.327 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:07:58.328 -08:00 [INF] Request finished in 1.796ms 200 
+2020-06-07 00:07:58.340 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:07:58.340 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:07:58.340 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:07:58.340 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:07:58.340 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:07:58.340 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:07:58.340 -08:00 [INF] Request finished in 0.7949ms 304 application/javascript
+2020-06-07 00:07:58.341 -08:00 [INF] Request finished in 1.0266ms 304 text/css
+2020-06-07 00:07:58.341 -08:00 [INF] Request finished in 1.0914ms 304 text/css
+2020-06-07 00:07:58.368 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:07:58.368 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:07:58.368 -08:00 [INF] Request finished in 0.3605ms 304 text/css
+2020-06-07 00:07:58.375 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:07:58.375 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:07:58.376 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:07:58.376 -08:00 [INF] Request finished in 0.9726ms 200 application/json
+2020-06-07 00:07:58.386 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=8Jwf9aV5HGsL6-7RNCstkg  
+2020-06-07 00:07:58.386 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:07:58.404 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:58.557 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:07:58.558 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:07:58.558 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:07:58.559 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:07:58.559 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:07:58.561 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:58.562 -08:00 [INF] Executed page /_Host in 3.3034ms
+2020-06-07 00:07:58.562 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:07:58.562 -08:00 [INF] Request finished in 4.7474ms 200 text/html; charset=utf-8
+2020-06-07 00:07:58.572 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryOz7aAmY6TMQv5avA 359
+2020-06-07 00:07:58.572 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:07:58.572 -08:00 [INF] Request finished in 186.7945ms 101 
+2020-06-07 00:07:58.572 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:07:58.573 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:07:58.574 -08:00 [INF] Request finished in 1.3707ms 200 
+2020-06-07 00:07:58.587 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:07:58.587 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:07:58.587 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:07:58.588 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:07:58.588 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:07:58.588 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:07:58.588 -08:00 [INF] Request finished in 0.662ms 304 text/css
+2020-06-07 00:07:58.588 -08:00 [INF] Request finished in 0.5249ms 304 application/javascript
+2020-06-07 00:07:58.588 -08:00 [INF] Request finished in 0.7429ms 304 text/css
+2020-06-07 00:07:58.615 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:07:58.616 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:07:58.616 -08:00 [INF] Request finished in 0.5026ms 304 text/css
+2020-06-07 00:07:58.623 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:07:58.623 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:07:58.623 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:07:58.623 -08:00 [INF] Request finished in 0.853ms 200 application/json
+2020-06-07 00:07:58.633 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=qyc2dOFgZsFx5LT7X8nLKQ  
+2020-06-07 00:07:58.633 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:07:58.648 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:59.241 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:07:59.242 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:07:59.243 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:07:59.243 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:07:59.244 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:07:59.246 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:59.248 -08:00 [INF] Executed page /_Host in 5.0221ms
+2020-06-07 00:07:59.248 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:07:59.248 -08:00 [INF] Request finished in 7.5919ms 200 text/html; charset=utf-8
+2020-06-07 00:07:59.256 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:07:59.256 -08:00 [INF] Request finished in 623.8253ms 101 
+2020-06-07 00:07:59.257 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryu21i4YjCQSjMbLjO 359
+2020-06-07 00:07:59.257 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:07:59.259 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:07:59.260 -08:00 [INF] Request finished in 3.1945ms 200 
+2020-06-07 00:07:59.272 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:07:59.272 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:07:59.272 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:07:59.273 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:07:59.273 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:07:59.273 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:07:59.274 -08:00 [INF] Request finished in 1.3495ms 304 application/javascript
+2020-06-07 00:07:59.274 -08:00 [INF] Request finished in 1.6953ms 304 text/css
+2020-06-07 00:07:59.274 -08:00 [INF] Request finished in 1.7579ms 304 text/css
+2020-06-07 00:07:59.308 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:07:59.308 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:07:59.309 -08:00 [INF] Request finished in 0.8565ms 304 text/css
+2020-06-07 00:07:59.316 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:07:59.316 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:07:59.317 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:07:59.317 -08:00 [INF] Request finished in 1.3826ms 200 application/json
+2020-06-07 00:07:59.326 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=N0NXChcUk-5wEJwhSUBNog  
+2020-06-07 00:07:59.327 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:07:59.341 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:59.702 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:07:59.703 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:07:59.703 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:07:59.704 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:07:59.704 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:07:59.705 -08:00 [INF] Authorization failed.
+2020-06-07 00:07:59.706 -08:00 [INF] Executed page /_Host in 2.8338ms
+2020-06-07 00:07:59.706 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:07:59.706 -08:00 [INF] Request finished in 4.6011ms 200 text/html; charset=utf-8
+2020-06-07 00:07:59.714 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:07:59.714 -08:00 [INF] Request finished in 387.9577ms 101 
+2020-06-07 00:07:59.714 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundaryj2lXS1OQm08ZiLO6 359
+2020-06-07 00:07:59.715 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:07:59.716 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:07:59.716 -08:00 [INF] Request finished in 1.4951ms 200 
+2020-06-07 00:07:59.726 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:07:59.727 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:07:59.727 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:07:59.727 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:07:59.727 -08:00 [INF] Request finished in 0.697ms 304 text/css
+2020-06-07 00:07:59.727 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:07:59.727 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:07:59.727 -08:00 [INF] Request finished in 0.3461ms 304 text/css
+2020-06-07 00:07:59.727 -08:00 [INF] Request finished in 0.3475ms 304 application/javascript
+2020-06-07 00:07:59.755 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:07:59.756 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:07:59.756 -08:00 [INF] Request finished in 0.4844ms 304 text/css
+2020-06-07 00:07:59.764 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:07:59.764 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:07:59.765 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:07:59.765 -08:00 [INF] Request finished in 0.791ms 200 application/json
+2020-06-07 00:07:59.774 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=y7VvRSSzKcQjwrsr6J1aaw  
+2020-06-07 00:07:59.774 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:07:59.788 -08:00 [INF] Authorization failed.
+2020-06-07 00:08:00.147 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:08:00.147 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:08:00.148 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:08:00.148 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:08:00.148 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:08:00.151 -08:00 [INF] Authorization failed.
+2020-06-07 00:08:00.152 -08:00 [INF] Executed page /_Host in 4.7444ms
+2020-06-07 00:08:00.152 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:08:00.153 -08:00 [INF] Request finished in 6.1329ms 200 text/html; charset=utf-8
+2020-06-07 00:08:00.160 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundarymisH2iyUj78J1azL 359
+2020-06-07 00:08:00.160 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:08:00.161 -08:00 [INF] Request finished in 386.8561ms 101 
+2020-06-07 00:08:00.161 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:08:00.162 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:08:00.162 -08:00 [INF] Request finished in 1.7908ms 200 
+2020-06-07 00:08:00.174 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:08:00.175 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:08:00.175 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:08:00.175 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:08:00.175 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:08:00.175 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:08:00.175 -08:00 [INF] Request finished in 0.6267ms 304 text/css
+2020-06-07 00:08:00.175 -08:00 [INF] Request finished in 0.6325ms 304 application/javascript
+2020-06-07 00:08:00.175 -08:00 [INF] Request finished in 0.762ms 304 text/css
+2020-06-07 00:08:00.211 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:08:00.212 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:08:00.212 -08:00 [INF] Request finished in 0.4048ms 304 text/css
+2020-06-07 00:08:00.219 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:08:00.220 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:08:00.220 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:08:00.220 -08:00 [INF] Request finished in 1.3729ms 200 application/json
+2020-06-07 00:08:00.230 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=eFPgZLfy7tOsDBN9Lz_PQg  
+2020-06-07 00:08:00.231 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:08:00.247 -08:00 [INF] Authorization failed.
+2020-06-07 00:08:07.280 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/Identity/Account/Login  
+2020-06-07 00:08:07.281 -08:00 [INF] Executing endpoint '/_Host'
+2020-06-07 00:08:07.281 -08:00 [INF] Route matched with {page = "/_Host", action = "", controller = "", area = ""}. Executing page /_Host
+2020-06-07 00:08:07.282 -08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-07 00:08:07.282 -08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-07 00:08:07.284 -08:00 [INF] Authorization failed.
+2020-06-07 00:08:07.286 -08:00 [INF] Executed page /_Host in 4.2982ms
+2020-06-07 00:08:07.286 -08:00 [INF] Executed endpoint '/_Host'
+2020-06-07 00:08:07.286 -08:00 [INF] Request finished in 6.3261ms 200 text/html; charset=utf-8
+2020-06-07 00:08:07.294 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundary0iNIAxnFq22AvTZQ 359
+2020-06-07 00:08:07.294 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:08:07.295 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:08:07.295 -08:00 [INF] Request finished in 7064.3614ms 101 
+2020-06-07 00:08:07.296 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:08:07.296 -08:00 [INF] Request finished in 2.4263ms 200 
+2020-06-07 00:08:07.310 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/bootstrap/bootstrap.min.css  
+2020-06-07 00:08:07.310 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/site.css  
+2020-06-07 00:08:07.310 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/_framework/blazor.server.js  
+2020-06-07 00:08:07.310 -08:00 [INF] The file /css/site.css was not modified
+2020-06-07 00:08:07.310 -08:00 [INF] The file /_framework/blazor.server.js was not modified
+2020-06-07 00:08:07.310 -08:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2020-06-07 00:08:07.311 -08:00 [INF] Request finished in 0.3846ms 304 application/javascript
+2020-06-07 00:08:07.311 -08:00 [INF] Request finished in 0.7019ms 304 text/css
+2020-06-07 00:08:07.311 -08:00 [INF] Request finished in 0.6112ms 304 text/css
+2020-06-07 00:08:07.338 -08:00 [INF] Request starting HTTP/2.0 GET https://localhost:44336/css/open-iconic/font/css/open-iconic-bootstrap.min.css  
+2020-06-07 00:08:07.339 -08:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2020-06-07 00:08:07.339 -08:00 [INF] Request finished in 0.4219ms 304 text/css
+2020-06-07 00:08:07.346 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2020-06-07 00:08:07.346 -08:00 [INF] Executing endpoint '/_blazor/negotiate'
+2020-06-07 00:08:07.346 -08:00 [INF] Executed endpoint '/_blazor/negotiate'
+2020-06-07 00:08:07.346 -08:00 [INF] Request finished in 0.7573ms 200 application/json
+2020-06-07 00:08:07.355 -08:00 [INF] Request starting HTTP/1.1 GET https://localhost:44336/_blazor?id=2ueNSs8fobmxBTYgZlryuQ  
+2020-06-07 00:08:07.356 -08:00 [INF] Executing endpoint '/_blazor'
+2020-06-07 00:08:07.369 -08:00 [INF] Authorization failed.
+2020-06-07 00:08:10.783 -08:00 [INF] Executed endpoint '/_blazor'
+2020-06-07 00:08:10.783 -08:00 [INF] Request finished in 3427.6125ms 101 
+2020-06-07 00:08:10.784 -08:00 [INF] Request starting HTTP/2.0 POST https://localhost:44336/_blazor/disconnect multipart/form-data; boundary=----WebKitFormBoundary3aOprRDrO7L2qFwz 359
+2020-06-07 00:08:10.784 -08:00 [INF] Executing endpoint 'Blazor disconnect'
+2020-06-07 00:08:10.789 -08:00 [INF] Executed endpoint 'Blazor disconnect'
+2020-06-07 00:08:10.789 -08:00 [INF] Request finished in 5.5084ms 200 
