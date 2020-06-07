@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using PreFlightAI.Server.Services;
 using PreFlightAI.Shared.Employee;
-using PreFlight.AI.Server.Pages.Sidebar.Employee;
+//using PreFlight.AI.Server.Pages.Sidebar.Employee;
 
 namespace PreFlightAI.Server.Pages
 {
@@ -19,7 +19,7 @@ namespace PreFlightAI.Server.Pages
         public List<Employee> Employees { get; set; }
         public List<Shared.Places.Location> employeeLocations { get; set; }
 
-        protected AddEmployeeDialog AddEmployeeDialog { get; set; }
+        protected AddEmployeeDialogBase AddEmployeeDialog { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

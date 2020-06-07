@@ -19,6 +19,11 @@ using Microsoft.Extensions.Options;
 using PreFlightAI.Api.Controllers;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using PreFlight.AI.IDP.Contexts;
+using PreFlight.AI.Shared.Handlers;
+using Microsoft.AspNetCore.Authentication;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using IdentityModel;
 
 namespace PreFlightAI
 {
@@ -27,6 +32,7 @@ namespace PreFlightAI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         }
 
         public IConfiguration Configuration { get; }
@@ -44,30 +50,13 @@ namespace PreFlightAI
             Log.Information("server service is started.");
 
             var serverConnectionString = Configuration["ConnectionStrings:ServerDBConnectionString"];
-            services.AddDbContext<ServerDbContext>(o => o.UseSqlServer(serverConnectionString));           
+            services.AddDbContext<ServerDbContext>(o => o.UseSqlServer(serverConnectionString));
 
             services.AddControllers();
             services.AddSignalR();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
-            })
-               .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-               .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
-               options =>
-               {
-                   options.Authority = "https://localhost:44301";
-                   options.ClientId = "internalServerCommunication";
-                   options.ClientSecret = "IT_DANNY";
-                   options.ResponseType = "code id_token";
-                   options.UsePkce = true;
-                   options.Scope.Add("internalServerCommunication");
-                   options.SaveTokens = true;
-               });
+            services.AddHttpContextAccessor();
 
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
@@ -76,21 +65,59 @@ namespace PreFlightAI
             services.AddScoped<IWeatherRepository, WeatherRepository>();
             services.AddScoped<MessageModel>();
 
-            
+            services.AddAuthentication(options => {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+               .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
+               options => {
+                   options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                   options.Authority = "https://localhost:44301";
+                   options.ClientId = "IDPClient";
+                   options.ClientSecret = "IT_DANNY";
+                   options.ResponseType = "code id_token";
+                   options.UsePkce = true;
+                   options.GetClaimsFromUserInfoEndpoint = true;
+                   options.Scope.Add("internalServerCommunication");
+                   options.ClaimActions.DeleteClaim("sid");
+                   options.ClaimActions.DeleteClaim("idp");
+                   options.ClaimActions.DeleteClaim("s_hash");
+                   options.ClaimActions.DeleteClaim("auth_time");
+                   options.Scope.Add("internalServerCommunication");
+                   options.SaveTokens = true;
+               });
 
-            services.AddHttpClient<MessageModel>(clientMessaging =>
-            {
+            services.AddTransient<TokenBearerHandler>();
+            services.AddHttpClient<MessageModel>(clientMessaging => {
                 clientMessaging.BaseAddress = new Uri("https://localhost:46633");
                 clientMessaging.DefaultRequestHeaders.Clear();
             }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
 
+            services.AddHttpClient("APIClient", clientAPI =>
+            {
+                clientAPI.BaseAddress = new Uri("https://localhost:46633/");
+                clientAPI.DefaultRequestHeaders.Clear();
+                clientAPI.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler<TokenBearerHandler>();
 
             services.AddHttpClient<IEmployeeDataService, EmployeeDataService>(clientEmployee =>
             {
                 clientEmployee.BaseAddress = new Uri("https://localhost:44301");
                 clientEmployee.DefaultRequestHeaders.Clear();
                 clientEmployee.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)));
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
+                                                .AddHttpMessageHandler<TokenBearerHandler>();
+
+            services.AddHttpClient<IUserDataService, UserDataService>(clientUser =>
+            {
+                clientUser.BaseAddress = new Uri("https://localhost:44301");
+                clientUser.DefaultRequestHeaders.Clear();
+                clientUser.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
+                      .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
+                      { AutomaticDecompression = System.Net.DecompressionMethods.GZip })
+                      .AddHttpMessageHandler<TokenBearerHandler>();
 
 
             services.AddHttpClient<IJobCategoryDataService, JobCategoryDataService>(clientJobcategory =>
@@ -108,16 +135,6 @@ namespace PreFlightAI
                 clientLocation.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             })
             .AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
-                        .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
-                        { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
-
-
-            services.AddHttpClient<IUserDataService, UserDataService>(clientUser =>
-            {
-                clientUser.BaseAddress = new Uri("https://localhost:44301");
-                clientUser.DefaultRequestHeaders.Clear();
-                clientUser.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }).AddHttpMessageHandler(handler => new RetryPolicy(2, TimeSpan.FromSeconds(20)))
                         .ConfigurePrimaryHttpMessageHandler(handler => new HttpClientHandler()
                         { AutomaticDecompression = System.Net.DecompressionMethods.GZip });
 
@@ -154,7 +171,7 @@ namespace PreFlightAI
             app.UseRouting();
 
             app.UseAuthentication();
-           
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
