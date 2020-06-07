@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
 using Foundation;
+using PreFlightAI.Shared.Places;
 using UIKit;
+using Xamarin.Essentials;
 
 namespace PreFlight.Client.iOS
 {
@@ -12,7 +14,7 @@ namespace PreFlight.Client.iOS
 
         public async Task StartFrom(Coordinates coordinates)
         {
-            var location = new Location(coordinates);
+            var location = new Xamarin.Essentials.Location(coordinates.Latitude, coordinates.Longitude);
             var options = new MapLaunchOptions { Name = "Start Location" };
 
             await Map.OpenAsync(location, options);
@@ -20,8 +22,8 @@ namespace PreFlight.Client.iOS
 
         public async Task NavigateTo(Coordinates coordinates)
         {
-            var location = new Location(coordinates);
-            var options = new MapLaunchOptions { NavigationMode = NavigationMode.Direct };
+            var location = new Xamarin.Essentials.Location(coordinates.Latitude, coordinates.Longitude);
+            var options = new MapLaunchOptions { NavigationMode = NavigationMode.None };
 
             await Map.OpenAsync(location, options);
         }
