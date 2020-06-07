@@ -149,10 +149,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PreFlight.AI.Shared\PreFlight.AI.Shared.csproj">
+      <Project>{24e552d0-4270-4771-9b65-e28fec1d770c}</Project>
+      <Name>PreFlight.AI.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PreFlight.Client\PreFlight.Client.csproj">
       <Project>{56C13F30-B48F-4619-8C43-617F90181D92}</Project>
       <Name>PreFlight.Client</Name>

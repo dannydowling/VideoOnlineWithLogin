@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PreFlight.Shared\PreFlight.AI.Shared.csproj" />
+    <ProjectReference Include="..\PreFlight.AI.Shared\PreFlight.AI.Shared.csproj" />
   </ItemGroup>
 
 </Project>
