@@ -72,10 +72,12 @@ namespace PreFlightAI
 
             })
                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+               
                .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                {
                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                    options.Authority = "https://localhost:5001";
+                   
                    options.ClientId = "IDPClient";
                    options.ResponseType = "code";   
                    
@@ -87,7 +89,6 @@ namespace PreFlightAI
                    options.ClaimActions.DeleteClaim("idp");
                    options.ClaimActions.DeleteClaim("s_hash");
                    options.ClaimActions.DeleteClaim("auth_time");
-
 
                    options.ClaimActions.MapUniqueJsonKey("role", "role");
 
@@ -198,6 +199,7 @@ namespace PreFlightAI
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -209,7 +211,8 @@ namespace PreFlightAI
             {
                 endpoints.MapDefaultControllerRoute()
                          .RequireAuthorization();
-                endpoints.MapControllers();
+                
+                //endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/Chat");
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");

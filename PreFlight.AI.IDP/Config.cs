@@ -28,7 +28,6 @@ namespace PreFlight.AI.IDP
                     "Internal Server Communication",
                     new List<string>() {"IDPContext"})
                     {
-
                         ApiSecrets = {new Secret("IT_DANNY".Sha512()) //The Api secret key to register the API on OpenID Connect
                     }
                  }
@@ -48,7 +47,7 @@ namespace PreFlight.AI.IDP
                     UpdateAccessTokenClaimsOnRefresh = true,
                     ClientId = "Client",
                     ClientName = "PreFlight",
-                    AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
+                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials, //long lived access, Tokens from token endpoint
                     RequirePkce = true,
                     //Where to redirect to after login
                     RedirectUris = { "https://localhost:44336/signin-oidc" },

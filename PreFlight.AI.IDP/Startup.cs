@@ -49,38 +49,27 @@ namespace PreFlight.AI.IDP
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
+                                     
 
                 })
                 
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+                   // options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, b => b.MigrationsAssembly("PreFlight.AI.IDP"));
                 })
 
-                //Register the identity resources with IdentityServer from Config
-                .AddInMemoryClients(Config.Clients)
-                .AddInMemoryIdentityResources(Config.Ids)
-                .AddInMemoryApiResources(Config.Apis)            
-                                
-
+           
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, b => b.MigrationsAssembly("PreFlight.AI.IDP"));
 
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
                 });
-
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("OriginationPolicy",
-            //        CORS => 
-            //        CORS.AllowAnyOrigin()
-            //            .AllowAnyMethod()                        
-            //            .AllowAnyHeader());
-            //});
+           
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -101,9 +90,7 @@ namespace PreFlight.AI.IDP
         }
 
         public void Configure(IApplicationBuilder app)
-        {
-            //Adds cross domain policy
-            app.UseCors();
+        {          
 
             if (Environment.IsDevelopment())
             {
