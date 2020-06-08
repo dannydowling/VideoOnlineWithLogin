@@ -39,7 +39,7 @@ namespace PreFlightAI.Server.Services
                 (await _clientEmployee.GetStreamAsync($"api/employee/{employeeId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<Employee> AddEmployee(Employee employee)
+        public async Task<Employee?> AddEmployee(Employee employee)
         {
             var employeeJson =
                 new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");

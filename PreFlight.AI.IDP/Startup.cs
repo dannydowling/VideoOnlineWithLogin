@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using IdentityServer4.EntityFramework.DbContexts;
 
 namespace PreFlight.AI.IDP
 {
@@ -49,18 +50,26 @@ namespace PreFlight.AI.IDP
                     options.Events.RaiseInformationEvents = true;
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
-                                     
 
                 })
-                
+
+            //     var PGDbConnectionString = Configuration["ConnectionStrings:PersistedGrantDBConnectionString"];
+            //services.AddDbContext<PersistedGrantDbContext>(o => o.UseSqlServer(PGDbConnectionString));
+
+            //var ConfigDbConnectionString = Configuration["ConnectionStrings:ConfigurationDBConnectionString"];
+            //services.AddDbContext<ConfigurationDbContext>(o => o.UseSqlServer(ConfigDbConnectionString));
+                            
+
                 // this adds the config data from DB (clients, resources, CORS)
+              
+                
                 .AddConfigurationStore(options =>
                 {
-                   // options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+                    // options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
                     options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, b => b.MigrationsAssembly("PreFlight.AI.IDP"));
                 })
 
-           
+
                 // this adds the operational data from DB (codes, tokens, consents)
                 .AddOperationalStore(options =>
                 {
@@ -69,10 +78,10 @@ namespace PreFlight.AI.IDP
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
                 });
-           
 
-            // not recommended for production - you need to store your key material somewhere secure
-            builder.AddDeveloperSigningCredential();
+
+            //// not recommended for production - you need to store your key material somewhere secure
+            //builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication()
                 .AddGoogle(options =>

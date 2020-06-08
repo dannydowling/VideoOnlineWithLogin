@@ -12,6 +12,7 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
 
+
 namespace PreFlight.AI.IDP
 {
     public class Program

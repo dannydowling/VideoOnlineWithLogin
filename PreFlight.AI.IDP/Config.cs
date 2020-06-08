@@ -6,6 +6,8 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
+#nullable enable
+
 namespace PreFlight.AI.IDP
 {
     public static class Config

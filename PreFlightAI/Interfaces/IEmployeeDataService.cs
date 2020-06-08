@@ -9,7 +9,7 @@ namespace PreFlightAI.Server.Services
         Task<IEnumerable<Employee>> GetAllEmployees();
         Task<IEnumerable<Employee>> GetAllEmployeesByLocationId(int locationId);
         Task<Employee> GetEmployeeDetails(int employeeId);
-        Task<Employee> AddEmployee(Employee employee);
+        Task<Employee?> AddEmployee(Employee employee);
         Task UpdateEmployee(Employee employee);
         Task DeleteEmployee(int employeeId);
     }
