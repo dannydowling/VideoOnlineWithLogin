@@ -1,106 +1,71 @@
-﻿using IdentityModel;
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
+
 using IdentityServer4.Models;
-using PreFlightAI.Shared;
-using PreFlightAI.Shared.Employee;
-using PreFlightAI.Shared.Users;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-
-
 
 namespace PreFlight.AI.IDP
 {
-    public class Config
+    public static class Config
     {
-        
-        public static IEnumerable<IdentityResource> IDP =>
+        public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email(),
-                new IdentityResource("AUTH_Employee", new [] {"Owner", "Senior Manager", "Manager", "IT Lead", "IT Worker" }),
-                new IdentityResource("DEAUTH_Employee", new [] {"Worker"}),
-                new IdentityResource("AUTH_User", new [] {"Verified"}),
-                new IdentityResource("DEAUTH_User", new [] {"Guest", "Visitor"})
+                new IdentityResources.Email()
             };
 
 
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                new ApiResource("internalServerCommunication",
+                 new ApiResource("IDPContext",
                     "Internal Server Communication",
                     new [] {"IT_DANNY".Sha512() //The Api secret key to register the API on OpenID Connect
                     })
             };
 
+
         public static IEnumerable<Client> Clients =>
             new Client[]
             {
-               
-                   new Client
+                // code flow client
+                new Client
                 {
                     ClientId = "IDPClient",
                     ClientName = "PreFlight Internal",
+                    AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
                     
-                       AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
+                    //Where to redirect to after login
+                    RedirectUris = { "https://localhost:44336/signin-oidc" },
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
+
+                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here              
+                    AllowedScopes = {"IDPClient" }
+                },
+
+
+                new Client
+                {
+                    ClientId = "mvc",
+                    ClientName = "MVC Client",
+
+                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     RequirePkce = true,
+                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
 
                     RefreshTokenExpiration = TokenExpiration.Sliding,
                     AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
 
-                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here
-                    
-                       RedirectUris = {"https://localhost:44301/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
+                    RedirectUris = { "https://localhost:44336/signin-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:44336/signout-oidc",
+                    PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
 
-                       AllowOfflineAccess = true,
-                            RequireConsent = false,
-
-                       AllowedScopes = {"internalServerCommunication" }
-
-                },
-
-                
-                new Client
-                {
-                    ClientId = "EmployeeClient",
-                    ClientName = "PreFlight Management",
-                    AllowedGrantTypes = GrantTypes.ImplicitAndClientCredentials,
-
-                     RefreshTokenExpiration = TokenExpiration.Sliding,
-                    AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
-
-                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here
-
-                    RedirectUris = {"https://localhost:44301/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
                     AllowOfflineAccess = true,
-                    RequireConsent = false,
-                    AllowedScopes = {"openid", "email", "AUTH_Employee" }
-
-                },
-
-                new Client
-                {
-                    ClientId = "UserClient",
-                    ClientName = "PreFlight Users",
-                    AllowedGrantTypes = GrantTypes.ImplicitAndClientCredentials,
-
-                     RefreshTokenExpiration = TokenExpiration.Sliding,
-                        AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
-
-                    ClientSecrets = {new Secret("IT_DANNY".Sha256())}, //put in the client secret key here
-                    RedirectUris = {"https://localhost:44301/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:44301/signout-callback-oidc"},
-                    AllowOfflineAccess = true,
-                    RequireConsent = false,
-                    AllowedScopes = {"openid", "email", "DEAUTH_Employee", "AUTH_User" , "DEAUTH_User" }
-
+                    AllowedScopes = { "openid", "profile", "IDPClient" }
                 }
             };
     }

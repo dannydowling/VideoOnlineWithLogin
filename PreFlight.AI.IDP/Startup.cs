@@ -1,21 +1,16 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
 using IdentityServer4;
-using IdentityServer4.Quickstart.UI;
-using PreFlight.AI.IDP;
-using PreFlight.IDP.Areas.Identity.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Serilog;
-using Serilog.Events;
+using Microsoft.EntityFrameworkCore;
 
-
-namespace PreFlightAI.IDP
+namespace PreFlight.AI.IDP
 {
     public class Startup
     {
@@ -28,21 +23,11 @@ namespace PreFlightAI.IDP
             Configuration = configuration;
         }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
-            //Logging
-            var logger = new LoggerConfiguration()
-                         .MinimumLevel.Debug()
-                         .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                         .Enrich.FromLogContext()
-                         .WriteTo.File("IdentityLog.txt");
-            Log.Logger = logger.CreateLogger();
-            Log.Information("server service is started.");
+            services.AddControllersWithViews();
 
-            services.AddMvc();
-
-            // configures IIS out-of-proc settings)
+            // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
             services.Configure<IISOptions>(iis =>
             {
                 iis.AuthenticationDisplayName = "Windows";
@@ -56,46 +41,81 @@ namespace PreFlightAI.IDP
                 iis.AutomaticAuthentication = false;
             });
 
-            var builder = services.AddIdentityServer(options =>
-            {
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-            })
-              .AddTestUsers(TestUsers.Users);
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            // in-memory, code config
-            builder.AddInMemoryIdentityResources(Config.IDP);
-            builder.AddInMemoryApiResources(Config.Apis);
-            builder.AddInMemoryClients(Config.Clients);
+            var builder = services.AddIdentityServer(options =>
+                {
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+
+                })
+                
+                // this adds the config data from DB (clients, resources, CORS)
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+                })
+
+                //Register the identity resources with IdentityServer from Config
+                .AddInMemoryClients(Config.Clients)
+                .AddInMemoryIdentityResources(Config.Ids)
+                .AddInMemoryApiResources(Config.Apis)            
+                                
+
+                // this adds the operational data from DB (codes, tokens, consents)
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString);
+
+                    // this enables automatic token cleanup. this is optional.
+                    options.EnableTokenCleanup = true;
+                });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("OriginationPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
-            services.AddAuthentication();
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
+                    // register your IdentityServer with Google at https://console.developers.google.com
+                    // enable the Google+ API
+                    // set the redirect URI to http://localhost:5000/signin-google
+                    options.ClientId = "copy client ID from Google here";
+                    options.ClientSecret = "copy client secret from Google here";
+                });
+
+        
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
+
             app.UseStaticFiles();
+            app.UseCors("OriginationPolicy");
 
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapRazorPages();
-                //endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

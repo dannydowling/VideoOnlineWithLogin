@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using PreFlight.AI.IDP.Contexts;
 using PreFlight.AI.Server.Services.SQL;
 using Serilog;
 
@@ -33,7 +32,7 @@ namespace PreFlightAI
             {
                 try
                 {
-                    var IDPcontext = scope.ServiceProvider.GetService<IDPContext>();
+                    
                     var Servercontext = scope.ServiceProvider.GetService<ServerDbContext>();
                     
                     Servercontext.Database.Migrate();
