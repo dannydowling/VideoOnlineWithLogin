@@ -73,14 +73,14 @@ namespace PreFlight.AI.IDP
                     options.EnableTokenCleanup = true;
                 });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("OriginationPolicy",
-                    CORS => 
-                    CORS.AllowAnyOrigin()
-                        .AllowAnyMethod()                        
-                        .AllowAnyHeader());
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("OriginationPolicy",
+            //        CORS => 
+            //        CORS.AllowAnyOrigin()
+            //            .AllowAnyMethod()                        
+            //            .AllowAnyHeader());
+            //});
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -103,7 +103,7 @@ namespace PreFlight.AI.IDP
         public void Configure(IApplicationBuilder app)
         {
             //Adds cross domain policy
-            app.UseCors("OriginationPolicy");
+            app.UseCors();
 
             if (Environment.IsDevelopment())
             {
@@ -111,8 +111,8 @@ namespace PreFlight.AI.IDP
                 app.UseDatabaseErrorPage();
             }
 
-            app.UseStaticFiles();
-            
+            app.UseStaticFiles();            
+
 
             app.UseRouting();
             app.UseIdentityServer();

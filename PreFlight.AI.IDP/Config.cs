@@ -16,23 +16,24 @@ namespace PreFlight.AI.IDP
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
-                new IdentityResource("IDPClient", new [] {"IDPContext"})
+                new IdentityResource("roles","Your role(s)",  new List<string> {"role"})
             };
 
 
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                 new ApiResource("IDPClient",
+                 new ApiResource(
+                     "IDPClient",
                     "Internal Server Communication",
                     new List<string>() {"IDPContext"})
-                 {
+                    {
 
                         ApiSecrets = {new Secret("IT_DANNY".Sha512()) //The Api secret key to register the API on OpenID Connect
-                    } 
+                    }
                  }
             };
-            
+
 
 
         public static IEnumerable<Client> Clients =>
@@ -41,45 +42,52 @@ namespace PreFlight.AI.IDP
                 // code flow client
                 new Client
                 {
-                    ClientId = "IDPClient",
-                    ClientName = "PreFlight Internal",
+                    AccessTokenType = AccessTokenType.Reference,
+                    AccessTokenLifetime = 120,
+                    AllowedCorsOrigins = { "http://localhost:44336" },
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    ClientId = "Client",
+                    ClientName = "PreFlight",
                     AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
-                    
-                    //Where to redirect to after login
-                    RedirectUris = { "https://localhost:5001/signin-oidc" },
-                    // where to redirect to after logout
-                    PostLogoutRedirectUris = { "https://localhost:5001/signout-callback-oidc" },
-
-                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here              
-                    AllowedScopes = {
-                        IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "IDPClient" }
-                },
-
-
-                new Client
-                {
-                    ClientId = "mvc",
-                    ClientName = "MVC Client",
-
-                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     RequirePkce = true,
-                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
-
-                    RefreshTokenExpiration = TokenExpiration.Sliding,
-                    AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
-
+                    //Where to redirect to after login
                     RedirectUris = { "https://localhost:44336/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:44336/signout-oidc",
+                    // where to redirect to after logout
                     PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
 
-                    AllowOfflineAccess = true,
+
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Email                                     
-                    }
-                }
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "roles",
+                        "IDPClient"},
+                    ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here 
+                },
+
+
+                //new Client
+                //{
+                //    ClientId = "mvc",
+                //    ClientName = "MVC Client",
+
+                //    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                //    RequirePkce = true,
+                //    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
+
+                //    RefreshTokenExpiration = TokenExpiration.Sliding,
+                //    AbsoluteRefreshTokenLifetime = 86400, //Allow pre-auth for 1 day
+
+                //    RedirectUris = { "https://localhost:44336/signin-oidc" },
+                //    FrontChannelLogoutUri = "https://localhost:44336/signout-oidc",
+                //    PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
+
+                //    AllowOfflineAccess = true,
+                //    AllowedScopes = {
+                                                           
+                //    }
+                //}
             };
     }
 }

@@ -17,7 +17,9 @@ using Microsoft.EntityFrameworkCore;
 using PreFlight.AI.Shared.Handlers;
 using System.IdentityModel.Tokens.Jwt;
 using PreFlight.AI.Shared;
-
+using IdentityModel;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication;
 
 namespace PreFlightAI
 {
@@ -70,19 +72,35 @@ namespace PreFlightAI
 
             })
                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-               .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
-               options =>
+               .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                {
                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                    options.Authority = "https://localhost:5001";
                    options.ClientId = "IDPClient";
-                   options.ResponseType = "code id_token";
-                   options.Scope.Add("IDPContext");
-                   options.Scope.Add("offline_access");                   
-                   options.ClientSecret = "IT_DANNY";
-                   options.UsePkce = true;
-                   options.GetClaimsFromUserInfoEndpoint = true;
+                   options.ResponseType = "code";   
+                   
+                   options.Scope.Add("roles");
+                   options.Scope.Add("PreFlight");
+                   options.Scope.Add("offline_access");
+
+                   options.ClaimActions.DeleteClaim("sid");
+                   options.ClaimActions.DeleteClaim("idp");
+                   options.ClaimActions.DeleteClaim("s_hash");
+                   options.ClaimActions.DeleteClaim("auth_time");
+
+
+                   options.ClaimActions.MapUniqueJsonKey("role", "role");
+
                    options.SaveTokens = true;
+                   options.UsePkce = true;
+                                      
+                   options.ClientSecret = "IT_DANNY";
+                   options.GetClaimsFromUserInfoEndpoint = true;
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       NameClaimType = JwtClaimTypes.GivenName,
+                       RoleClaimType = JwtClaimTypes.Role
+                   };
                });
 
             services.AddHttpClient("IDPClient", client =>
