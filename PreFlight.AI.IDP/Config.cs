@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
@@ -14,18 +15,24 @@ namespace PreFlight.AI.IDP
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email()
+                new IdentityResources.Email(),
+                new IdentityResource("IDPClient", new [] {"IDPContext"})
             };
 
 
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
             {
-                 new ApiResource("IDPContext",
+                 new ApiResource("IDPClient",
                     "Internal Server Communication",
-                    new [] {"IT_DANNY".Sha512() //The Api secret key to register the API on OpenID Connect
-                    })
+                    new List<string>() {"IDPContext"})
+                 {
+
+                        ApiSecrets = {new Secret("IT_DANNY".Sha512()) //The Api secret key to register the API on OpenID Connect
+                    } 
+                 }
             };
+            
 
 
         public static IEnumerable<Client> Clients =>
@@ -39,12 +46,14 @@ namespace PreFlight.AI.IDP
                     AllowedGrantTypes = GrantTypes.Code, //long lived access, Tokens from token endpoint
                     
                     //Where to redirect to after login
-                    RedirectUris = { "https://localhost:44336/signin-oidc" },
+                    RedirectUris = { "https://localhost:5001/signin-oidc" },
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:5001/signout-callback-oidc" },
 
                     ClientSecrets = {new Secret("IT_DANNY".Sha512())}, //put in the client secret key here              
-                    AllowedScopes = {"IDPClient" }
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "IDPClient" }
                 },
 
 
@@ -65,7 +74,11 @@ namespace PreFlight.AI.IDP
                     PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "IDPClient" }
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email                                     
+                    }
                 }
             };
     }

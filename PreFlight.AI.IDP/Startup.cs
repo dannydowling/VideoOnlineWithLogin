@@ -76,9 +76,10 @@ namespace PreFlight.AI.IDP
             services.AddCors(options =>
             {
                 options.AddPolicy("OriginationPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+                    CORS => 
+                    CORS.AllowAnyOrigin()
+                        .AllowAnyMethod()                        
+                        .AllowAnyHeader());
             });
 
             // not recommended for production - you need to store your key material somewhere secure
@@ -101,6 +102,9 @@ namespace PreFlight.AI.IDP
 
         public void Configure(IApplicationBuilder app)
         {
+            //Adds cross domain policy
+            app.UseCors("OriginationPolicy");
+
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -108,7 +112,7 @@ namespace PreFlight.AI.IDP
             }
 
             app.UseStaticFiles();
-            app.UseCors("OriginationPolicy");
+            
 
             app.UseRouting();
             app.UseIdentityServer();
