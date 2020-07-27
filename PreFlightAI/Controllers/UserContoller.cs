@@ -1,7 +1,6 @@
 ﻿using PreFlightAI.Api.Models;
 using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Mvc;
-using PreFlightAI.Shared.Users;
 
 namespace PreFlightAI.Api.Controllers
 {
@@ -29,7 +28,7 @@ namespace PreFlightAI.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody] typedUser user)
+        public IActionResult CreateUser([FromBody] UserModel user)
         {
             if (user == null)
                 return BadRequest();
@@ -48,7 +47,7 @@ namespace PreFlightAI.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateUser([FromBody] typedUser user)
+        public IActionResult UpdateUser([FromBody] UserModel user)
         {
             if (user == null)
                 return BadRequest();
@@ -61,7 +60,7 @@ namespace PreFlightAI.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var userToUpdate = _userRepository.GetUserById(user.userId);
+            var userToUpdate = _userRepository.GetUserById(user.UserID);
 
             if (userToUpdate == null)
                 return NotFound();

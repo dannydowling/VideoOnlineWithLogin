@@ -1,7 +1,6 @@
 ﻿using PreFlightAI.Api.Models;
 using PreFlightAI.Shared;
 using Microsoft.AspNetCore.Mvc;
-using PreFlightAI.Shared.Places;
 
 namespace PreFlightAI.Api.Controllers
 {
@@ -23,9 +22,9 @@ namespace PreFlightAI.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetWeatherById(int id)
+        public IActionResult GetWeatherById(double AirPressure, double Temperature)
         {
-            return Ok(_weatherRepository.GetWeatherById(id));
+            return Ok(_weatherRepository.GetWeatherById(AirPressure, Temperature));
         }
 
         [HttpPost]
@@ -58,51 +57,48 @@ namespace PreFlightAI.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateWeather([FromBody] Weather weather)
-        {
-            if (weather == null)
-                return BadRequest();
+        public IActionResult UpdateWeather([FromBody] double AirPressure, double Temperature)
+        {            
 
-            if (weather.AirPressure == double.NaN)
+            if (AirPressure == double.NaN)
             {
                 ModelState.AddModelError("Air Pressure Missing", "Air Pressure shouldn't be empty");
             }
 
-            if (weather.Temperature == double.NaN)
+            if (Temperature == double.NaN)
             {
                 ModelState.AddModelError("Temperature missing", "Temperature shouldn't be empty");
             }
 
-            if (weather.WeightValue == double.NaN)
-            {
-                ModelState.AddModelError("Name missing", "Name shouldn't be empty");
-            }
+       
 
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var weatherToUpdate = _weatherRepository.GetWeatherById(weather.weatherID);
+            var weatherToUpdate = _weatherRepository.GetWeatherById(AirPressure, Temperature);
 
             if (weatherToUpdate == null)
                 return NotFound();
+            foreach (var item in weatherToUpdate)
+            {
+                _weatherRepository.UpdateWeather(item);
 
-            _weatherRepository.UpdateWeather(weather);
+            }
 
             return NoContent(); //success
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteWeather(int id)
+        [HttpDelete("{AirPressure}, {Temperature}")]
+        public IActionResult DeleteWeather(double AirPressure, double Temperature)
         {
-            if (id == 0)
-                return BadRequest();
+           
 
-            var weatherToDelete = _weatherRepository.GetWeatherById(id);
+            var weatherToDelete = _weatherRepository.GetWeatherById(AirPressure, Temperature);
             if (weatherToDelete == null)
                 return NotFound();
 
-            _weatherRepository.DeleteWeather(id);
-
+            foreach (var item in weatherToDelete)
+            {
+                _weatherRepository.DeleteWeather(item.AirPressure, item.Temperature);
+            }
+            
             return NoContent();//success
         }
     }

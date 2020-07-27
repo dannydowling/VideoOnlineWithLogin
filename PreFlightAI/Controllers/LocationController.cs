@@ -18,7 +18,7 @@ namespace PreFlightAI.Api.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public IActionResult GetCountries()
+        public IActionResult GetLocations()
         {
             return Ok(_locationRepository.GetAllLocations());
         }
