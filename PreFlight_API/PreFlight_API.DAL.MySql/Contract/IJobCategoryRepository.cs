@@ -8,7 +8,7 @@ namespace PreFlight_API.DAL.MySql.Contract
     
     public interface IJobCategoryRepository
     {
-        Task<IEnumerable<JobCategoryEntity>> GetJobCategoriesListAsync();
+        Task<IEnumerable<JobCategoryEntity>> GetJobCategoryListAsync(int pageNumber, int pageSize);
         Task<JobCategoryEntity> GetJobCategoryAsync(Guid id);
     }
 }

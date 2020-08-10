@@ -21,7 +21,7 @@ namespace PreFlight_API.BLL.Mappings
             CreateMap<EmployeeEntity, Employee>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(src => Guid.Parse(src.Id.ToString())))
                 .ForMember(d => d.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(d => d.JobCategoryId, opt => opt.MapFrom(src => (JobCategory)src.JobCategoryId))
+                .ForMember(d => d.JobCategoryId, opt => opt.MapFrom(src => Guid.Parse(src.JobCategoryId.ToString())))
                 .ForMember(d => d.FirstName, opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(d => d.LastName, opt => opt.MapFrom(src => src.LastName))
                 .ForMember(d => d.HireDate, opt => opt.MapFrom(src => src.JoinedDate))

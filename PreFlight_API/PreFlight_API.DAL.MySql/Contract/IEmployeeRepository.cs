@@ -7,8 +7,8 @@ namespace PreFlight_API.DAL.MySql.Contract
 {
     public interface IEmployeeRepository
     {
-        EmployeeEntity GetEmployeeAsync(Guid id);
-        EmployeeEntity CreateEmployeeAsync(EmployeeEntity employee);
+        Task<EmployeeEntity> GetEmployeeAsync(Guid id);
+        Task<EmployeeEntity> CreateEmployeeAsync(EmployeeEntity employee);
         Task<bool> UpdateEmployeeAsync(EmployeeEntity employee);
         Task<bool> DeleteEmployeeAsync(Guid id);
 

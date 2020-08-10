@@ -7,7 +7,7 @@ namespace PreFlight_API.BLL.Contracts
 {
     public interface IJobCategoryService
     {
-        Task<IEnumerable<JobCategory>> GetAllJobCategories(int currentJobCategory);
-        Task<JobCategory> GetJobCategoryById(Guid id);
+        Task<IEnumerable<JobCategory>> GetJobCategoryListAsync(int pageNumber, int pageSize);
+        Task<JobCategory> GetJobCategoryByIdAsync(Guid id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PreFlight_API.BLL.Models
@@ -17,17 +18,6 @@ namespace PreFlight_API.BLL.Models
         public ICollection<Location> employeeLocations { get; set; }
         
         public ICollection<Weather> overrideWeatherList { get; set; }
-
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-
-        [Range(0, 99999)]
-        private int _rowVersion;
-        public int RowVersion
-        {
-            get { return _rowVersion; }
-            set { _rowVersion = value++; }
-        }
+      
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Bcpg;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -47,12 +48,7 @@ namespace PreFlight_API.DAL.MySql.Models
         public string Password { get; set; }
 
 
-        [Range(0, 99999)]
-        private int _rowVersion;
-        public int RowVersion
-        {
-            get { return _rowVersion; }
-            set { _rowVersion = value++; }
-        }
+      [DataType(DataType.DateTime)]
+      public DateTime RowVersion { get; set; }
     }
 }

@@ -53,7 +53,7 @@ namespace PreFlight_API.API.Controllers
                 return BadRequest();
             }
 
-            var result = await _jobCategoryService.GetJobCategoryAsync(id);
+            var result = await _jobCategoryService.GetJobCategoryByIdAsync(id);
             if (result == null)
             {
                 return NotFound(new { id });

@@ -26,19 +26,15 @@ namespace PreFlightAI.Server.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<IEnumerable<JobCategory>> GetAllJobCategories(int currentJobCategory)
+        public async Task<IEnumerable<JobCategory>> GetJobCategoryListAsync(int pageNumber, int pageSize)
         {
             var jobCategories = await JsonSerializer.DeserializeAsync<IEnumerable<JobCategory>>
                 (await _httpClient.GetStreamAsync($"api/jobcategory"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-            //get the jobcategories that are lower ranked than the current employee's level.
-            jobCategories = (IEnumerable<JobCategory>)Enum.GetValues
-                (typeof(JobCategory)).Cast<int>().Where(x => x <= currentJobCategory); ;
-           
-                return _mapper.Map<IEnumerable<JobCategory>>(jobCategories);
+            return _mapper.Map<IEnumerable<JobCategory>>(jobCategories);
         }
 
-        public async Task<JobCategory> GetJobCategoryById(Guid id)
+        public async Task<JobCategory> GetJobCategoryByIdAsync(Guid id)
         {
             var jobCategory = await JsonSerializer.DeserializeAsync<JobCategory>
                 (await _httpClient.GetStreamAsync($"api/jobcategory/{id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });

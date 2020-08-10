@@ -91,7 +91,7 @@ namespace PreFlight_API.DAL.MySql
 
         public async Task<bool> DeleteWeatherAsync(Guid id, double AirPressure, double Temperature)
         {
-            const string sqlQuery = @"DELETE FROM weathers WHERE id = @id WHERE AirPressure = @AirPressure WHERE Temperature = @Temperature;";
+            const string sqlQuery = @"DELETE FROM weathers WHERE id = @id AND AirPressure = @AirPressure AND Temperature = @Temperature;";
             using (var db = new MySqlConnection(_options.CurrentValue.WeatherDbConnectionString))
             {
                 await db.ExecuteAsync(sqlQuery, new { id = id.ToString() }, commandType: CommandType.Text);
@@ -140,7 +140,7 @@ namespace PreFlight_API.DAL.MySql
                        RowVersion
                     FROM weathers
                     WHERE AirPressure=@AirPressure
-                    WHERE Temperature=@Temperature
+                    AND Temperature=@Temperature
                 LIMIT @pageSize OFFSET @offset;";
                 }
                 else

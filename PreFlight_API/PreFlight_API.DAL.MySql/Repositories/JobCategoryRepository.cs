@@ -25,7 +25,7 @@ namespace PreFlight_API.DAL.MySql
 
         public async Task<JobCategoryEntity> GetJobCategoryAsync(Guid id)
         {
-            using (var db = new MySqlConnection(_options.CurrentValue.JobCategoryDBConnectionString))
+            using (var db = new MySqlConnection(_options.CurrentValue.EmployeeDbConnectionString))
             {
                 const string sqlQuery = @"SELECT
                        id,
@@ -39,7 +39,7 @@ namespace PreFlight_API.DAL.MySql
 
         public async Task<IEnumerable<JobCategoryEntity>> GetJobCategoryListAsync(int pageNumber, int pageSize)
         {
-            using (var db = new MySqlConnection(_options.CurrentValue.JobCategoryDbConnectionString))
+            using (var db = new MySqlConnection(_options.CurrentValue.EmployeeDbConnectionString))
             {
                 var offset = pageNumber <= 1 ? 0 : (pageNumber - 1) * pageSize;
                 const string sqlQuery = @"SELECT
@@ -53,7 +53,7 @@ namespace PreFlight_API.DAL.MySql
 
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new CancellationToken())
         {
-            using (var db = new MySqlConnection(_options.CurrentValue.JobCategoryDbConnectionString))
+            using (var db = new MySqlConnection(_options.CurrentValue.EmployeeDbConnectionString))
             {
                 try
                 {

@@ -71,7 +71,7 @@ namespace PreFlight_API.DAL.MySql
 
         public async Task<EmployeeEntity> GetEmployeeAsync(Guid id)
         {
-            using (var db = new MySqlConnection(_options.CurrentValue.WeatherDBConnectionString))
+            using (var db = new MySqlConnection(_options.CurrentValue.EmployeeDbConnectionString))
             {
                 const string sqlQuery = @"SELECT
                       id,
