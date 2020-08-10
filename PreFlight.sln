@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight", "PreFlight.csproj", "{7979A0EF-525F-46B4-B298-53BCBE84E869}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.API", "PreFlight_API\PreFlight_API.API\PreFlight_API.API.csproj", "{2B44A9A1-72BC-47AF-9057-3DCF4FE5EAB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_API.API", "PreFlight_API\PreFlight_API.API\PreFlight_API.API.csproj", "{2B44A9A1-72BC-47AF-9057-3DCF4FE5EAB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.BLL", "PreFlight_API\PreFlight_API.BLL\PreFlight_API.BLL.csproj", "{467C087F-D038-4710-9900-4884BED37180}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_API.BLL", "PreFlight_API\PreFlight_API.BLL\PreFlight_API.BLL.csproj", "{467C087F-D038-4710-9900-4884BED37180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.Configuration", "PreFlight_API\PreFlight_API.Configuration\PreFlight_API.Configuration.csproj", "{C9980EEB-6C54-49B8-98E1-92DC201203D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_API.Configuration", "PreFlight_API\PreFlight_API.Configuration\PreFlight_API.Configuration.csproj", "{C9980EEB-6C54-49B8-98E1-92DC201203D9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_API.DAL.MySql", "PreFlight_API\PreFlight_API.DAL.MySql\PreFlight_API.DAL.MySql.csproj", "{08B65860-FE9C-47F2-BC53-33E20C636011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.DAL.MySql", "PreFlight_API\PreFlight_API.DAL.MySql\PreFlight_API.DAL.MySql.csproj", "{08B65860-FE9C-47F2-BC53-33E20C636011}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{634A80BE-8084-4506-BD49-6F1B62A19EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_API.BLL.Tests", "PreFlight_API\PreFlight_API.BLL.Tests\PreFlight_API.BLL.Tests.csproj", "{2A3F893F-7D3B-4E2D-A9B8-BA9A833C56AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.BLL.Tests", "PreFlight_API\PreFlight_API.BLL.Tests\PreFlight_API.BLL.Tests.csproj", "{2A3F893F-7D3B-4E2D-A9B8-BA9A833C56AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbUp", "DbUp", "{B64E0BAD-67A5-4CD8-90AF-8760E7C67DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_API.DbUp.MySql", "PreFlight_API\PreFlight_API.DbUp.MySql\PreFlight_API.DbUp.MySql.csproj", "{43262C2D-736D-4076-AD53-300A83E035E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreFlight_API.DbUp.MySql", "PreFlight_API\PreFlight_API.DbUp.MySql\PreFlight_API.DbUp.MySql.csproj", "{43262C2D-736D-4076-AD53-300A83E035E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreFlight_API", "PreFlight_API", "{34DB6B28-0806-4A0D-A013-9C38E85AFBC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreFlight_WebSite", "..\PreFlight_WebSite\PreFlight_WebSite.csproj", "{27E3D5FD-DC84-41AE-841D-7DC6005B3880}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7979A0EF-525F-46B4-B298-53BCBE84E869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7979A0EF-525F-46B4-B298-53BCBE84E869}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7979A0EF-525F-46B4-B298-53BCBE84E869}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7979A0EF-525F-46B4-B298-53BCBE84E869}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B44A9A1-72BC-47AF-9057-3DCF4FE5EAB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B44A9A1-72BC-47AF-9057-3DCF4FE5EAB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B44A9A1-72BC-47AF-9057-3DCF4FE5EAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{43262C2D-736D-4076-AD53-300A83E035E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43262C2D-736D-4076-AD53-300A83E035E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43262C2D-736D-4076-AD53-300A83E035E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27E3D5FD-DC84-41AE-841D-7DC6005B3880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E3D5FD-DC84-41AE-841D-7DC6005B3880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27E3D5FD-DC84-41AE-841D-7DC6005B3880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27E3D5FD-DC84-41AE-841D-7DC6005B3880}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
