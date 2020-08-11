@@ -71,8 +71,11 @@ namespace PreFlight.IDP
                         LoginUrl = "/Account/Login",
                         LoginReturnUrlParameter = "returnUrl"
                     };
+                    
                 })
                 .AddAspNetIdentity<ApplicationUser>()
+                
+                
                 // this adds the config data from DB (clients, resources, CORS)
                 .AddConfigurationStore(options =>
                 {

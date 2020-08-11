@@ -64,6 +64,46 @@ namespace IdentityServer4.Quickstart.UI
             return View(vm);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var dataEventsRole = "dataEventRecords.user";
+                var securedFilesRole = "securedFiles.user";
+                if (model.IsAdmin)
+                {
+                    dataEventsRole = "dataEventRecords.admin";
+                    securedFilesRole = "securedFiles.admin";
+                }
+
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    IsAdmin = model.IsAdmin,
+                    DataEventRecordsRole = dataEventsRole,
+                    SecuredFilesRole = securedFilesRole,
+                    AccountExpires = DateTime.UtcNow.AddDays(7.0)
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+
+                    await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberLogin, lockoutOnFailure: true);
+
+                    return Redirect(model.ReturnUrl);
+                }               
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
         /// <summary>
         /// Handle postback from username/password login
         /// </summary>
